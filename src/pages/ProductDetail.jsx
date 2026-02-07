@@ -14,7 +14,7 @@ function ProductDetail() {
       id: 'eye',
       name: 'Eye Ring',
       price: '$140',
-      description: "it's a ring with an eye on it. stares at people. kinda weird but whatever.",
+      description: 'ring with an eye carved on it.',
       goldImages: [
         '/assets/Highdef/eye face gold.png',
         '/assets/Highdef/Gold face front.png',
@@ -29,17 +29,16 @@ function ProductDetail() {
       alt: 'Eye Ring',
       type: 'eye',
       details: [
-        'carved by hand',
+        'hand carved',
         'gold or silver',
-        'adjustable',
-        'made a few'
+        'adjustable size'
       ]
     },
     star: {
       id: 'star',
       name: 'Star Ring',
       price: '$160',
-      description: 'shooting star on your finger. makes wishes or whatever. looks cool i guess.',
+      description: 'shooting star. wraps around finger.',
       goldImages: [
         '/assets/Highdef/gold star front.png',
         '/assets/Highdef/gold forward star.png',
@@ -56,17 +55,16 @@ function ProductDetail() {
       alt: 'Star Ring',
       type: 'star',
       details: [
-        'star shape',
+        'sculptural form',
         'gold or silver',
-        'comfortable',
-        "didn't make many"
+        'comfort fit'
       ]
     },
     foot: {
       id: 'foot',
       name: 'Foot Ring',
       price: '$150',
-      description: "yeah it's literally a foot. you wear it. people will ask about it probably.",
+      description: 'sculptural foot ring. anatomical detail.',
       goldImages: [
         '/assets/Highdef/gold foot up.png',
         '/assets/Highdef/gold foot main.png',
@@ -81,10 +79,9 @@ function ProductDetail() {
       alt: 'Foot Ring',
       type: 'foot',
       details: [
-        'shaped like a foot',
+        'anatomical form',
         'gold or silver',
-        'starts conversations',
-        'made by hand'
+        'statement piece'
       ]
     }
   };
