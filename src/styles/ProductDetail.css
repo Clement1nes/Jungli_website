@@ -257,41 +257,91 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1rem 1.5rem;
+  padding: 1.2rem 1.5rem;
   background: transparent;
-  border: 2px solid rgba(247, 244, 237, 0.2);
+  border: 2px solid rgba(247, 244, 237, 0.25);
   border-radius: 0;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-family: 'Evil Green Plant', serif;
+  font-size: 1.1rem;
+  font-weight: normal;
   color: rgba(247, 244, 237, 0.7);
   cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
+  text-transform: lowercase;
+  clip-path: polygon(
+    3% 0%,
+    97% 0%,
+    100% 4%,
+    100% 96%,
+    96% 100%,
+    4% 100%,
+    0% 95%,
+    0% 6%
+  );
+  transform: rotate(0.3deg);
+}
+
+.metal-option::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  right: 8px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(247, 244, 237, 0.2), transparent);
+  opacity: 0.5;
 }
 
 .metal-swatch {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 0;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transform: rotate(45deg);
+  transition: all 0.3s ease;
 }
 
 .gold-swatch {
   background: #D4AF37;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
 }
 
 .silver-swatch {
   background: #C0C0C0;
+  box-shadow: 0 0 8px rgba(192, 192, 192, 0.3);
 }
 
 .metal-option:hover {
-  color: rgba(247, 244, 237, 0.9);
-  border-color: rgba(247, 244, 237, 0.4);
+  color: rgba(247, 244, 237, 0.95);
+  border-color: rgba(247, 244, 237, 0.5);
+  transform: rotate(0.3deg) translateY(-2px);
+  box-shadow: 3px 3px 0 rgba(247, 244, 237, 0.15);
+}
+
+.metal-option:hover .metal-swatch {
+  transform: rotate(45deg) scale(1.15);
 }
 
 .metal-option.active {
   color: #F7F4ED;
   border-color: #D4AF37;
+  background: rgba(212, 175, 55, 0.08);
+  border-width: 3px;
+  transform: rotate(0.3deg) translateX(2px);
+  box-shadow:
+    inset 0 0 15px rgba(212, 175, 55, 0.1),
+    -4px 4px 0 rgba(212, 175, 55, 0.2);
+}
+
+.metal-option.active::before {
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+  opacity: 0.8;
+}
+
+.metal-option.active .metal-swatch {
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: rotate(45deg) scale(1.2);
 }
 
 /* Product Details */
