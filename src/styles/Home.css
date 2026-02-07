@@ -16,7 +16,7 @@
   src: url('/assets/evil-green-plant-webfont/evilgreenplant1.woff') format('woff');
 }
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap');
+/* Evil Green Plant font is loaded globally */
 
 .home-container {
   min-height: 100vh;

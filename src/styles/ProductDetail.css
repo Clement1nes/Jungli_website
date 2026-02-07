@@ -9,7 +9,7 @@
   Motion: Smooth transitions with orchestrated reveals
 */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+/* Evil Green Plant font is loaded globally */
 
 .product-detail-container {
   min-height: 100vh;
@@ -215,7 +215,7 @@
 }
 
 .product-price {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Evil Green Plant', serif;
   font-size: 2rem;
   font-weight: 600;
   color: #D4AF37;
@@ -224,7 +224,7 @@
 }
 
 .product-description {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Evil Green Plant', serif;
   font-size: 1.1rem;
   line-height: 1.8;
   color: rgba(247, 244, 237, 0.85);
@@ -237,7 +237,7 @@
 }
 
 .selector-label {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Evil Green Plant', serif;
   font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -353,7 +353,7 @@
 }
 
 .details-title {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Evil Green Plant', serif;
   font-size: 0.85rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -372,7 +372,7 @@
 }
 
 .details-list li {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Evil Green Plant', serif;
   font-size: 0.95rem;
   color: rgba(247, 244, 237, 0.85);
   padding-left: 1.5rem;

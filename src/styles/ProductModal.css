@@ -120,7 +120,7 @@
 }
 
 .product-price {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Evil Green Plant', serif;
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 600;
   color: #D4AF37;
@@ -128,7 +128,7 @@
 }
 
 .product-description {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Evil Green Plant', serif;
   font-size: clamp(0.95rem, 1.5vw, 1.05rem);
   line-height: 1.7;
   color: #F7F4ED;

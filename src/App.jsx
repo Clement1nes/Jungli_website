@@ -52,7 +52,7 @@ function App() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: "'DM Sans', sans-serif"
+                  fontFamily: "'Evil Green Plant', serif"
                 }}>0</span>
               </Link>
             </div>
