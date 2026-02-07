@@ -161,7 +161,6 @@ function ProductDetail() {
             {currentImages.length > 1 && (
               <div className="swipe-indicator">
                 <span>←</span>
-                <span className="swipe-text">Swipe</span>
                 <span>→</span>
               </div>
             )}
