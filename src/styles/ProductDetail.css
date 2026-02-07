@@ -423,7 +423,7 @@
   }
 
   .info-content {
-    padding: 2rem;
+    padding: 1.5rem;
   }
 
   .product-title {
@@ -435,16 +435,40 @@
   }
 
   .product-description {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   .metal-buttons {
     flex-direction: column;
   }
 
+  .metal-option {
+    padding: 1rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  /* Better mobile buttons - larger touch targets */
+  .btn-buy-now,
+  .btn-add-cart {
+    padding: 1.1rem 1.75rem;
+    font-size: 1rem;
+    border-width: 2px;
+    min-height: 52px;
+  }
+
+  .product-actions {
+    gap: 0.85rem;
+  }
+
   .thumbnail {
     width: 60px;
     height: 60px;
+  }
+
+  .gallery-nav {
+    width: 44px;
+    height: 44px;
   }
 
   .gallery-nav-prev {
@@ -453,5 +477,34 @@
 
   .gallery-nav-next {
     right: 0.25rem;
+  }
+
+  .details-list {
+    gap: 0.6rem;
+  }
+
+  .details-list li {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .info-content {
+    padding: 1rem;
+  }
+
+  .product-title {
+    font-size: 1.75rem;
+  }
+
+  .btn-buy-now,
+  .btn-add-cart {
+    padding: 1rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .metal-option {
+    padding: 0.9rem 1rem;
+    font-size: 0.85rem;
   }
 }
