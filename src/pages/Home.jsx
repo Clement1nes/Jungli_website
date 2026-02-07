@@ -71,15 +71,6 @@ function Home() {
             className="hero-image"
           />
         </motion.div>
-
-        <motion.h1
-          className="hero-tagline"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 1.2 }}
-        >
-          Sculptural adornment
-        </motion.h1>
       </section>
 
       {/* Floating Products Section */}
