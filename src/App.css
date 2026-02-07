@@ -1,0 +1,302 @@
+/*
+  Design Rationale:
+
+  This design creates a luxurious gallery experience with bold brand character.
+  It balances dramatic dark aesthetics with refined typography and kinetic energy.
+
+  1.  **Typography:**
+      - Headlines ('Evil Green Plant'): Custom brand font with distinctive character. Creates unique, memorable identity.
+      - Body ('DM Sans'): Modern, precise sans-serif that provides clean readability and professional polish.
+      - The hierarchy is bold and confident, with generous sizing and spacing that commands attention.
+
+  2.  **Layout & Structure:**
+      - Fixed navigation with glassmorphic effect creates floating, premium feel
+      - Hero-centered design with dramatic dark backgrounds
+      - Grid layouts adapt fluidly across all screen sizes
+      - Kinetic product showcase with continuous rotation adds mesmerizing visual interest
+
+  3.  **Color Palette:**
+      - Deep charcoal (#1A1A1D) creates dramatic, gallery-like atmosphere
+      - Warm cream (#F7F4ED) provides elegant contrast for text
+      - Metallic accents (gold #D4AF37, silver #C0C0C0) echo the jewelry materials
+      - Creates high-end, sophisticated environment that feels both modern and timeless
+
+  4.  **Motion & Interaction:**
+      - Continuous 3D rotation of product images creates organic, mesmerizing rhythm
+      - Staggered animations on page load build anticipation
+      - Floating hero image with subtle movement
+      - Gold glow effects on hover add luxury touch
+      - Hover pauses rotation for closer inspection
+
+  5.  **Overall Mood:**
+      - High-end jewelry gallery meets contemporary art installation
+      - Bold, confident, and unforgettable
+      - Professional polish with distinctive character
+      - Invites exploration through kinetic visual interest
+*/
+
+@font-face {
+  font-family: 'Evil Green Plant';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/assets/evil-green-plant-webfont/evilgreenplant1.woff') format('woff');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap');
+
+:root {
+  --background: #F8F5F2; /* A warm, off-white */
+  --background-dark: #1A1A1D; /* Deep charcoal for dramatic sections */
+  --text-primary: #222222; /* A soft, deep charcoal */
+  --text-secondary: #A5A5A5; /* A muted, warm gray */
+  --text-light: #F7F4ED; /* Warm cream for dark backgrounds */
+  --accent-gold: #D4AF37; /* Luxurious gold accent */
+  --accent-silver: #C0C0C0; /* Silver accent */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.6;
+}
+
+.app {
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Header & Nav */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem;
+  gap: 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: none;
+  transition: all 0.3s ease;
+}
+
+.header-logo a {
+  font-family: 'Evil Green Plant', serif;
+  font-weight: normal;
+  font-size: 1.8rem;
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.header-logo a:hover {
+  color: var(--accent-gold);
+}
+
+.site-logo {
+  height: 90px;
+  width: auto;
+  transition: all 0.3s ease;
+}
+
+.site-logo:hover {
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+  transform: scale(1.05);
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+}
+
+.main-nav a {
+  font-size: 0.95rem;
+  font-family: 'Evil Green Plant', serif;
+  font-weight: normal;
+  color: var(--text-light);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  position: relative;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1.5rem;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 4px;
+}
+
+.main-nav a:hover {
+  color: var(--accent-gold);
+  border-color: var(--accent-gold);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.basket-icon {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.basket-icon:hover {
+  transform: scale(1.05);
+}
+
+.basket-icon:hover svg {
+  stroke: var(--accent-gold);
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+}
+
+/* Hero */
+.hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-title {
+  font-family: 'Evil Green Plant', serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: normal;
+  line-height: 1.2;
+  max-width: 800px;
+  letter-spacing: 0.03em;
+}
+
+/* Content Sections */
+.content-section {
+  padding: 6rem 0;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.content-grid.reverse {
+  grid-template-columns: 1fr 1fr;
+}
+
+.grid-item-text h2 {
+  font-family: 'Evil Green Plant', serif;
+  font-size: 2.5rem;
+  font-weight: normal;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.03em;
+}
+
+.grid-item-text p {
+  font-size: 1rem;
+  max-width: 450px;
+  line-height: 1.7;
+}
+
+.grid-item-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Contact Section */
+.contact-section {
+  padding: 8rem 0;
+  text-align: center;
+}
+
+.contact-section h2 {
+  font-family: 'Evil Green Plant', serif;
+  font-size: 2.5rem;
+  font-weight: normal;
+  margin-bottom: 1rem;
+  letter-spacing: 0.03em;
+}
+
+.contact-section p {
+  font-size: 1rem;
+}
+
+.contact-section a {
+  color: var(--text-primary);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.contact-section a:hover {
+  color: var(--text-secondary);
+}
+
+/* Footer */
+.main-footer {
+  padding: 3rem 4rem;
+  text-align: center;
+  background: var(--background-dark);
+  border-top: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.main-footer p {
+  font-size: 0.85rem;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-light);
+  opacity: 0.7;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-header {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem 2rem;
+  }
+
+  .site-logo {
+    height: 50px;
+  }
+
+  .main-nav ul {
+    gap: 1.5rem;
+  }
+
+  .main-nav a {
+    font-size: 0.85rem;
+  }
+
+  .main-footer {
+    padding: 2rem;
+  }
+
+  .content-grid,
+  .content-grid.reverse {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .content-grid.reverse .grid-item-image {
+    order: -1;
+  }
+
+  .content-section,
+  .contact-section {
+    padding: 4rem 0;
+  }
+}
