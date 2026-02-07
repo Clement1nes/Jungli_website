@@ -14,7 +14,7 @@ function ProductDetail() {
       id: 'eye',
       name: 'Eye Ring',
       price: '$140',
-      description: 'Mesmerizing eye ring with intricate detail and symbolic design. A piece that sees beyond the ordinary, crafted for those who embrace the mystical.',
+      description: "it's a ring with an eye on it. stares at people. kinda weird but whatever.",
       goldImages: [
         '/assets/Highdef/eye face gold.png',
         '/assets/Highdef/Gold face front.png',
@@ -29,17 +29,17 @@ function ProductDetail() {
       alt: 'Eye Ring',
       type: 'eye',
       details: [
-        'Hand-carved eye detail',
-        'Available in 14K gold & sterling silver',
-        'Adjustable sizing',
-        'Limited edition piece'
+        'carved by hand',
+        'gold or silver',
+        'adjustable',
+        'made a few'
       ]
     },
     star: {
       id: 'star',
       name: 'Star Ring',
       price: '$160',
-      description: 'Celestial shooting star ring. A dynamic piece that brings cosmic energy and movement to your collection. Capture the magic of wishes and dreams.',
+      description: 'shooting star on your finger. makes wishes or whatever. looks cool i guess.',
       goldImages: [
         '/assets/Highdef/gold star front.png',
         '/assets/Highdef/gold forward star.png',
@@ -56,17 +56,17 @@ function ProductDetail() {
       alt: 'Star Ring',
       type: 'star',
       details: [
-        'Sculptural shooting star design',
-        'Available in 14K gold & sterling silver',
-        'Comfort fit band',
-        'Handcrafted in limited quantities'
+        'star shape',
+        'gold or silver',
+        'comfortable',
+        "didn't make many"
       ]
     },
     foot: {
       id: 'foot',
       name: 'Foot Ring',
       price: '$150',
-      description: 'Handcrafted sculptural foot ring. A bold statement piece that celebrates anatomical beauty and artistic form. For those who dare to be different.',
+      description: "yeah it's literally a foot. you wear it. people will ask about it probably.",
       goldImages: [
         '/assets/Highdef/gold foot up.png',
         '/assets/Highdef/gold foot main.png',
@@ -81,10 +81,10 @@ function ProductDetail() {
       alt: 'Foot Ring',
       type: 'foot',
       details: [
-        'Anatomical sculptural form',
-        'Available in 14K gold & sterling silver',
-        'Unique conversation piece',
-        'Artisan crafted'
+        'shaped like a foot',
+        'gold or silver',
+        'starts conversations',
+        'made by hand'
       ]
     }
   };
