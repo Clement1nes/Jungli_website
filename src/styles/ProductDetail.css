@@ -265,40 +265,50 @@
   font-weight: normal;
   color: rgba(247, 244, 237, 0.95);
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s ease;
   position: relative;
   text-transform: lowercase;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
-  overflow: hidden;
+  text-shadow:
+    0 2px 4px rgba(0, 0, 0, 1),
+    0 1px 2px rgba(0, 0, 0, 0.9);
+  overflow: visible;
 
-  /* Rocky cobblestone base - multi-layer gradient for depth */
+  /* Rough weathered stone - harsh color transitions */
   background:
-    linear-gradient(135deg,
-      rgba(90, 85, 75, 0.9) 0%,
-      rgba(70, 68, 62, 0.95) 25%,
-      rgba(55, 52, 48, 1) 50%,
-      rgba(65, 62, 58, 0.95) 75%,
-      rgba(80, 75, 68, 0.9) 100%
+    radial-gradient(circle at 30% 20%, rgba(75, 70, 60, 1) 0%, transparent 25%),
+    radial-gradient(circle at 70% 80%, rgba(55, 50, 45, 1) 0%, transparent 30%),
+    radial-gradient(circle at 10% 60%, rgba(65, 58, 50, 1) 0%, transparent 20%),
+    linear-gradient(145deg,
+      #4A443C 0%,
+      #3D3830 15%,
+      #2F2B24 30%,
+      #3A352E 45%,
+      #332E28 60%,
+      #3E3932 75%,
+      #48433A 100%
     );
 
-  /* Organic irregular stone edges */
+  /* Jagged broken stone edges - very irregular */
   clip-path: polygon(
-    2% 8%, 8% 2%, 18% 1%, 28% 3%, 38% 1%, 48% 2%, 58% 1%, 68% 3%, 78% 1%, 88% 2%, 96% 6%,
-    98% 15%, 99% 28%, 98% 40%, 99% 55%, 98% 68%, 99% 82%, 96% 92%,
-    88% 98%, 78% 99%, 68% 97%, 58% 99%, 48% 98%, 38% 99%, 28% 97%, 18% 99%, 8% 98%, 2% 94%,
-    1% 82%, 2% 68%, 1% 55%, 2% 40%, 1% 28%, 2% 15%
+    0% 15%, 3% 8%, 5% 12%, 9% 5%, 12% 9%, 15% 3%, 19% 7%, 23% 2%, 28% 6%, 32% 1%,
+    37% 5%, 42% 2%, 47% 4%, 52% 1%, 57% 3%, 62% 0%, 67% 4%, 72% 2%, 77% 5%, 82% 3%,
+    87% 6%, 91% 4%, 95% 8%, 98% 12%, 100% 18%, 99% 24%, 100% 30%, 98% 36%, 100% 42%,
+    99% 48%, 100% 54%, 98% 60%, 100% 66%, 99% 72%, 100% 78%, 97% 84%, 100% 90%, 98% 95%,
+    95% 92%, 91% 96%, 87% 94%, 82% 97%, 77% 95%, 72% 98%, 67% 96%, 62% 100%, 57% 97%,
+    52% 99%, 47% 96%, 42% 98%, 37% 95%, 32% 99%, 28% 94%, 23% 98%, 19% 93%, 15% 97%,
+    12% 91%, 9% 95%, 5% 88%, 3% 92%, 0% 85%, 2% 78%, 0% 72%, 2% 66%, 0% 60%, 2% 54%,
+    0% 48%, 2% 42%, 0% 36%, 2% 30%, 0% 24%
   );
 
   box-shadow:
-    /* Deep carved shadow */
-    inset -3px -3px 8px rgba(0, 0, 0, 0.5),
-    inset 2px 2px 6px rgba(100, 95, 85, 0.3),
-    /* External stone shadow */
-    0 6px 15px rgba(0, 0, 0, 0.7),
-    0 2px 4px rgba(0, 0, 0, 0.5);
+    inset -5px -5px 15px rgba(0, 0, 0, 0.9),
+    inset 4px 4px 10px rgba(80, 75, 65, 0.2),
+    inset -2px -2px 8px rgba(0, 0, 0, 0.7),
+    0 8px 20px rgba(0, 0, 0, 0.9),
+    0 3px 8px rgba(0, 0, 0, 0.8);
 }
 
-/* Stone texture overlay using pseudo-element */
+/* Rough texture with heavy weathering */
 .metal-option::before {
   content: '';
   position: absolute;
@@ -307,48 +317,54 @@
   right: 0;
   bottom: 0;
   background:
-    /* Moss/vegetation patches */
-    radial-gradient(circle at 20% 30%, rgba(45, 75, 35, 0.4) 0%, transparent 15%),
-    radial-gradient(circle at 75% 60%, rgba(35, 65, 30, 0.3) 0%, transparent 12%),
-    radial-gradient(circle at 45% 80%, rgba(40, 70, 32, 0.35) 0%, transparent 10%),
-    /* Cobblestone cracks and texture */
+    /* Heavy moss growth - dark and grungy */
+    radial-gradient(ellipse at 12% 18%, rgba(28, 48, 22, 0.85) 0%, rgba(35, 58, 28, 0.6) 8%, transparent 22%),
+    radial-gradient(ellipse at 78% 72%, rgba(22, 42, 18, 0.9) 0%, rgba(30, 52, 24, 0.65) 10%, transparent 25%),
+    radial-gradient(circle at 45% 88%, rgba(25, 45, 20, 0.8) 0%, rgba(32, 55, 26, 0.5) 6%, transparent 18%),
+    radial-gradient(circle at 88% 35%, rgba(30, 50, 25, 0.7) 0%, transparent 15%),
+    radial-gradient(circle at 22% 65%, rgba(26, 46, 21, 0.75) 0%, transparent 12%),
+    /* Dirt and grime splotches */
+    radial-gradient(circle at 35% 40%, rgba(40, 35, 28, 0.6) 0%, transparent 10%),
+    radial-gradient(circle at 65% 15%, rgba(35, 30, 25, 0.5) 0%, transparent 8%),
+    /* Heavy cracks - multiple directions */
     repeating-linear-gradient(
-      123deg,
+      127deg,
+      transparent,
+      transparent 2px,
+      rgba(10, 8, 6, 0.8) 2px,
+      rgba(10, 8, 6, 0.8) 3px,
+      transparent 3px,
+      transparent 8px
+    ),
+    repeating-linear-gradient(
+      73deg,
       transparent,
       transparent 3px,
-      rgba(20, 18, 15, 0.3) 3px,
-      rgba(20, 18, 15, 0.3) 4px
+      rgba(15, 12, 10, 0.7) 3px,
+      rgba(15, 12, 10, 0.7) 4px,
+      transparent 4px,
+      transparent 12px
     ),
-    /* Rough stone grain */
     repeating-linear-gradient(
-      47deg,
-      rgba(85, 80, 72, 0.15),
-      rgba(85, 80, 72, 0.15) 1px,
-      transparent 1px,
-      transparent 2px
+      215deg,
+      transparent,
+      transparent 4px,
+      rgba(12, 10, 8, 0.6) 4px,
+      rgba(12, 10, 8, 0.6) 5px,
+      transparent 5px,
+      transparent 15px
+    ),
+    /* Rough grain and pitting */
+    repeating-linear-gradient(
+      43deg,
+      rgba(70, 65, 55, 0.3),
+      rgba(70, 65, 55, 0.3) 1px,
+      rgba(45, 40, 35, 0.2) 1px,
+      rgba(45, 40, 35, 0.2) 2px
     );
-  opacity: 0.8;
+  opacity: 1;
   pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-/* Shimmer highlight on hover */
-.metal-option::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent 30%,
-    rgba(212, 175, 55, 0.15) 50%,
-    transparent 70%
-  );
-  transform: translateX(-100%) translateY(-100%);
-  transition: transform 0.6s ease;
-  pointer-events: none;
+  mix-blend-mode: multiply;
 }
 
 .metal-swatch {
@@ -371,57 +387,57 @@
 }
 
 .metal-option:hover {
-  transform: scale(1.05) translateY(-2px);
+  transform: scale(1.02) translateY(-1px) rotate(-0.5deg);
   color: rgba(247, 244, 237, 1);
   box-shadow:
-    inset -3px -3px 8px rgba(0, 0, 0, 0.6),
-    inset 2px 2px 6px rgba(100, 95, 85, 0.4),
-    0 8px 20px rgba(0, 0, 0, 0.8),
-    0 4px 8px rgba(212, 175, 55, 0.2);
-}
-
-.metal-option:hover::before {
-  opacity: 1;
-}
-
-.metal-option:hover::after {
-  transform: translateX(100%) translateY(100%);
+    inset -6px -6px 18px rgba(0, 0, 0, 0.95),
+    inset 5px 5px 12px rgba(90, 85, 75, 0.25),
+    0 10px 25px rgba(0, 0, 0, 0.95),
+    0 4px 10px rgba(212, 175, 55, 0.15);
+  filter: brightness(1.08) contrast(1.05);
 }
 
 .metal-option:hover .metal-swatch {
-  transform: rotate(45deg) scale(1.15);
+  transform: rotate(45deg) scale(1.12);
 }
 
 .metal-option:active {
-  transform: scale(0.98) translateY(1px);
+  transform: scale(0.99) translateY(2px) rotate(0deg);
   box-shadow:
-    inset -2px -2px 6px rgba(0, 0, 0, 0.4),
-    inset 2px 2px 4px rgba(100, 95, 85, 0.2),
-    0 3px 10px rgba(0, 0, 0, 0.6);
+    inset -4px -4px 12px rgba(0, 0, 0, 0.8),
+    inset 3px 3px 8px rgba(70, 65, 55, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.7);
+  filter: brightness(0.92);
 }
 
 .metal-option.active {
   color: #D4AF37;
-  transform: scale(1.02);
+  transform: scale(1.01) rotate(0.3deg);
   background:
-    linear-gradient(135deg,
-      rgba(110, 100, 85, 0.9) 0%,
-      rgba(90, 85, 75, 0.95) 25%,
-      rgba(75, 70, 62, 1) 50%,
-      rgba(85, 80, 72, 0.95) 75%,
-      rgba(100, 92, 80, 0.9) 100%
+    radial-gradient(circle at 35% 25%, rgba(85, 78, 68, 1) 0%, transparent 28%),
+    radial-gradient(circle at 65% 75%, rgba(68, 62, 54, 1) 0%, transparent 32%),
+    radial-gradient(circle at 15% 65%, rgba(75, 68, 58, 1) 0%, transparent 22%),
+    linear-gradient(145deg,
+      #58524A 0%,
+      #4D4740 15%,
+      #3F3A33 30%,
+      #4A443C 45%,
+      #433D36 60%,
+      #4E4841 75%,
+      #58524A 100%
     );
   box-shadow:
-    inset -3px -3px 10px rgba(0, 0, 0, 0.5),
-    inset 2px 2px 8px rgba(212, 175, 55, 0.2),
-    0 6px 18px rgba(212, 175, 55, 0.3),
-    0 2px 6px rgba(0, 0, 0, 0.7);
+    inset -6px -6px 16px rgba(0, 0, 0, 0.85),
+    inset 4px 4px 10px rgba(212, 175, 55, 0.15),
+    0 6px 20px rgba(212, 175, 55, 0.25),
+    0 2px 8px rgba(0, 0, 0, 0.8);
+  filter: brightness(1.1);
 }
 
 .metal-option.active .metal-swatch {
   border-color: rgba(255, 255, 255, 0.8);
   transform: rotate(45deg) scale(1.2);
-  box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
 }
 
 /* Product Details */
@@ -485,42 +501,60 @@
   border: none;
   cursor: pointer;
   letter-spacing: 0.05em;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s ease;
   position: relative;
   text-transform: lowercase;
   color: #F7F4ED;
-  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.95), 0 1px 3px rgba(0, 0, 0, 1);
-  overflow: hidden;
+  text-shadow:
+    0 3px 6px rgba(0, 0, 0, 1),
+    0 1px 3px rgba(0, 0, 0, 0.95);
+  overflow: visible;
 
-  /* Larger rocky cobblestone base - multi-layer gradient for depth */
+  /* Rough ancient stone - very weathered */
   background:
-    linear-gradient(135deg,
-      rgba(85, 80, 70, 0.9) 0%,
-      rgba(65, 62, 55, 0.95) 20%,
-      rgba(50, 48, 42, 1) 40%,
-      rgba(45, 42, 38, 1) 60%,
-      rgba(60, 57, 50, 0.95) 80%,
-      rgba(75, 70, 62, 0.9) 100%
+    radial-gradient(circle at 25% 15%, rgba(70, 65, 55, 1) 0%, transparent 30%),
+    radial-gradient(circle at 75% 85%, rgba(50, 45, 38, 1) 0%, transparent 35%),
+    radial-gradient(circle at 45% 50%, rgba(60, 54, 46, 1) 0%, transparent 28%),
+    radial-gradient(circle at 8% 70%, rgba(55, 50, 42, 1) 0%, transparent 22%),
+    radial-gradient(circle at 92% 40%, rgba(58, 52, 45, 1) 0%, transparent 25%),
+    linear-gradient(152deg,
+      #423D35 0%,
+      #38332C 12%,
+      #2C2820 25%,
+      #352F28 38%,
+      #2F2A23 50%,
+      #3A342D 62%,
+      #332E27 75%,
+      #3D3830 88%,
+      #48423A 100%
     );
 
-  /* Organic irregular stone edges with more variation */
+  /* Extremely jagged broken edges - like chipped stone */
   clip-path: polygon(
-    1% 10%, 5% 4%, 12% 2%, 20% 1%, 28% 2%, 35% 1%, 42% 2%, 50% 1%, 58% 2%, 65% 1%, 72% 2%, 80% 1%, 88% 2%, 95% 4%, 99% 10%,
-    99.5% 20%, 99% 30%, 99.5% 40%, 99% 50%, 99.5% 60%, 99% 70%, 99.5% 80%, 99% 90%,
-    95% 96%, 88% 98%, 80% 99%, 72% 98%, 65% 99%, 58% 98%, 50% 99%, 42% 98%, 35% 99%, 28% 98%, 20% 99%, 12% 98%, 5% 96%, 1% 90%,
-    0.5% 80%, 1% 70%, 0.5% 60%, 1% 50%, 0.5% 40%, 1% 30%, 0.5% 20%
+    0% 12%, 2% 18%, 1% 10%, 4% 14%, 3% 8%, 6% 11%, 7% 5%, 10% 9%, 9% 3%, 13% 7%,
+    12% 2%, 16% 5%, 17% 1%, 21% 4%, 20% 0%, 24% 3%, 26% 1%, 29% 4%, 31% 0%, 34% 3%,
+    36% 1%, 39% 4%, 42% 0%, 45% 3%, 47% 1%, 50% 2%, 53% 0%, 56% 3%, 58% 1%, 61% 4%,
+    64% 0%, 67% 3%, 69% 1%, 72% 4%, 74% 0%, 77% 3%, 79% 1%, 83% 5%, 81% 2%, 87% 7%,
+    85% 3%, 90% 9%, 88% 4%, 93% 11%, 91% 6%, 96% 13%, 94% 8%, 98% 15%, 97% 10%, 100% 17%,
+    99% 22%, 100% 28%, 98% 34%, 100% 40%, 99% 46%, 100% 52%, 98% 58%, 100% 64%, 99% 70%,
+    100% 76%, 98% 82%, 100% 88%, 97% 90%, 99% 94%, 96% 92%, 94% 96%, 91% 94%, 88% 98%,
+    85% 96%, 83% 99%, 79% 97%, 77% 100%, 74% 98%, 72% 99%, 69% 97%, 67% 100%, 64% 98%,
+    61% 99%, 58% 97%, 56% 100%, 53% 98%, 50% 99%, 47% 97%, 45% 100%, 42% 98%, 39% 99%,
+    36% 97%, 34% 100%, 31% 98%, 29% 99%, 26% 97%, 24% 100%, 21% 98%, 20% 99%, 17% 96%,
+    16% 100%, 13% 97%, 12% 99%, 10% 95%, 9% 98%, 7% 93%, 6% 97%, 4% 91%, 3% 95%, 1% 88%,
+    2% 82%, 0% 76%, 2% 70%, 0% 64%, 2% 58%, 0% 52%, 2% 46%, 0% 40%, 2% 34%, 0% 28%,
+    2% 22%, 0% 17%
   );
 
   box-shadow:
-    /* Deep carved shadow */
-    inset -4px -4px 12px rgba(0, 0, 0, 0.6),
-    inset 3px 3px 8px rgba(100, 95, 80, 0.25),
-    /* External stone shadow */
-    0 8px 20px rgba(0, 0, 0, 0.8),
-    0 4px 8px rgba(0, 0, 0, 0.6);
+    inset -6px -6px 20px rgba(0, 0, 0, 0.95),
+    inset 5px 5px 14px rgba(75, 70, 60, 0.2),
+    inset -3px -3px 10px rgba(0, 0, 0, 0.85),
+    0 10px 28px rgba(0, 0, 0, 0.95),
+    0 4px 12px rgba(0, 0, 0, 0.9);
 }
 
-/* Stone texture overlay using pseudo-element */
+/* Heavy weathering, moss, and grime */
 .btn-buy-now::before,
 .btn-add-cart::before {
   content: '';
@@ -530,113 +564,123 @@
   right: 0;
   bottom: 0;
   background:
-    /* More prominent moss/vegetation patches for jungle feel */
-    radial-gradient(ellipse at 15% 25%, rgba(45, 75, 35, 0.5) 0%, transparent 20%),
-    radial-gradient(ellipse at 85% 70%, rgba(35, 65, 30, 0.45) 0%, transparent 18%),
-    radial-gradient(ellipse at 50% 90%, rgba(40, 70, 32, 0.4) 0%, transparent 15%),
-    radial-gradient(circle at 30% 65%, rgba(42, 72, 34, 0.35) 0%, transparent 12%),
-    /* Cobblestone cracks and texture */
+    /* Thick moss patches - very prominent */
+    radial-gradient(ellipse at 10% 15%, rgba(20, 38, 15, 0.95) 0%, rgba(28, 48, 22, 0.75) 6%, rgba(32, 52, 25, 0.5) 12%, transparent 28%),
+    radial-gradient(ellipse at 82% 78%, rgba(18, 35, 14, 0.98) 0%, rgba(25, 45, 20, 0.8) 8%, rgba(30, 50, 24, 0.55) 14%, transparent 32%),
+    radial-gradient(circle at 48% 92%, rgba(22, 40, 17, 0.9) 0%, rgba(28, 48, 22, 0.65) 5%, transparent 20%),
+    radial-gradient(circle at 92% 28%, rgba(24, 42, 19, 0.85) 0%, rgba(30, 50, 24, 0.6) 7%, transparent 18%),
+    radial-gradient(circle at 18% 68%, rgba(20, 38, 16, 0.88) 0%, rgba(26, 46, 21, 0.62) 6%, transparent 16%),
+    radial-gradient(ellipse at 58% 35%, rgba(23, 41, 18, 0.75) 0%, transparent 14%),
+    radial-gradient(circle at 35% 55%, rgba(25, 44, 20, 0.7) 0%, transparent 11%),
+    /* Dirt, mud, and grime layers */
+    radial-gradient(circle at 70% 22%, rgba(35, 28, 22, 0.8) 0%, rgba(42, 35, 28, 0.5) 5%, transparent 12%),
+    radial-gradient(circle at 28% 45%, rgba(32, 26, 20, 0.75) 0%, rgba(38, 31, 25, 0.45) 4%, transparent 10%),
+    radial-gradient(circle at 85% 60%, rgba(38, 30, 24, 0.7) 0%, transparent 9%),
+    radial-gradient(circle at 12% 88%, rgba(34, 27, 21, 0.72) 0%, transparent 8%),
+    /* Deep cracks - multiple overlapping */
     repeating-linear-gradient(
-      127deg,
+      135deg,
       transparent,
-      transparent 4px,
-      rgba(18, 16, 12, 0.4) 4px,
-      rgba(18, 16, 12, 0.4) 5px
-    ),
-    repeating-linear-gradient(
-      73deg,
-      transparent,
-      transparent 5px,
-      rgba(20, 18, 14, 0.3) 5px,
-      rgba(20, 18, 14, 0.3) 6px
-    ),
-    /* Rough stone grain */
-    repeating-linear-gradient(
-      43deg,
-      rgba(80, 75, 68, 0.2),
-      rgba(80, 75, 68, 0.2) 2px,
+      transparent 1px,
+      rgba(8, 6, 4, 0.9) 1px,
+      rgba(8, 6, 4, 0.9) 2px,
       transparent 2px,
-      transparent 3px
+      transparent 6px
+    ),
+    repeating-linear-gradient(
+      67deg,
+      transparent,
+      transparent 2px,
+      rgba(10, 8, 5, 0.85) 2px,
+      rgba(10, 8, 5, 0.85) 3px,
+      transparent 3px,
+      transparent 10px
+    ),
+    repeating-linear-gradient(
+      198deg,
+      transparent,
+      transparent 3px,
+      rgba(12, 9, 6, 0.75) 3px,
+      rgba(12, 9, 6, 0.75) 4px,
+      transparent 4px,
+      transparent 14px
+    ),
+    repeating-linear-gradient(
+      -23deg,
+      transparent,
+      transparent 2px,
+      rgba(11, 8, 6, 0.7) 2px,
+      rgba(11, 8, 6, 0.7) 3px,
+      transparent 3px,
+      transparent 11px
+    ),
+    /* Rough pitted surface */
+    repeating-linear-gradient(
+      38deg,
+      rgba(65, 58, 50, 0.35),
+      rgba(65, 58, 50, 0.35) 1px,
+      rgba(40, 35, 28, 0.25) 1px,
+      rgba(40, 35, 28, 0.25) 2px
     );
-  opacity: 0.85;
+  opacity: 1;
   pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-/* Shimmer highlight on hover */
-.btn-buy-now::after,
-.btn-add-cart::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    65deg,
-    transparent 35%,
-    rgba(212, 175, 55, 0.2) 50%,
-    transparent 65%
-  );
-  transform: translateX(-100%) translateY(-100%) rotate(5deg);
-  transition: transform 0.7s ease;
-  pointer-events: none;
+  mix-blend-mode: multiply;
 }
 
 .btn-buy-now:hover,
 .btn-add-cart:hover {
-  transform: scale(1.05) translateY(-3px);
+  transform: scale(1.015) translateY(-2px) rotate(-0.3deg);
   box-shadow:
-    inset -4px -4px 12px rgba(0, 0, 0, 0.7),
-    inset 3px 3px 8px rgba(100, 95, 80, 0.3),
-    0 12px 30px rgba(0, 0, 0, 0.9),
-    0 6px 12px rgba(212, 175, 55, 0.25);
-}
-
-.btn-buy-now:hover::before,
-.btn-add-cart:hover::before {
-  opacity: 1;
-}
-
-.btn-buy-now:hover::after,
-.btn-add-cart:hover::after {
-  transform: translateX(100%) translateY(100%) rotate(5deg);
+    inset -7px -7px 22px rgba(0, 0, 0, 0.98),
+    inset 6px 6px 16px rgba(85, 78, 68, 0.22),
+    0 12px 32px rgba(0, 0, 0, 0.98),
+    0 6px 14px rgba(212, 175, 55, 0.12);
+  filter: brightness(1.1) contrast(1.08);
 }
 
 .btn-buy-now:active,
 .btn-add-cart:active {
-  transform: scale(0.98) translateY(1px);
+  transform: scale(0.985) translateY(3px) rotate(0deg);
   box-shadow:
-    inset -3px -3px 8px rgba(0, 0, 0, 0.5),
-    inset 2px 2px 6px rgba(100, 95, 80, 0.2),
-    0 4px 12px rgba(0, 0, 0, 0.7);
+    inset -5px -5px 16px rgba(0, 0, 0, 0.9),
+    inset 4px 4px 10px rgba(65, 58, 50, 0.15),
+    0 3px 10px rgba(0, 0, 0, 0.8);
+  filter: brightness(0.88);
 }
 
 .btn-buy-now {
   color: #D4AF37;
   text-shadow:
-    0 3px 10px rgba(0, 0, 0, 0.95),
-    0 1px 3px rgba(0, 0, 0, 1),
-    0 0 15px rgba(212, 175, 55, 0.3);
+    0 3px 6px rgba(0, 0, 0, 1),
+    0 1px 3px rgba(0, 0, 0, 0.95),
+    0 0 20px rgba(212, 175, 55, 0.25);
 
-  /* Slightly lighter stone for emphasis */
+  /* Slightly lighter weathered stone */
   background:
-    linear-gradient(135deg,
-      rgba(95, 88, 75, 0.9) 0%,
-      rgba(75, 70, 60, 0.95) 20%,
-      rgba(60, 56, 48, 1) 40%,
-      rgba(55, 50, 45, 1) 60%,
-      rgba(70, 65, 56, 0.95) 80%,
-      rgba(85, 78, 68, 0.9) 100%
+    radial-gradient(circle at 28% 18%, rgba(78, 72, 62, 1) 0%, transparent 32%),
+    radial-gradient(circle at 72% 82%, rgba(58, 52, 45, 1) 0%, transparent 36%),
+    radial-gradient(circle at 48% 48%, rgba(68, 61, 52, 1) 0%, transparent 30%),
+    radial-gradient(circle at 12% 75%, rgba(62, 56, 48, 1) 0%, transparent 24%),
+    radial-gradient(circle at 88% 35%, rgba(65, 58, 50, 1) 0%, transparent 26%),
+    linear-gradient(152deg,
+      #4F4A42 0%,
+      #45403A 12%,
+      #38332C 25%,
+      #423D35 38%,
+      #3C362F 50%,
+      #474139 62%,
+      #403A33 75%,
+      #4A443C 88%,
+      #55504A 100%
     );
 }
 
 .btn-buy-now:hover {
   box-shadow:
-    inset -4px -4px 12px rgba(0, 0, 0, 0.7),
-    inset 3px 3px 8px rgba(120, 110, 90, 0.3),
-    0 12px 30px rgba(0, 0, 0, 0.9),
-    0 6px 15px rgba(212, 175, 55, 0.4);
+    inset -7px -7px 22px rgba(0, 0, 0, 0.98),
+    inset 6px 6px 16px rgba(95, 88, 78, 0.24),
+    0 12px 32px rgba(0, 0, 0, 0.98),
+    0 6px 16px rgba(212, 175, 55, 0.28);
 }
 
 .btn-add-cart {
