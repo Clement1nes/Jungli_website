@@ -131,7 +131,21 @@ function ProductDetail() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <div className="gallery-main">
+          <motion.div
+            className="gallery-main"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            onDragEnd={(e, { offset, velocity }) => {
+              const swipe = Math.abs(offset.x) * velocity.x;
+
+              if (swipe < -500) {
+                nextImage();
+              } else if (swipe > 500) {
+                prevImage();
+              }
+            }}
+          >
             <motion.img
               key={currentImage}
               src={currentImage}
@@ -140,34 +154,18 @@ function ProductDetail() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
+              draggable={false}
             />
 
-            {/* Navigation Arrows */}
+            {/* Swipe indicator */}
             {currentImages.length > 1 && (
-              <>
-                <motion.button
-                  className="gallery-nav gallery-nav-prev"
-                  onClick={prevImage}
-                  whileHover={{ scale: 1.1, x: -5 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d="M15 18l-6-6 6-6"/>
-                  </svg>
-                </motion.button>
-                <motion.button
-                  className="gallery-nav gallery-nav-next"
-                  onClick={nextImage}
-                  whileHover={{ scale: 1.1, x: 5 }}
-                  whileTap={{ scale: 0.9 }}
-                >
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d="M9 18l6-6-6-6"/>
-                  </svg>
-                </motion.button>
-              </>
+              <div className="swipe-indicator">
+                <span>←</span>
+                <span className="swipe-text">Swipe</span>
+                <span>→</span>
+              </div>
             )}
-          </div>
+          </motion.div>
 
           {/* Thumbnail Strip */}
           {currentImages.length > 1 && (
