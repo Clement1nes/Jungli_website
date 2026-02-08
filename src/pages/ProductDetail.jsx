@@ -78,7 +78,8 @@ function ProductDetail() {
       ],
       silverImages: [
         '/assets/Highdef/foot up silver.png',
-        '/assets/Highdef/foot side silver.png'
+        '/assets/Highdef/foot side silver.png',
+        '/assets/Highdef/silver_foot_ring.png'
       ],
       goldAnimation3d: '/assets/ezgif.com-coalesce.gif',
       silverAnimation3d: '/assets/ezgif.com-coalesce.gif',

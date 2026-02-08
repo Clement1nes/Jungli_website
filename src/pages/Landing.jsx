@@ -51,9 +51,21 @@ function Landing() {
             alt="Anatomy Ring"
             className="landing-ring"
           />
-          <div className="enter-text-overlay">
-            enter the jungle
-          </div>
+
+          {/* Rotating circular text */}
+          <svg className="rotating-text" viewBox="0 0 400 400">
+            <defs>
+              <path
+                id="circlePath"
+                d="M 200, 200 m -150, 0 a 150,150 0 1,1 300,0 a 150,150 0 1,1 -300,0"
+              />
+            </defs>
+            <text className="circular-text">
+              <textPath href="#circlePath" startOffset="0%">
+                enter the jungle • enter the jungle • enter the jungle •
+              </textPath>
+            </text>
+          </svg>
         </motion.div>
       </div>
     </main>
