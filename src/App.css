@@ -121,7 +121,7 @@ body {
 }
 
 .site-logo {
-  height: 200px;
+  height: 280px;
   width: auto;
   transition: all 0.3s ease;
 }
@@ -278,7 +278,7 @@ body {
   }
 
   .site-logo {
-    height: 100px;
+    height: 140px;
   }
 
   .main-nav ul {
@@ -322,7 +322,7 @@ body {
   }
 
   .site-logo {
-    height: 130px;
+    height: 160px;
   }
 
   .main-nav a {
