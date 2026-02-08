@@ -25,6 +25,8 @@ function ProductDetail() {
         '/assets/Highdef/Face eye silveer.png',
         '/assets/Highdef/eye up silver.png'
       ],
+      goldAnimation3d: null,
+      silverAnimation3d: '/assets/silver_eye.gif',
       background: '/assets/backgrounds/eye_background.gif',
       alt: 'Eye Ring',
       type: 'eye',
@@ -51,6 +53,8 @@ function ProductDetail() {
         '/assets/Highdef/silver back star.png',
         '/assets/Highdef/silver star main.png'
       ],
+      goldAnimation3d: '/assets/GoldShootingStar-ezgif.com-gif-maker (1).gif',
+      silverAnimation3d: '/assets/GoldShootingStar-ezgif.com-gif-maker (1).gif',
       background: '/assets/backgrounds/star_background.gif',
       alt: 'Star Ring',
       type: 'star',
@@ -75,6 +79,8 @@ function ProductDetail() {
         '/assets/Highdef/foot up silver.png',
         '/assets/Highdef/foot side silver.png'
       ],
+      goldAnimation3d: '/assets/ezgif.com-coalesce.gif',
+      silverAnimation3d: '/assets/ezgif.com-coalesce.gif',
       background: '/assets/backgrounds/foot_background.gif',
       alt: 'Foot Ring',
       type: 'foot',
@@ -97,14 +103,22 @@ function ProductDetail() {
   if (!product) return null;
 
   const currentImages = selectedMetal === 'gold' ? product.goldImages : product.silverImages;
-  const currentImage = currentImages[currentImageIndex];
+  const current3dAnimation = selectedMetal === 'gold' ? product.goldAnimation3d : product.silverAnimation3d;
+
+  // If 3D animation exists, it's at index 0, static images start at index 1
+  // If no 3D animation, static images start at index 0
+  const currentImage = current3dAnimation
+    ? (currentImageIndex === 0 ? current3dAnimation : currentImages[currentImageIndex - 1])
+    : currentImages[currentImageIndex];
+
+  const totalImages = currentImages.length + (current3dAnimation ? 1 : 0);
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % currentImages.length);
+    setCurrentImageIndex((prev) => (prev + 1) % totalImages);
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + currentImages.length) % currentImages.length);
+    setCurrentImageIndex((prev) => (prev - 1 + totalImages) % totalImages);
   };
 
   return (
@@ -155,7 +169,7 @@ function ProductDetail() {
             />
 
             {/* Swipe indicator */}
-            {currentImages.length > 1 && (
+            {totalImages > 1 && (
               <div className="swipe-indicator">
                 <span>←</span>
                 <span>→</span>
@@ -164,19 +178,35 @@ function ProductDetail() {
           </motion.div>
 
           {/* Thumbnail Strip */}
-          {currentImages.length > 1 && (
+          {currentImages.length >= 1 && (
             <div className="gallery-thumbnails">
-              {currentImages.map((img, index) => (
+              {/* 3D Animation Thumbnail FIRST - only show if exists for current metal */}
+              {current3dAnimation && (
                 <motion.button
-                  key={index}
-                  className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
-                  onClick={() => setCurrentImageIndex(index)}
+                  key="3d-animation"
+                  className={`thumbnail ${currentImageIndex === 0 ? 'active' : ''}`}
+                  onClick={() => setCurrentImageIndex(0)}
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <img src={img} alt={`View ${index + 1}`} />
+                  <img src={current3dAnimation} alt="3D Animation" />
                 </motion.button>
-              ))}
+              )}
+              {/* Static images follow */}
+              {currentImages.map((img, index) => {
+                const thumbnailIndex = current3dAnimation ? index + 1 : index;
+                return (
+                  <motion.button
+                    key={index}
+                    className={`thumbnail ${thumbnailIndex === currentImageIndex ? 'active' : ''}`}
+                    onClick={() => setCurrentImageIndex(thumbnailIndex)}
+                    whileHover={{ scale: 1.1, y: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <img src={img} alt={`View ${index + 1}`} />
+                  </motion.button>
+                );
+              })}
             </div>
           )}
         </motion.div>
