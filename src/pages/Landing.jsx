@@ -22,6 +22,20 @@ function Landing() {
 
       {/* Landing Content */}
       <div className="landing-content">
+        {/* Logo */}
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
+          style={{ marginBottom: '3rem' }}
+        >
+          <img
+            src="/assets/newlogo.png"
+            alt="Jungli Logo"
+            style={{ height: '280px', width: 'auto' }}
+          />
+        </motion.div>
+
         {/* Anatomy Ring with Hover Text */}
         <motion.div
           className="landing-ring-wrapper"
