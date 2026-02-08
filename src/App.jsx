@@ -93,7 +93,7 @@ function AppContent() {
         <footer className="main-footer">
           <p style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'center' }}>
             2026 Jungli
-            <img src="/favicon.png" alt="" style={{ height: '1.5rem', width: 'auto' }} />
+            <img src="/favicon.png" alt="" style={{ height: '2.5rem', width: 'auto' }} />
           </p>
         </footer>
       )}
