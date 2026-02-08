@@ -259,48 +259,67 @@
   justify-content: center;
   gap: 0.75rem;
   padding: 1.2rem 1.5rem;
-  border: 3px solid #1a1410;
+  border: none;
   font-family: 'Evil Green Plant', serif;
   font-size: 1.1rem;
   font-weight: normal;
-  color: #E8E0D0;
+  color: #2a2418;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.1s ease;
   position: relative;
   text-transform: lowercase;
-  text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.8);
+  background: #f4efe5;
   overflow: visible;
+  border-radius: 8px;
 
-  /* Simple flat rough stone color */
-  background: #3d3428;
-
-  /* Hand-carved rough edges - very asymmetric */
-  clip-path: polygon(
-    2% 0%, 8% 3%, 15% 1%, 22% 4%, 30% 2%, 38% 5%, 46% 1%, 54% 3%, 62% 0%, 70% 4%, 78% 2%, 85% 5%, 92% 1%, 98% 3%,
-    100% 8%, 99% 16%, 100% 24%, 98% 32%, 100% 40%, 99% 48%, 100% 56%, 98% 64%, 100% 72%, 99% 80%, 100% 88%, 98% 95%,
-    92% 99%, 85% 95%, 78% 98%, 70% 96%, 62% 100%, 54% 97%, 46% 99%, 38% 95%, 30% 98%, 22% 96%, 15% 99%, 8% 97%, 2% 100%,
-    0% 92%, 2% 84%, 0% 76%, 2% 68%, 0% 60%, 2% 52%, 0% 44%, 2% 36%, 0% 28%, 2% 20%, 0% 12%
-  );
-
+  /* Hand-drawn wobbly border effect using multiple shadows */
   box-shadow:
-    3px 3px 0 rgba(0, 0, 0, 0.4),
-    5px 5px 0 rgba(0, 0, 0, 0.2);
+    /* Main sketchy border - multiple offset lines for hand-drawn effect */
+    0 0 0 2px #2a2418,
+    0 0 0 2.5px #2a2418,
+    1px 0 0 2px #2a2418,
+    0 1px 0 2px #2a2418,
+    -1px 0 0 2.5px #2a2418,
+    0 -1px 0 2.5px #2a2418,
+    /* Wobbly imperfections */
+    2px 2px 0 2px rgba(42, 36, 24, 0.6),
+    -1px 3px 0 2px rgba(42, 36, 24, 0.4),
+    3px -1px 0 2px rgba(42, 36, 24, 0.4),
+    /* Drop shadow */
+    4px 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Brutal rough texture - painted on look */
+/* Hand-drawn cross-hatch shading */
 .metal-option::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0.6;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  opacity: 0.15;
   pointer-events: none;
   background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px),
-    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px),
-    repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(0,0,0,0.05) 3px, rgba(0,0,0,0.05) 6px);
+    /* Diagonal hatching lines - hand-drawn feel */
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 3px,
+      #2a2418 3px,
+      #2a2418 3.5px,
+      transparent 3.5px,
+      transparent 8px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 4px,
+      #2a2418 4px,
+      #2a2418 4.5px,
+      transparent 4.5px,
+      transparent 10px
+    );
+  border-radius: 6px;
 }
 
 .metal-swatch {
@@ -323,12 +342,19 @@
 }
 
 .metal-option:hover {
-  background: #4a4030;
-  border-color: #2a2418;
+  background: #fff9f0;
   transform: translateY(-1px);
   box-shadow:
-    3px 4px 0 rgba(0, 0, 0, 0.4),
-    5px 6px 0 rgba(0, 0, 0, 0.2);
+    0 0 0 2px #2a2418,
+    0 0 0 2.5px #2a2418,
+    1px 0 0 2px #2a2418,
+    0 1px 0 2px #2a2418,
+    -1px 0 0 2.5px #2a2418,
+    0 -1px 0 2.5px #2a2418,
+    2px 2px 0 2px rgba(42, 36, 24, 0.6),
+    -1px 3px 0 2px rgba(42, 36, 24, 0.4),
+    3px -1px 0 2px rgba(42, 36, 24, 0.4),
+    5px 5px 12px rgba(0, 0, 0, 0.2);
 }
 
 .metal-option:hover .metal-swatch {
@@ -336,20 +362,32 @@
 }
 
 .metal-option:active {
-  transform: translateY(2px);
+  transform: translateY(1px);
   box-shadow:
-    1px 1px 0 rgba(0, 0, 0, 0.4);
+    0 0 0 2px #2a2418,
+    0 0 0 2.5px #2a2418,
+    1px 0 0 2px #2a2418,
+    0 1px 0 2px #2a2418,
+    -1px 0 0 2.5px #2a2418,
+    0 -1px 0 2.5px #2a2418,
+    2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .metal-option.active {
-  background: #524832;
-  border-color: #D4AF37;
-  border-width: 3px;
+  background: #fffef8;
   color: #D4AF37;
   box-shadow:
-    3px 3px 0 rgba(0, 0, 0, 0.4),
-    5px 5px 0 rgba(0, 0, 0, 0.2),
-    0 0 0 1px #D4AF37 inset;
+    /* Thicker sketchy border for active state */
+    0 0 0 2.5px #D4AF37,
+    0 0 0 3px #D4AF37,
+    1px 0 0 2.5px #D4AF37,
+    0 1px 0 2.5px #D4AF37,
+    -1px 0 0 3px #D4AF37,
+    0 -1px 0 3px #D4AF37,
+    2px 2px 0 2.5px rgba(212, 175, 55, 0.6),
+    -1px 3px 0 2.5px rgba(212, 175, 55, 0.4),
+    3px -1px 0 2.5px rgba(212, 175, 55, 0.4),
+    4px 4px 8px rgba(212, 175, 55, 0.2);
 }
 
 .metal-option.active .metal-swatch {
@@ -415,83 +453,137 @@
   font-family: 'Evil Green Plant', serif;
   font-size: 1.3rem;
   font-weight: normal;
-  border: 4px solid #1a1410;
+  border: none;
   cursor: pointer;
   letter-spacing: 0.05em;
-  transition: all 0.15s ease;
+  transition: all 0.1s ease;
   position: relative;
   text-transform: lowercase;
-  color: #E8E0D0;
-  text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.8);
+  color: #2a2418;
+  background: #f4efe5;
   overflow: visible;
+  border-radius: 12px;
 
-  /* Simple flat rough stone */
-  background: #3d3428;
-
-  /* Rough hand-cut edges */
-  clip-path: polygon(
-    1% 0%, 6% 2%, 11% 0%, 17% 3%, 23% 1%, 29% 4%, 35% 1%, 41% 3%, 47% 0%, 53% 2%, 59% 0%, 65% 3%, 71% 1%, 77% 4%, 83% 2%, 89% 5%, 94% 2%, 99% 4%,
-    100% 9%, 99% 15%, 100% 21%, 98% 27%, 100% 33%, 99% 39%, 100% 45%, 98% 51%, 100% 57%, 99% 63%, 100% 69%, 98% 75%, 100% 81%, 99% 87%, 100% 93%, 98% 98%,
-    94% 98%, 89% 95%, 83% 98%, 77% 96%, 71% 99%, 65% 97%, 59% 100%, 53% 98%, 47% 100%, 41% 97%, 35% 99%, 29% 96%, 23% 99%, 17% 97%, 11% 100%, 6% 98%, 1% 100%,
-    0% 93%, 2% 87%, 0% 81%, 2% 75%, 0% 69%, 2% 63%, 0% 57%, 2% 51%, 0% 45%, 2% 39%, 0% 33%, 2% 27%, 0% 21%, 2% 15%, 0% 9%
-  );
-
+  /* Hand-drawn wobbly border - thicker for buttons */
   box-shadow:
-    4px 4px 0 rgba(0, 0, 0, 0.4),
-    6px 6px 0 rgba(0, 0, 0, 0.2);
+    0 0 0 3px #2a2418,
+    0 0 0 3.5px #2a2418,
+    1px 0 0 3px #2a2418,
+    0 1px 0 3px #2a2418,
+    -1px 0 0 3.5px #2a2418,
+    0 -1px 0 3.5px #2a2418,
+    1px 1px 0 3px #2a2418,
+    /* Wobbly line imperfections */
+    2px 3px 0 3px rgba(42, 36, 24, 0.6),
+    -1px 4px 0 3px rgba(42, 36, 24, 0.4),
+    4px -1px 0 3px rgba(42, 36, 24, 0.4),
+    3px 2px 0 3px rgba(42, 36, 24, 0.5),
+    /* Shadow */
+    5px 5px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Simple brutal texture */
+/* Cross-hatch shading for depth */
 .btn-buy-now::before,
 .btn-add-cart::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  opacity: 0.6;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  opacity: 0.12;
   pointer-events: none;
   background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px),
-    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px),
-    repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(0,0,0,0.05) 3px, rgba(0,0,0,0.05) 6px);
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      #2a2418 4px,
+      #2a2418 4.5px,
+      transparent 4.5px,
+      transparent 10px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 5px,
+      #2a2418 5px,
+      #2a2418 5.5px,
+      transparent 5.5px,
+      transparent 12px
+    );
+  border-radius: 8px;
 }
 
 .btn-buy-now:hover,
 .btn-add-cart:hover {
-  background: #4a4030;
-  border-color: #2a2418;
+  background: #fff9f0;
   transform: translateY(-2px);
   box-shadow:
-    4px 5px 0 rgba(0, 0, 0, 0.4),
-    6px 7px 0 rgba(0, 0, 0, 0.2);
+    0 0 0 3px #2a2418,
+    0 0 0 3.5px #2a2418,
+    1px 0 0 3px #2a2418,
+    0 1px 0 3px #2a2418,
+    -1px 0 0 3.5px #2a2418,
+    0 -1px 0 3.5px #2a2418,
+    1px 1px 0 3px #2a2418,
+    2px 3px 0 3px rgba(42, 36, 24, 0.6),
+    -1px 4px 0 3px rgba(42, 36, 24, 0.4),
+    4px -1px 0 3px rgba(42, 36, 24, 0.4),
+    3px 2px 0 3px rgba(42, 36, 24, 0.5),
+    6px 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 .btn-buy-now:active,
 .btn-add-cart:active {
-  transform: translateY(2px);
+  transform: translateY(1px);
   box-shadow:
-    2px 2px 0 rgba(0, 0, 0, 0.4);
+    0 0 0 3px #2a2418,
+    0 0 0 3.5px #2a2418,
+    1px 0 0 3px #2a2418,
+    0 1px 0 3px #2a2418,
+    -1px 0 0 3.5px #2a2418,
+    0 -1px 0 3.5px #2a2418,
+    1px 1px 0 3px #2a2418,
+    3px 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .btn-buy-now {
-  background: #4a4030;
-  border-color: #D4AF37;
+  background: #fffef8;
   color: #D4AF37;
-  text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.8);
+  box-shadow:
+    0 0 0 3px #D4AF37,
+    0 0 0 3.5px #D4AF37,
+    1px 0 0 3px #D4AF37,
+    0 1px 0 3px #D4AF37,
+    -1px 0 0 3.5px #D4AF37,
+    0 -1px 0 3.5px #D4AF37,
+    1px 1px 0 3px #D4AF37,
+    2px 3px 0 3px rgba(212, 175, 55, 0.6),
+    -1px 4px 0 3px rgba(212, 175, 55, 0.4),
+    4px -1px 0 3px rgba(212, 175, 55, 0.4),
+    3px 2px 0 3px rgba(212, 175, 55, 0.5),
+    5px 5px 12px rgba(212, 175, 55, 0.2);
 }
 
 .btn-buy-now:hover {
-  background: #524832;
   box-shadow:
-    4px 5px 0 rgba(0, 0, 0, 0.4),
-    6px 7px 0 rgba(0, 0, 0, 0.2),
-    0 0 0 1px #D4AF37 inset;
+    0 0 0 3px #D4AF37,
+    0 0 0 3.5px #D4AF37,
+    1px 0 0 3px #D4AF37,
+    0 1px 0 3px #D4AF37,
+    -1px 0 0 3.5px #D4AF37,
+    0 -1px 0 3.5px #D4AF37,
+    1px 1px 0 3px #D4AF37,
+    2px 3px 0 3px rgba(212, 175, 55, 0.6),
+    -1px 4px 0 3px rgba(212, 175, 55, 0.4),
+    4px -1px 0 3px rgba(212, 175, 55, 0.4),
+    3px 2px 0 3px rgba(212, 175, 55, 0.5),
+    6px 6px 16px rgba(212, 175, 55, 0.25);
 }
 
 .btn-add-cart {
-  color: #E8E0D0;
+  color: #2a2418;
 }
 
 /* Responsive Design */
