@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import Landing from './pages/Landing';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -9,11 +10,24 @@ import ProductDetail from './pages/ProductDetail';
 function AppContent() {
   const location = useLocation();
   const isLandingPage = location.pathname === '/';
+  const [headerOpacity, setHeaderOpacity] = useState(1);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      // Fade out header after scrolling 100px, fully transparent by 400px
+      const newOpacity = Math.max(0, 1 - scrollPosition / 400);
+      setHeaderOpacity(newOpacity);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <div className="app">
       {!isLandingPage && (
-        <header className="main-header">
+        <header className="main-header" style={{ opacity: headerOpacity }}>
           <div className="header-logo">
             <Link to="/home">
               <img src="/assets/newlogo.png" alt="Jungli Logo" className="site-logo" />

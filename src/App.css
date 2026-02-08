@@ -94,10 +94,10 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(26, 26, 29, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-  transition: all 0.3s ease;
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: none;
+  transition: opacity 0.3s ease;
 }
 
 .header-logo {
