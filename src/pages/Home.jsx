@@ -78,7 +78,6 @@ function Home() {
                   alt={product.alt}
                   className="product-image"
                 />
-                <div className="product-hover-text">more details</div>
               </div>
             </motion.div>
           ))}
