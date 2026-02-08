@@ -15,8 +15,8 @@ function AppContent() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      // Fade out header after scrolling 100px, fully transparent by 400px
-      const newOpacity = Math.max(0, 1 - scrollPosition / 400);
+      // Fade out header quickly - fully transparent by 150px
+      const newOpacity = Math.max(0, 1 - scrollPosition / 150);
       setHeaderOpacity(newOpacity);
     };
 
