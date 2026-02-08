@@ -7,15 +7,15 @@ function Home() {
 
   const products = [
     {
-      id: 'eye',
-      name: 'Eye Ring',
-      price: '$140',
-      description: 'ring with an eye carved on it.',
-      goldImage: '/assets/silver_eye.gif',
-      silverImage: '/assets/silver_eye.gif',
-      background: '/assets/backgrounds/eye_background.gif',
-      alt: 'Eye Ring',
-      type: 'eye'
+      id: 'foot',
+      name: 'Foot Ring',
+      price: '$150',
+      description: 'sculptural foot ring. anatomical detail.',
+      goldImage: '/assets/ezgif.com-coalesce.gif',
+      silverImage: '/assets/ezgif.com-coalesce.gif',
+      background: '/assets/backgrounds/foot_background.gif',
+      alt: 'Foot Ring',
+      type: 'foot'
     },
     {
       id: 'star',
@@ -29,15 +29,15 @@ function Home() {
       type: 'star'
     },
     {
-      id: 'foot',
-      name: 'Foot Ring',
-      price: '$150',
-      description: 'sculptural foot ring. anatomical detail.',
-      goldImage: '/assets/ezgif.com-coalesce.gif',
-      silverImage: '/assets/ezgif.com-coalesce.gif',
-      background: '/assets/backgrounds/foot_background.gif',
-      alt: 'Foot Ring',
-      type: 'foot'
+      id: 'eye',
+      name: 'Eye Ring',
+      price: '$140',
+      description: 'ring with an eye carved on it.',
+      goldImage: '/assets/silver_eye.gif',
+      silverImage: '/assets/silver_eye.gif',
+      background: '/assets/backgrounds/eye_background.gif',
+      alt: 'Eye Ring',
+      type: 'eye'
     }
   ];
 

@@ -83,7 +83,7 @@ function ProductDetail() {
       ],
       goldAnimation3d: '/assets/ezgif.com-coalesce.gif',
       silverAnimation3d: '/assets/ezgif.com-coalesce.gif',
-      background: '/assets/backgrounds/foot_background.gif',
+      background: '/assets/backgrounds/foot_background_new.gif',
       alt: 'Foot Ring',
       type: 'foot',
       details: [
