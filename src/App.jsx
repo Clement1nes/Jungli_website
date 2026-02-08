@@ -11,10 +11,9 @@ function App() {
         <header className="main-header">
           <div className="header-logo">
             <Link to="/">
-              <img src="/assets/mainlogo2.png" alt="Jungli Logo" className="site-logo" />
+              <img src="/assets/newlogo.png" alt="Jungli Logo" className="site-logo" />
             </Link>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
+          </div>          <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
             <nav className="main-nav">
               <ul>
                 <li><Link to="/about">About</Link></li>
@@ -22,7 +21,7 @@ function App() {
               </ul>
             </nav>
             <div className="basket-icon">
-              <Link to="/" style={{ textDecoration: 'none', color: '#F7F4ED', position: 'relative' }}>
+              <Link to="/" style={{ textDecoration: 'none', color: '#fff5da', position: 'relative' }}>
                 <svg
                   width="28"
                   height="28"

@@ -47,11 +47,12 @@
 :root {
   --background: #F8F5F2; /* A warm, off-white */
   --background-dark: #1A1A1D; /* Deep charcoal for dramatic sections */
-  --background-brown: #3d3428; /* Brown for About/Contact pages */
-  --text-primary: #E8E0D0; /* Cream text */
-  --text-secondary: #F7F4ED; /* Light cream */
-  --text-light: #F7F4ED; /* Warm cream for dark backgrounds */
-  --accent-green: #4A7C2C; /* Jungle green for buttons/accents */
+  --background-brown: #613913; /* Dark brown */
+  --text-primary: #fff5da; /* Cream text */
+  --text-secondary: #fff5da; /* Cream text */
+  --text-light: #fff5da; /* Cream text for dark backgrounds */
+  --accent-green: #8faf70; /* Sage green for buttons/accents */
+  --accent-brown: #613913; /* Dark brown accent */
   --accent-gold: #D4AF37; /* Luxurious gold accent */
   --accent-silver: #C0C0C0; /* Silver accent */
 }

@@ -38,7 +38,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: #F7F4ED;
+  color: #fff5da;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
 }
@@ -113,7 +113,7 @@
   font-family: 'Evil Green Plant', serif;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: normal;
-  color: #F7F4ED;
+  color: #fff5da;
   margin-bottom: 1rem;
   letter-spacing: 0.03em;
   line-height: 1.2;
@@ -131,7 +131,7 @@
   font-family: 'Evil Green Plant', serif;
   font-size: clamp(0.95rem, 1.5vw, 1.05rem);
   line-height: 1.7;
-  color: #F7F4ED;
+  color: #fff5da;
   opacity: 0.9;
   margin-bottom: 2rem;
 }
@@ -150,7 +150,7 @@
   font-weight: normal;
   padding: 0.75rem 1rem;
   border: none;
-  color: #F7F4ED;
+  color: #fff5da;
   cursor: pointer;
   transition: all 0.2s ease;
   letter-spacing: 0.05em;
@@ -168,13 +168,13 @@
   left: 10%;
   right: 10%;
   height: 2px;
-  background: #F7F4ED;
+  background: #fff5da;
   opacity: 0.6;
   transition: all 0.2s ease;
 
   /* Wobbly line effect */
   box-shadow:
-    0 0 0 1px #F7F4ED,
+    0 0 0 1px #fff5da,
     1px 0 0 1px rgba(247, 244, 237, 0.8),
     -1px 0 0 1px rgba(247, 244, 237, 0.7),
     0 1px 0 1px rgba(247, 244, 237, 0.6),
@@ -197,15 +197,15 @@
 }
 
 .metal-button.active {
-  color: #4A7C2C;
+  color: #8faf70;
 }
 
 .metal-button.active::after {
-  background: #4A7C2C;
+  background: #8faf70;
   height: 3px;
   opacity: 1;
   box-shadow:
-    0 0 0 1px #4A7C2C,
+    0 0 0 1px #8faf70,
     1px 0 0 1px rgba(74, 124, 44, 0.9),
     -1px 0 0 1px rgba(74, 124, 44, 0.8),
     0 1px 0 1px rgba(74, 124, 44, 0.7),
@@ -234,7 +234,7 @@
   width: 100%;
   position: relative;
   overflow: visible;
-  color: #F7F4ED;
+  color: #fff5da;
   background: transparent;
   text-align: center;
 }
@@ -248,13 +248,13 @@
   left: 15%;
   right: 15%;
   height: 3px;
-  background: #F7F4ED;
+  background: #fff5da;
   opacity: 0.7;
   transition: all 0.2s ease;
 
   /* Wobbly line effect */
   box-shadow:
-    0 0 0 1px #F7F4ED,
+    0 0 0 1px #fff5da,
     1px 0 0 1px rgba(247, 244, 237, 0.9),
     -1px 0 0 1px rgba(247, 244, 237, 0.8),
     0 1px 0 1px rgba(247, 244, 237, 0.7),
@@ -263,14 +263,14 @@
 }
 
 .btn-primary {
-  color: #4A7C2C;
+  color: #8faf70;
 }
 
 .btn-primary::after {
-  background: #4A7C2C;
+  background: #8faf70;
   opacity: 0.9;
   box-shadow:
-    0 0 0 1px #4A7C2C,
+    0 0 0 1px #8faf70,
     1px 0 0 1px rgba(74, 124, 44, 0.9),
     -1px 0 0 1px rgba(74, 124, 44, 0.8),
     0 1px 0 1px rgba(74, 124, 44, 0.7),
@@ -296,7 +296,7 @@
 .btn-primary:hover::after {
   height: 5px;
   box-shadow:
-    0 0 0 1px #4A7C2C,
+    0 0 0 1px #8faf70,
     1px 0 0 1px rgba(74, 124, 44, 0.9),
     -1px 0 0 1px rgba(74, 124, 44, 0.8),
     0 1px 0 1px rgba(74, 124, 44, 0.7),
@@ -306,7 +306,7 @@
 }
 
 .btn-secondary {
-  color: #F7F4ED;
+  color: #fff5da;
 }
 
 .btn-primary:active,
