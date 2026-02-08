@@ -1,27 +1,34 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
+import Landing from './pages/Landing';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Gallery from './pages/Gallery';
 import ProductDetail from './pages/ProductDetail';
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const isLandingPage = location.pathname === '/';
+
   return (
-    <BrowserRouter>
-      <div className="app">
+    <div className="app">
+      {!isLandingPage && (
         <header className="main-header">
           <div className="header-logo">
-            <Link to="/">
+            <Link to="/home">
               <img src="/assets/newlogo.png" alt="Jungli Logo" className="site-logo" />
             </Link>
-          </div>          <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
             <nav className="main-nav">
               <ul>
+                <li><Link to="/gallery">Gallery</Link></li>
                 <li><Link to="/about">About</Link></li>
                 <li><Link to="/contact">Contact</Link></li>
               </ul>
             </nav>
             <div className="basket-icon">
-              <Link to="/" style={{ textDecoration: 'none', color: '#fff5da', position: 'relative' }}>
+              <Link to="/home" style={{ textDecoration: 'none', color: '#fff5da', position: 'relative' }}>
                 <svg
                   width="28"
                   height="28"
@@ -57,18 +64,30 @@ function App() {
             </div>
           </div>
         </header>
+      )}
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
 
+      {!isLandingPage && (
         <footer className="main-footer">
           <p>&copy; 2026 Jungli</p>
         </footer>
-      </div>
+      )}
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   );
 }

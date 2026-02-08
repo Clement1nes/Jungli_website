@@ -56,22 +56,6 @@ function Home() {
         />
       </div>
 
-      {/* Hero Section with Main Gold Foot */}
-      <section className="hero-section">
-        <motion.div
-          className="hero-image-wrapper"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
-        >
-          <img
-            src="/assets/mainfront.gif"
-            alt="Main Ring"
-            className="hero-image"
-          />
-        </motion.div>
-      </section>
-
       {/* Floating Products Section */}
       <section className="products-showcase">
         <motion.h2

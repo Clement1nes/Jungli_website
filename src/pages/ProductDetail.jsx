@@ -26,7 +26,7 @@ function ProductDetail() {
         '/assets/Highdef/Face eye silveer.png',
         '/assets/Highdef/eye up silver.png'
       ],
-      goldAnimation3d: null,
+      goldAnimation3d: '/assets/silver_eye.gif',
       silverAnimation3d: '/assets/silver_eye.gif',
       background: '/assets/backgrounds/eye_background.gif',
       alt: 'Eye Ring',
