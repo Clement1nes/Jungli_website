@@ -92,8 +92,8 @@ function AppContent() {
       {!isLandingPage && (
         <footer className="main-footer">
           <p style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', justifyContent: 'center' }}>
-            &copy; 2026 Jungli
-            <img src="/favicon.png" alt="" style={{ height: '0.85rem', width: 'auto' }} />
+            2026 Jungli
+            <img src="/favicon.png" alt="" style={{ height: '1.5rem', width: 'auto' }} />
           </p>
         </footer>
       )}
