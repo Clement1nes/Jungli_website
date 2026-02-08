@@ -11,7 +11,7 @@ function App() {
         <header className="main-header">
           <div className="header-logo">
             <Link to="/">
-              <img src="/assets/Clean_logo.png" alt="Jungli Logo" className="site-logo" />
+              <img src="/assets/mainlogo2.png" alt="Jungli Logo" className="site-logo" />
             </Link>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
