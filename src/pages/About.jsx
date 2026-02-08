@@ -28,7 +28,7 @@ function About() {
   ];
 
   return (
-    <main style={{ background: '#3d3428', minHeight: '100vh', paddingTop: '8rem' }}>
+    <main style={{ background: '#3d3428', minHeight: '100vh', paddingTop: '250px' }}>
       <section className="content-section">
         <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem' }}>
           <motion.h1
