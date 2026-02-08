@@ -28,7 +28,7 @@ function About() {
   ];
 
   return (
-    <main>
+    <main style={{ background: '#3d3428', minHeight: '100vh', paddingTop: '8rem' }}>
       <section className="content-section">
         <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem' }}>
           <motion.h1
@@ -38,7 +38,8 @@ function About() {
               fontWeight: 'normal',
               textAlign: 'center',
               marginBottom: '3rem',
-              transform: 'rotate(-1deg)'
+              transform: 'rotate(-1deg)',
+              color: '#F7F4ED'
             }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -60,7 +61,7 @@ function About() {
               fontFamily: "'Evil Green Plant', serif",
               fontSize: '1.3rem',
               marginBottom: '1.5rem',
-              color: '#444'
+              color: '#E8E0D0'
             }}>
               Jungli was born from a desire to create objects that feel both ancient and contemporary—pieces that carry the weight of time without being bound by it.
             </p>
@@ -69,7 +70,7 @@ function About() {
               fontFamily: "'Evil Green Plant', serif",
               fontSize: '1.3rem',
               marginBottom: '1.5rem',
-              color: '#444'
+              color: '#E8E0D0'
             }}>
               We draw inspiration from the organic world: the irregular curves of river stones, the asymmetry of tree branches, the quiet persistence of natural forms. Each piece is designed and crafted by hand in our small studio, where we prioritize slow processes over mass production.
             </p>
@@ -78,7 +79,7 @@ function About() {
               fontFamily: "'Evil Green Plant', serif",
               fontSize: '1.3rem',
               marginBottom: '1.5rem',
-              color: '#444'
+              color: '#E8E0D0'
             }}>
               Our approach is intentionally limited. We make small batches, use traditional techniques, and let materials guide the final form. This means no two pieces are exactly alike—each carries its own subtle variations, its own character.
             </p>
@@ -86,7 +87,7 @@ function About() {
             <p style={{
               fontFamily: "'Evil Green Plant', serif",
               fontSize: '1.3rem',
-              color: '#444'
+              color: '#E8E0D0'
             }}>
               We believe in objects that endure. That age well. That become more meaningful over time, not less.
             </p>
@@ -102,7 +103,8 @@ function About() {
               fontSize: '2.5rem',
               fontWeight: 'normal',
               marginBottom: '2rem',
-              transform: 'rotate(1deg)'
+              transform: 'rotate(1deg)',
+              color: '#F7F4ED'
             }}>
               Frequently Asked Questions
             </h2>
@@ -112,11 +114,11 @@ function About() {
                 <motion.div
                   key={index}
                   style={{
-                    border: '2px solid #222',
+                    border: '2px solid #4A7C2C',
                     padding: '1.5rem',
                     cursor: 'pointer',
-                    backgroundColor: openFaq === index ? '#222' : 'transparent',
-                    color: openFaq === index ? '#F8F5F2' : '#222',
+                    backgroundColor: openFaq === index ? '#4A7C2C' : 'transparent',
+                    color: openFaq === index ? '#F7F4ED' : '#E8E0D0',
                     transition: 'all 0.3s ease',
                     transform: `rotate(${Math.random() * 2 - 1}deg)`
                   }}

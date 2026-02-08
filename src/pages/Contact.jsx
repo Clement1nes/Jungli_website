@@ -24,7 +24,7 @@ function Contact() {
   };
 
   return (
-    <main>
+    <main style={{ background: '#3d3428', minHeight: '100vh', paddingTop: '8rem' }}>
       <section className="content-section">
         <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem' }}>
           <motion.h1
@@ -34,7 +34,8 @@ function Contact() {
               fontWeight: 'normal',
               textAlign: 'center',
               marginBottom: '2rem',
-              transform: 'rotate(-1deg)'
+              transform: 'rotate(-1deg)',
+              color: '#F7F4ED'
             }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -49,7 +50,7 @@ function Contact() {
               fontSize: '1.3rem',
               textAlign: 'center',
               marginBottom: '3rem',
-              color: '#444'
+              color: '#E8E0D0'
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -74,15 +75,16 @@ function Contact() {
                 fontSize: '2rem',
                 fontWeight: 'normal',
                 marginBottom: '1.5rem',
-                transform: 'rotate(1deg)'
+                transform: 'rotate(1deg)',
+                color: '#F7F4ED'
               }}>
                 Contact Information
               </h2>
 
-              <div style={{ fontFamily: "'Evil Green Plant', serif", fontSize: '1.2rem', lineHeight: '2.5' }}>
+              <div style={{ fontFamily: "'Evil Green Plant', serif", fontSize: '1.2rem', lineHeight: '2.5', color: '#E8E0D0' }}>
                 <p style={{ marginBottom: '1rem' }}>
                   <strong>Email:</strong><br />
-                  <a href="mailto:hello@jungli.com" style={{ color: '#222', textDecoration: 'underline' }}>
+                  <a href="mailto:hello@jungli.com" style={{ color: '#4A7C2C', textDecoration: 'underline' }}>
                     hello@jungli.com
                   </a>
                 </p>
@@ -104,9 +106,9 @@ function Contact() {
             <motion.form
               onSubmit={handleSubmit}
               style={{
-                border: '2px solid #222',
+                border: '2px solid #4A7C2C',
                 padding: '2rem',
-                backgroundColor: '#fff',
+                backgroundColor: '#2a2418',
                 transform: 'rotate(-1deg)'
               }}
               initial={{ opacity: 0, x: 20 }}
@@ -119,7 +121,8 @@ function Contact() {
                   fontFamily: "'Evil Green Plant', serif",
                   fontSize: '1.1rem',
                   display: 'block',
-                  marginBottom: '0.5rem'
+                  marginBottom: '0.5rem',
+                  color: '#E8E0D0'
                 }}>
                   Name
                 </label>
@@ -132,10 +135,11 @@ function Contact() {
                   style={{
                     width: '100%',
                     padding: '0.8rem',
-                    border: '2px solid #222',
+                    border: '2px solid #4A7C2C',
                     fontFamily: "'Evil Green Plant', serif",
                     fontSize: '1rem',
-                    backgroundColor: '#F8F5F2'
+                    backgroundColor: '#3d3428',
+                    color: '#E8E0D0'
                   }}
                 />
               </div>
@@ -158,10 +162,11 @@ function Contact() {
                   style={{
                     width: '100%',
                     padding: '0.8rem',
-                    border: '2px solid #222',
+                    border: '2px solid #4A7C2C',
                     fontFamily: "'Evil Green Plant', serif",
                     fontSize: '1rem',
-                    backgroundColor: '#F8F5F2'
+                    backgroundColor: '#3d3428',
+                    color: '#E8E0D0'
                   }}
                 />
               </div>
@@ -184,10 +189,11 @@ function Contact() {
                   style={{
                     width: '100%',
                     padding: '0.8rem',
-                    border: '2px solid #222',
+                    border: '2px solid #4A7C2C',
                     fontFamily: "'Evil Green Plant', serif",
                     fontSize: '1rem',
-                    backgroundColor: '#F8F5F2'
+                    backgroundColor: '#3d3428',
+                    color: '#E8E0D0'
                   }}
                 />
               </div>
@@ -210,10 +216,11 @@ function Contact() {
                   style={{
                     width: '100%',
                     padding: '0.8rem',
-                    border: '2px solid #222',
+                    border: '2px solid #4A7C2C',
                     fontFamily: "'Evil Green Plant', serif",
                     fontSize: '1rem',
-                    backgroundColor: '#F8F5F2',
+                    backgroundColor: '#3d3428',
+                    color: '#E8E0D0',
                     resize: 'vertical'
                   }}
                 />
@@ -225,8 +232,8 @@ function Contact() {
                   fontFamily: "'Evil Green Plant', serif",
                   fontSize: '1.2rem',
                   padding: '1rem 2rem',
-                  backgroundColor: '#222',
-                  color: '#F8F5F2',
+                  backgroundColor: '#4A7C2C',
+                  color: '#F7F4ED',
                   border: 'none',
                   cursor: 'pointer',
                   width: '100%',

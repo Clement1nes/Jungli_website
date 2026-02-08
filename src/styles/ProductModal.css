@@ -197,20 +197,20 @@
 }
 
 .metal-button.active {
-  color: #D4AF37;
+  color: #4A7C2C;
 }
 
 .metal-button.active::after {
-  background: #D4AF37;
+  background: #4A7C2C;
   height: 3px;
   opacity: 1;
   box-shadow:
-    0 0 0 1px #D4AF37,
-    1px 0 0 1px rgba(212, 175, 55, 0.9),
-    -1px 0 0 1px rgba(212, 175, 55, 0.8),
-    0 1px 0 1px rgba(212, 175, 55, 0.7),
-    2px 0 0 1px rgba(212, 175, 55, 0.6),
-    0 0 8px rgba(212, 175, 55, 0.3);
+    0 0 0 1px #4A7C2C,
+    1px 0 0 1px rgba(74, 124, 44, 0.9),
+    -1px 0 0 1px rgba(74, 124, 44, 0.8),
+    0 1px 0 1px rgba(74, 124, 44, 0.7),
+    2px 0 0 1px rgba(74, 124, 44, 0.6),
+    0 0 8px rgba(74, 124, 44, 0.3);
 }
 
 /* Action Buttons - Rocky cobblestone */
@@ -263,20 +263,20 @@
 }
 
 .btn-primary {
-  color: #D4AF37;
+  color: #4A7C2C;
 }
 
 .btn-primary::after {
-  background: #D4AF37;
+  background: #4A7C2C;
   opacity: 0.9;
   box-shadow:
-    0 0 0 1px #D4AF37,
-    1px 0 0 1px rgba(212, 175, 55, 0.9),
-    -1px 0 0 1px rgba(212, 175, 55, 0.8),
-    0 1px 0 1px rgba(212, 175, 55, 0.7),
-    2px 0 0 1px rgba(212, 175, 55, 0.6),
-    -2px 0 0 1px rgba(212, 175, 55, 0.5),
-    0 0 10px rgba(212, 175, 55, 0.3);
+    0 0 0 1px #4A7C2C,
+    1px 0 0 1px rgba(74, 124, 44, 0.9),
+    -1px 0 0 1px rgba(74, 124, 44, 0.8),
+    0 1px 0 1px rgba(74, 124, 44, 0.7),
+    2px 0 0 1px rgba(74, 124, 44, 0.6),
+    -2px 0 0 1px rgba(74, 124, 44, 0.5),
+    0 0 10px rgba(74, 124, 44, 0.3);
 }
 
 .btn-primary:hover,
@@ -296,13 +296,13 @@
 .btn-primary:hover::after {
   height: 5px;
   box-shadow:
-    0 0 0 1px #D4AF37,
-    1px 0 0 1px rgba(212, 175, 55, 0.9),
-    -1px 0 0 1px rgba(212, 175, 55, 0.8),
-    0 1px 0 1px rgba(212, 175, 55, 0.7),
-    2px 0 0 1px rgba(212, 175, 55, 0.6),
-    -2px 0 0 1px rgba(212, 175, 55, 0.5),
-    0 0 15px rgba(212, 175, 55, 0.4);
+    0 0 0 1px #4A7C2C,
+    1px 0 0 1px rgba(74, 124, 44, 0.9),
+    -1px 0 0 1px rgba(74, 124, 44, 0.8),
+    0 1px 0 1px rgba(74, 124, 44, 0.7),
+    2px 0 0 1px rgba(74, 124, 44, 0.6),
+    -2px 0 0 1px rgba(74, 124, 44, 0.5),
+    0 0 15px rgba(74, 124, 44, 0.4);
 }
 
 .btn-secondary {
