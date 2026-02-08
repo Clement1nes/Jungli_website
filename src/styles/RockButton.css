@@ -1,0 +1,321 @@
+/*
+  Rock Button Component - Using SVG Filters for Authentic Stone Effect
+  Based on rugged-stone-ui-studio template
+*/
+
+.rock-button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  user-select: none;
+}
+
+.rock-button:active {
+  transform: scale(0.98);
+}
+
+/* Apply SVG filter for rough edges */
+.rough-edge {
+  filter: url(#rock-jagged);
+}
+
+.stone-texture {
+  filter: url(#stone-surface);
+}
+
+/* Base - The stone that stays fixed */
+.rock-button-base {
+  position: absolute;
+  inset: 0;
+  transform: translateY(8px);
+  border-radius: 2px;
+  opacity: 1;
+}
+
+/* Interactive Face */
+.rock-button-face {
+  position: relative;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 75ms ease;
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+  border-left: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.rock-button.pressed .rock-button-face {
+  transform: translateY(8px);
+}
+
+/* Stone Surface Grain Texture */
+.rock-button-texture {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* Random "Crack" Highlights */
+.rock-button-crack-1 {
+  position: absolute;
+  top: 0;
+  right: 15%;
+  width: 2px;
+  height: 100%;
+  opacity: 0.2;
+  transform: rotate(12deg);
+  pointer-events: none;
+}
+
+.rock-button-crack-2 {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+/* Top Edge Highlight for depth */
+.rock-button-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  opacity: 0.4;
+  filter: blur(1px);
+}
+
+/* Button Text - Positioned outside filtered elements for crisp rendering */
+.rock-button-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  font-family: 'Evil Green Plant', serif;
+  text-transform: lowercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  pointer-events: none;
+  font-weight: normal;
+  white-space: nowrap;
+  /* Ensure no SVG filters affect the text */
+  filter: none;
+  -webkit-filter: none;
+}
+
+/* Text moves with pressed state */
+.rock-button.pressed .rock-button-text {
+  transform: translate(-50%, calc(-50% + 8px));
+}
+
+/* Hover Shine Effect */
+.rock-button-shine {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: skewX(-12deg);
+  transition: opacity 0.7s ease;
+  pointer-events: none;
+}
+
+.rock-button:hover .rock-button-shine {
+  opacity: 1;
+}
+
+/* Ambient Floor Shadow */
+.rock-button-shadow {
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.6);
+  filter: blur(32px);
+  z-index: -10;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.rock-button.pressed .rock-button-shadow {
+  opacity: 0.4;
+  transform: translateX(-50%) scale(0.9);
+}
+
+/* Size Variants */
+.rock-button.sm .rock-button-face {
+  padding: 0.5rem 1rem;
+  min-width: 100px;
+}
+
+.rock-button.sm .rock-button-text {
+  font-size: 1.25rem;
+}
+
+.rock-button.md .rock-button-face {
+  padding: 0.75rem 1.5rem;
+  min-width: 120px;
+}
+
+.rock-button.md .rock-button-text {
+  font-size: 1.5rem;
+}
+
+.rock-button.lg .rock-button-face {
+  padding: 1rem 2rem;
+  min-width: 160px;
+}
+
+.rock-button.lg .rock-button-text {
+  font-size: 2rem;
+}
+
+/* Cream Variant - Custom for this site */
+.rock-button.cream .rock-button-face {
+  background: linear-gradient(
+    to top right,
+    #D4C4A8,
+    #E8E0D0,
+    #F7F4ED
+  );
+  box-shadow: 0 10px 30px rgba(61, 40, 23, 0.3);
+}
+
+.rock-button.cream .rock-button-base {
+  background: #8B7355;
+}
+
+.rock-button.cream .rock-button-text {
+  color: #2D1810;
+  text-shadow:
+    1px 1px 0px rgba(255, 255, 255, 0.8),
+    2px 2px 4px rgba(0, 0, 0, 0.3),
+    0px 0px 8px rgba(255, 255, 255, 0.5);
+}
+
+.rock-button.cream .rock-button-crack-1,
+.rock-button.cream .rock-button-crack-2,
+.rock-button.cream .rock-button-highlight {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Cobblestone Variant */
+.rock-button.cobblestone .rock-button-face {
+  background: linear-gradient(
+    to top right,
+    #6b7280,
+    #9ca3af,
+    #d1d5db
+  );
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.rock-button.cobblestone .rock-button-base {
+  background: #374151;
+}
+
+.rock-button.cobblestone .rock-button-text {
+  color: #030712;
+  text-shadow:
+    0px 1px 0px rgba(255, 255, 255, 0.4),
+    0px -1px 0px rgba(0, 0, 0, 0.2);
+}
+
+.rock-button.cobblestone .rock-button-crack-1,
+.rock-button.cobblestone .rock-button-crack-2,
+.rock-button.cobblestone .rock-button-highlight {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Magma Variant */
+.rock-button.magma .rock-button-face {
+  background: linear-gradient(
+    to top right,
+    #c2410c,
+    #f97316,
+    #eab308
+  );
+  box-shadow: 0 10px 40px rgba(234, 88, 12, 0.4);
+}
+
+.rock-button.magma .rock-button-base {
+  background: #7c2d12;
+}
+
+.rock-button.magma .rock-button-text {
+  color: #ffffff;
+  text-shadow:
+    2px 2px 0px rgba(0, 0, 0, 0.8),
+    -1px -1px 0px rgba(0, 0, 0, 0.4);
+}
+
+.rock-button.magma .rock-button-crack-1,
+.rock-button.magma .rock-button-crack-2,
+.rock-button.magma .rock-button-highlight {
+  background: rgba(254, 240, 138, 0.4);
+}
+
+/* Mossy Variant */
+.rock-button.mossy .rock-button-face {
+  background: linear-gradient(
+    to top right,
+    #065f46,
+    #059669,
+    #34d399
+  );
+  box-shadow: 0 10px 30px rgba(6, 78, 59, 0.4);
+}
+
+.rock-button.mossy .rock-button-base {
+  background: #022c22;
+}
+
+.rock-button.mossy .rock-button-text {
+  color: #ecfdf5;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8);
+}
+
+.rock-button.mossy .rock-button-crack-1,
+.rock-button.mossy .rock-button-crack-2,
+.rock-button.mossy .rock-button-highlight {
+  background: rgba(167, 243, 208, 0.3);
+}
+
+/* Sandstone Variant */
+.rock-button.sandstone .rock-button-face {
+  background: linear-gradient(
+    to top right,
+    #fdba74,
+    #fde68a,
+    #fef3c7
+  );
+  box-shadow: 0 10px 30px rgba(120, 53, 15, 0.3);
+}
+
+.rock-button.sandstone .rock-button-base {
+  background: #fb923c;
+}
+
+.rock-button.sandstone .rock-button-text {
+  color: #431407;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.6);
+}
+
+.rock-button.sandstone .rock-button-crack-1,
+.rock-button.sandstone .rock-button-crack-2,
+.rock-button.sandstone .rock-button-highlight {
+  background: rgba(255, 255, 255, 0.5);
+}

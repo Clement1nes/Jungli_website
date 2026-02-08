@@ -2,6 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import '../styles/ProductDetail.css';
+import { RockButton } from '../components/RockButton';
 
 function ProductDetail() {
   const { id } = useParams();
@@ -283,20 +284,20 @@ function ProductDetail() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
             >
-              <motion.button
-                className="btn-buy-now"
-                whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.98 }}
+              <RockButton
+                variant="cream"
+                size="md"
+                onClick={() => console.log('Buy Now clicked')}
               >
                 Buy Now
-              </motion.button>
-              <motion.button
-                className="btn-add-cart"
-                whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.98 }}
+              </RockButton>
+              <RockButton
+                variant="cream"
+                size="md"
+                onClick={() => console.log('Add to Cart clicked')}
               >
                 Add to Cart
-              </motion.button>
+              </RockButton>
             </motion.div>
           </motion.div>
         </motion.div>
