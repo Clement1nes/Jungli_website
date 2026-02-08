@@ -148,106 +148,69 @@
   font-family: 'Evil Green Plant', serif;
   font-size: clamp(0.95rem, 1.8vw, 1.1rem);
   font-weight: normal;
-  padding: 0.8rem 1.5rem;
+  padding: 0.75rem 1rem;
   border: none;
-  color: #2a2418;
+  color: #F7F4ED;
   cursor: pointer;
-  transition: all 0.1s ease;
+  transition: all 0.2s ease;
   letter-spacing: 0.05em;
   text-transform: lowercase;
   position: relative;
   overflow: visible;
-  background: #f4efe5;
-  border-radius: 8px;
-
-  /* Hand-drawn sketchy border */
-  box-shadow:
-    0 0 0 2px #2a2418,
-    0 0 0 2.5px #2a2418,
-    1px 0 0 2px #2a2418,
-    0 1px 0 2px #2a2418,
-    -1px 0 0 2.5px #2a2418,
-    0 -1px 0 2.5px #2a2418,
-    2px 2px 0 2px rgba(42, 36, 24, 0.6),
-    -1px 3px 0 2px rgba(42, 36, 24, 0.4),
-    3px -1px 0 2px rgba(42, 36, 24, 0.4),
-    4px 4px 8px rgba(0, 0, 0, 0.15);
+  background: transparent;
 }
 
-/* Cross-hatch texture */
-.metal-button::before {
+/* Hand-drawn underline */
+.metal-button::after {
   content: '';
   position: absolute;
-  top: 8px;
-  left: 8px;
-  right: 8px;
-  bottom: 8px;
-  opacity: 0.15;
-  pointer-events: none;
-  background-image:
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 3px,
-      #2a2418 3px,
-      #2a2418 3.5px,
-      transparent 3.5px,
-      transparent 8px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 4px,
-      #2a2418 4px,
-      #2a2418 4.5px,
-      transparent 4.5px,
-      transparent 10px
-    );
-  border-radius: 6px;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: #F7F4ED;
+  opacity: 0.6;
+  transition: all 0.2s ease;
+
+  /* Wobbly line effect */
+  box-shadow:
+    0 0 0 1px #F7F4ED,
+    1px 0 0 1px rgba(247, 244, 237, 0.8),
+    -1px 0 0 1px rgba(247, 244, 237, 0.7),
+    0 1px 0 1px rgba(247, 244, 237, 0.6),
+    2px 0 0 1px rgba(247, 244, 237, 0.5);
 }
 
 .metal-button:hover {
-  background: #fff9f0;
-  transform: translateY(-1px);
-  box-shadow:
-    0 0 0 2px #2a2418,
-    0 0 0 2.5px #2a2418,
-    1px 0 0 2px #2a2418,
-    0 1px 0 2px #2a2418,
-    -1px 0 0 2.5px #2a2418,
-    0 -1px 0 2.5px #2a2418,
-    2px 2px 0 2px rgba(42, 36, 24, 0.6),
-    -1px 3px 0 2px rgba(42, 36, 24, 0.4),
-    3px -1px 0 2px rgba(42, 36, 24, 0.4),
-    5px 5px 12px rgba(0, 0, 0, 0.2);
+  color: #FFFFFF;
+}
+
+.metal-button:hover::after {
+  left: 5%;
+  right: 5%;
+  height: 3px;
+  opacity: 0.9;
 }
 
 .metal-button:active {
   transform: translateY(1px);
-  box-shadow:
-    0 0 0 2px #2a2418,
-    0 0 0 2.5px #2a2418,
-    1px 0 0 2px #2a2418,
-    0 1px 0 2px #2a2418,
-    -1px 0 0 2.5px #2a2418,
-    0 -1px 0 2.5px #2a2418,
-    2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .metal-button.active {
-  background: #fffef8;
   color: #D4AF37;
+}
+
+.metal-button.active::after {
+  background: #D4AF37;
+  height: 3px;
+  opacity: 1;
   box-shadow:
-    0 0 0 2.5px #D4AF37,
-    0 0 0 3px #D4AF37,
-    1px 0 0 2.5px #D4AF37,
-    0 1px 0 2.5px #D4AF37,
-    -1px 0 0 3px #D4AF37,
-    0 -1px 0 3px #D4AF37,
-    2px 2px 0 2.5px rgba(212, 175, 55, 0.6),
-    -1px 3px 0 2.5px rgba(212, 175, 55, 0.4),
-    3px -1px 0 2.5px rgba(212, 175, 55, 0.4),
-    4px 4px 8px rgba(212, 175, 55, 0.2);
+    0 0 0 1px #D4AF37,
+    1px 0 0 1px rgba(212, 175, 55, 0.9),
+    -1px 0 0 1px rgba(212, 175, 55, 0.8),
+    0 1px 0 1px rgba(212, 175, 55, 0.7),
+    2px 0 0 1px rgba(212, 175, 55, 0.6),
+    0 0 8px rgba(212, 175, 55, 0.3);
 }
 
 /* Action Buttons - Rocky cobblestone */
@@ -265,134 +228,90 @@
   padding: 1.2rem 2rem;
   border: none;
   cursor: pointer;
-  transition: all 0.1s ease;
+  transition: all 0.2s ease;
   letter-spacing: 0.03em;
   text-transform: lowercase;
   width: 100%;
   position: relative;
   overflow: visible;
-  color: #2a2418;
-  background: #f4efe5;
-  border-radius: 12px;
-
-  /* Hand-drawn sketchy border */
-  box-shadow:
-    0 0 0 3px #2a2418,
-    0 0 0 3.5px #2a2418,
-    1px 0 0 3px #2a2418,
-    0 1px 0 3px #2a2418,
-    -1px 0 0 3.5px #2a2418,
-    0 -1px 0 3.5px #2a2418,
-    1px 1px 0 3px #2a2418,
-    2px 3px 0 3px rgba(42, 36, 24, 0.6),
-    -1px 4px 0 3px rgba(42, 36, 24, 0.4),
-    4px -1px 0 3px rgba(42, 36, 24, 0.4),
-    3px 2px 0 3px rgba(42, 36, 24, 0.5),
-    5px 5px 12px rgba(0, 0, 0, 0.15);
+  color: #F7F4ED;
+  background: transparent;
+  text-align: center;
 }
 
-/* Cross-hatch shading */
-.btn-primary::before,
-.btn-secondary::before {
+/* Hand-drawn underline */
+.btn-primary::after,
+.btn-secondary::after {
   content: '';
   position: absolute;
-  top: 12px;
-  left: 12px;
-  right: 12px;
-  bottom: 12px;
-  opacity: 0.12;
-  pointer-events: none;
-  background-image:
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 4px,
-      #2a2418 4px,
-      #2a2418 4.5px,
-      transparent 4.5px,
-      transparent 10px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 5px,
-      #2a2418 5px,
-      #2a2418 5.5px,
-      transparent 5.5px,
-      transparent 12px
-    );
-  border-radius: 8px;
+  bottom: 0.5rem;
+  left: 15%;
+  right: 15%;
+  height: 3px;
+  background: #F7F4ED;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+
+  /* Wobbly line effect */
+  box-shadow:
+    0 0 0 1px #F7F4ED,
+    1px 0 0 1px rgba(247, 244, 237, 0.9),
+    -1px 0 0 1px rgba(247, 244, 237, 0.8),
+    0 1px 0 1px rgba(247, 244, 237, 0.7),
+    2px 0 0 1px rgba(247, 244, 237, 0.6),
+    -2px 0 0 1px rgba(247, 244, 237, 0.5);
 }
 
 .btn-primary {
-  background: #fffef8;
   color: #D4AF37;
+}
+
+.btn-primary::after {
+  background: #D4AF37;
+  opacity: 0.9;
   box-shadow:
-    0 0 0 3px #D4AF37,
-    0 0 0 3.5px #D4AF37,
-    1px 0 0 3px #D4AF37,
-    0 1px 0 3px #D4AF37,
-    -1px 0 0 3.5px #D4AF37,
-    0 -1px 0 3.5px #D4AF37,
-    1px 1px 0 3px #D4AF37,
-    2px 3px 0 3px rgba(212, 175, 55, 0.6),
-    -1px 4px 0 3px rgba(212, 175, 55, 0.4),
-    4px -1px 0 3px rgba(212, 175, 55, 0.4),
-    3px 2px 0 3px rgba(212, 175, 55, 0.5),
-    5px 5px 12px rgba(212, 175, 55, 0.2);
+    0 0 0 1px #D4AF37,
+    1px 0 0 1px rgba(212, 175, 55, 0.9),
+    -1px 0 0 1px rgba(212, 175, 55, 0.8),
+    0 1px 0 1px rgba(212, 175, 55, 0.7),
+    2px 0 0 1px rgba(212, 175, 55, 0.6),
+    -2px 0 0 1px rgba(212, 175, 55, 0.5),
+    0 0 10px rgba(212, 175, 55, 0.3);
 }
 
 .btn-primary:hover,
 .btn-secondary:hover {
-  background: #fff9f0;
+  color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow:
-    0 0 0 3px #2a2418,
-    0 0 0 3.5px #2a2418,
-    1px 0 0 3px #2a2418,
-    0 1px 0 3px #2a2418,
-    -1px 0 0 3.5px #2a2418,
-    0 -1px 0 3.5px #2a2418,
-    1px 1px 0 3px #2a2418,
-    2px 3px 0 3px rgba(42, 36, 24, 0.6),
-    -1px 4px 0 3px rgba(42, 36, 24, 0.4),
-    4px -1px 0 3px rgba(42, 36, 24, 0.4),
-    3px 2px 0 3px rgba(42, 36, 24, 0.5),
-    6px 6px 16px rgba(0, 0, 0, 0.2);
 }
 
-.btn-primary:hover {
+.btn-primary:hover::after,
+.btn-secondary:hover::after {
+  left: 10%;
+  right: 10%;
+  height: 4px;
+  opacity: 1;
+}
+
+.btn-primary:hover::after {
+  height: 5px;
   box-shadow:
-    0 0 0 3px #D4AF37,
-    0 0 0 3.5px #D4AF37,
-    1px 0 0 3px #D4AF37,
-    0 1px 0 3px #D4AF37,
-    -1px 0 0 3.5px #D4AF37,
-    0 -1px 0 3.5px #D4AF37,
-    1px 1px 0 3px #D4AF37,
-    2px 3px 0 3px rgba(212, 175, 55, 0.6),
-    -1px 4px 0 3px rgba(212, 175, 55, 0.4),
-    4px -1px 0 3px rgba(212, 175, 55, 0.4),
-    3px 2px 0 3px rgba(212, 175, 55, 0.5),
-    6px 6px 16px rgba(212, 175, 55, 0.25);
+    0 0 0 1px #D4AF37,
+    1px 0 0 1px rgba(212, 175, 55, 0.9),
+    -1px 0 0 1px rgba(212, 175, 55, 0.8),
+    0 1px 0 1px rgba(212, 175, 55, 0.7),
+    2px 0 0 1px rgba(212, 175, 55, 0.6),
+    -2px 0 0 1px rgba(212, 175, 55, 0.5),
+    0 0 15px rgba(212, 175, 55, 0.4);
 }
 
 .btn-secondary {
-  color: #2a2418;
+  color: #F7F4ED;
 }
 
 .btn-primary:active,
 .btn-secondary:active {
-  transform: translateY(1px);
-  box-shadow:
-    0 0 0 3px #2a2418,
-    0 0 0 3.5px #2a2418,
-    1px 0 0 3px #2a2418,
-    0 1px 0 3px #2a2418,
-    -1px 0 0 3.5px #2a2418,
-    0 -1px 0 3.5px #2a2418,
-    1px 1px 0 3px #2a2418,
-    3px 3px 6px rgba(0, 0, 0, 0.2);
+  transform: translateY(0);
 }
 
 /* Responsive Design */
