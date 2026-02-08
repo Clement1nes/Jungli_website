@@ -55,7 +55,7 @@ function ProductDetail() {
         '/assets/Highdef/silver star main.png'
       ],
       goldAnimation3d: '/assets/GoldShootingStar-ezgif.com-gif-maker (1).gif',
-      silverAnimation3d: '/assets/GoldShootingStar-ezgif.com-gif-maker (1).gif',
+      silverAnimation3d: '/assets/silver ring.gif',
       background: '/assets/backgrounds/star_background.gif',
       alt: 'Star Ring',
       type: 'star',
