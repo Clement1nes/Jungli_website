@@ -325,7 +325,6 @@ function ProductDetail() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
       >
-        <h2 className="other-products-title">Continue Shopping</h2>
         <div className="other-products-grid">
           {Object.values(products)
             .filter(p => p.id !== id)
