@@ -733,9 +733,9 @@
 }
 
 .other-product-card {
-  background: rgba(10, 10, 10, 0.6);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  background: transparent;
+  backdrop-filter: none;
+  border: none;
   padding: 2rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -746,9 +746,8 @@
 }
 
 .other-product-card:hover {
-  border-color: rgba(212, 175, 55, 0.5);
-  background: rgba(20, 20, 20, 0.7);
-  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.2);
+  background: transparent;
+  box-shadow: none;
 }
 
 .other-product-image {

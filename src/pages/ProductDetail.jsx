@@ -231,7 +231,6 @@ function ProductDetail() {
           >
             <h1 className="product-title">{product.name}</h1>
             <p className="product-price">{product.price}</p>
-            <p className="product-description">{product.description}</p>
 
             {/* Metal Selector */}
             <div className="metal-selector">
@@ -297,6 +296,8 @@ function ProductDetail() {
                 Buy Now
               </RockButton>
             </motion.div>
+
+            <p className="product-description">{product.description}</p>
 
             {/* Product Details */}
             <div className="product-details">
