@@ -19,12 +19,14 @@ function ProductDetail() {
       goldImages: [
         '/assets/Highdef/eye face gold.png',
         '/assets/Highdef/Gold face front.png',
-        '/assets/Highdef/gold eye up.png'
+        '/assets/Highdef/gold eye up.png',
+        '/assets/Facegoldside.png'
       ],
       silverImages: [
         '/assets/Highdef/eye face silver.png',
         '/assets/Highdef/Face eye silveer.png',
-        '/assets/Highdef/eye up silver.png'
+        '/assets/Highdef/eye up silver.png',
+        '/assets/Faceright.png'
       ],
       goldAnimation3d: '/assets/gold-eye-ring.gif',
       silverAnimation3d: '/assets/silver_eye.gif',
