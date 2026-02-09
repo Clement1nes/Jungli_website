@@ -352,7 +352,6 @@ function ProductDetail() {
                 </div>
                 <div className="other-product-info">
                   <h3>{otherProduct.name}</h3>
-                  <p className="other-product-price">{otherProduct.price}</p>
                 </div>
               </motion.div>
             ))}
