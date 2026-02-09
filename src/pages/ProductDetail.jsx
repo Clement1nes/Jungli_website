@@ -350,9 +350,6 @@ function ProductDetail() {
                     alt={otherProduct.alt}
                   />
                 </div>
-                <div className="other-product-info">
-                  <h3>{otherProduct.name}</h3>
-                </div>
               </motion.div>
             ))}
         </div>
