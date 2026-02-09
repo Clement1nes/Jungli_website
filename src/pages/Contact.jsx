@@ -24,7 +24,7 @@ function Contact() {
   };
 
   return (
-    <main style={{ background: '#3d3428', minHeight: '100vh', paddingTop: '250px' }}>
+    <main style={{ background: '#3d3428', minHeight: '100vh', paddingTop: '120px' }}>
       <section className="content-section">
         <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem' }}>
           <motion.h1
