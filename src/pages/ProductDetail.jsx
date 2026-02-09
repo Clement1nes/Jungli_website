@@ -297,8 +297,6 @@ function ProductDetail() {
               </RockButton>
             </motion.div>
 
-            <p className="product-description">{product.description}</p>
-
             {/* Product Details */}
             <div className="product-details">
               <h3 className="details-title">Details</h3>
@@ -315,6 +313,8 @@ function ProductDetail() {
                 ))}
               </ul>
             </div>
+
+            <p className="product-description">{product.description}</p>
           </motion.div>
         </motion.div>
       </div>
