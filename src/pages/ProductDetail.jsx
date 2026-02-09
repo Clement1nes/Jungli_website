@@ -8,6 +8,7 @@ function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [selectedMetal, setSelectedMetal] = useState('gold');
+  const [selectedSize, setSelectedSize] = useState('7');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const products = {
@@ -260,6 +261,24 @@ function ProductDetail() {
                   <span className="metal-swatch silver-swatch" />
                   <span>Sterling Silver</span>
                 </motion.button>
+              </div>
+            </div>
+
+            {/* Size Selector */}
+            <div className="size-selector">
+              <label className="selector-label">Select Size</label>
+              <div className="size-buttons">
+                {[5, 6, 7, 8, 9, 10].map(size => (
+                  <motion.button
+                    key={size}
+                    className={`size-option ${selectedSize === size.toString() ? 'active' : ''}`}
+                    onClick={() => setSelectedSize(size.toString())}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    {size}
+                  </motion.button>
+                ))}
               </div>
             </div>
 
