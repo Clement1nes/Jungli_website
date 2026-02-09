@@ -703,3 +703,134 @@
     min-width: 40px;
   }
 }
+
+/* Other Products Section */
+.other-products-section {
+  position: relative;
+  z-index: 1;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 4rem 3rem 6rem;
+}
+
+.other-products-title {
+  font-family: 'Evil Green Plant', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: normal;
+  color: #fff5da;
+  text-align: center;
+  margin: 0 0 3rem 0;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.other-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.other-product-card {
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.other-product-card:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  background: rgba(20, 20, 20, 0.7);
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.2);
+}
+
+.other-product-image {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.other-product-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.6));
+  transition: transform 0.3s ease;
+}
+
+.other-product-card:hover .other-product-image img {
+  transform: scale(1.1);
+}
+
+.other-product-info {
+  text-align: center;
+  width: 100%;
+}
+
+.other-product-info h3 {
+  font-family: 'Evil Green Plant', serif;
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #fff5da;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.05em;
+}
+
+.other-product-price {
+  font-family: 'Evil Green Plant', serif;
+  font-size: 1.2rem;
+  color: #D4AF37;
+  margin: 0;
+}
+
+@media (max-width: 968px) {
+  .other-products-section {
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .other-products-grid {
+    gap: 1.5rem;
+  }
+
+  .other-product-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .other-products-section {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .other-products-title {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .other-products-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .other-product-card {
+    padding: 1.25rem;
+  }
+
+  .other-product-info h3 {
+    font-size: 1.25rem;
+  }
+
+  .other-product-price {
+    font-size: 1rem;
+  }
+}

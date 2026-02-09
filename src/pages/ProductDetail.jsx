@@ -282,6 +282,22 @@ function ProductDetail() {
               </div>
             </div>
 
+            {/* Action Buttons */}
+            <motion.div
+              className="product-actions"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+            >
+              <RockButton
+                variant="cream"
+                size="md"
+                onClick={() => console.log('Buy Now clicked')}
+              >
+                Buy Now
+              </RockButton>
+            </motion.div>
+
             {/* Product Details */}
             <div className="product-details">
               <h3 className="details-title">Details</h3>
@@ -298,32 +314,50 @@ function ProductDetail() {
                 ))}
               </ul>
             </div>
-
-            {/* Action Buttons */}
-            <motion.div
-              className="product-actions"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-            >
-              <RockButton
-                variant="cream"
-                size="md"
-                onClick={() => console.log('Buy Now clicked')}
-              >
-                Buy Now
-              </RockButton>
-              <RockButton
-                variant="cream"
-                size="md"
-                onClick={() => console.log('Add to Cart clicked')}
-              >
-                Add to Cart
-              </RockButton>
-            </motion.div>
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Other Products Section */}
+      <motion.div
+        className="other-products-section"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+      >
+        <h2 className="other-products-title">Continue Shopping</h2>
+        <div className="other-products-grid">
+          {Object.values(products)
+            .filter(p => p.id !== id)
+            .map((otherProduct, index) => (
+              <motion.div
+                key={otherProduct.id}
+                className="other-product-card"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 + (index * 0.2) }}
+                whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                onClick={() => {
+                  navigate(`/product/${otherProduct.id}`);
+                  setCurrentImageIndex(0);
+                  setSelectedMetal('gold');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              >
+                <div className="other-product-image">
+                  <img
+                    src={otherProduct.goldAnimation3d}
+                    alt={otherProduct.alt}
+                  />
+                </div>
+                <div className="other-product-info">
+                  <h3>{otherProduct.name}</h3>
+                  <p className="other-product-price">{otherProduct.price}</p>
+                </div>
+              </motion.div>
+            ))}
+        </div>
+      </motion.div>
     </main>
   );
 }

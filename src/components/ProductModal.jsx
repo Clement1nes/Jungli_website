@@ -162,14 +162,6 @@ function ProductModal({ product, isOpen, onClose }) {
                     >
                       Buy Now
                     </motion.button>
-
-                    <motion.button
-                      className="btn-secondary"
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Add to Cart
-                    </motion.button>
                   </motion.div>
                 </div>
               </motion.div>
