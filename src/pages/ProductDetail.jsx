@@ -16,7 +16,7 @@ function ProductDetail() {
       id: 'eye',
       name: 'Eye Ring',
       price: '$140',
-      description: 'ring with an eye carved on it.',
+      description: 'We look with Two Eyes but see with Three…',
       goldImages: [
         '/assets/Highdef/eye face gold.png',
         '/assets/Highdef/Gold face front.png',
@@ -35,16 +35,17 @@ function ProductDetail() {
       alt: 'Eye Ring',
       type: 'eye',
       details: [
-        'hand carved',
-        'gold or silver',
-        'adjustable size'
+        "Inspired from the painting 'Aperture' by Alex Grey.",
+        'Hallmarked 925. Sterling Silver.',
+        '15 Grams.',
+        'Solid Gold available upon request'
       ]
     },
     star: {
       id: 'star',
       name: 'Star Ring',
       price: '$160',
-      description: 'shooting star. wraps around finger.',
+      description: 'When you Shoot for the stars remember we were made from them.',
       goldImages: [
         '/assets/Highdef/gold star front.png',
         '/assets/Highdef/gold forward star.png',
@@ -63,16 +64,17 @@ function ProductDetail() {
       alt: 'Star Ring',
       type: 'star',
       details: [
-        'sculptural form',
-        'gold or silver',
-        'comfort fit'
+        'Adjustable design',
+        'Hallmarked 925. Sterling Silver.',
+        '10 Grams.',
+        'Solid Gold available upon request'
       ]
     },
     foot: {
       id: 'foot',
       name: 'Foot Ring',
       price: '$150',
-      description: 'sculptural foot ring. anatomical detail.',
+      description: 'A reminder of the steps taken and the steps to come…',
       goldImages: [
         '/assets/Highdef/gold foot up.png',
         '/assets/Highdef/gold foot main.png',
@@ -90,9 +92,10 @@ function ProductDetail() {
       alt: 'Foot Ring',
       type: 'foot',
       details: [
-        'anatomical form',
-        'gold or silver',
-        'statement piece'
+        'Stamps an actual Footprint.',
+        'Hallmarked 925. Sterling Silver.',
+        '30 Grams.',
+        'Solid Gold available upon request'
       ]
     }
   };

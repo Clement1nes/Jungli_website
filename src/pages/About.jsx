@@ -7,23 +7,23 @@ function About() {
   const faqs = [
     {
       question: "What materials do you use?",
-      answer: "We work primarily with sterling silver and 14k gold, sourcing materials from ethical suppliers. Each piece is crafted with attention to sustainability and quality."
+      answer: "All Products are made with Solid Recycled 925. Sterling Silver and 9/14/18k Gold upon Request. 18k Gold Plating is our standard plating option."
     },
     {
-      question: "How long does shipping take?",
-      answer: "Each piece is made to order. Production takes 2-3 weeks, with shipping taking an additional 3-5 business days depending on your location."
+      question: "Do you offer Custom pieces?",
+      answer: "Yes! I love creating Custom pieces. If you have an idea, Get in touch via Instagram @Jungli____ or through the Contact Form."
     },
     {
-      question: "Do you offer custom pieces?",
-      answer: "Yes! We love creating custom pieces. Contact us with your ideas and we'll work together to bring your vision to life."
+      question: "How long does Shipping take?",
+      answer: "As every piece is Hand crafted, expect delivery of your piece within 3-4 weeks. Depending on location shipping may vary."
     },
     {
-      question: "What is your return policy?",
-      answer: "We accept returns within 30 days of delivery for unworn items in original packaging. Custom pieces are final sale."
+      question: "What is your Return Policy?",
+      answer: "We do not accept returns after purchase of any items. If there is an issue with an item or Re-Sizing is needed this can be arranged with us within 2 weeks of receiving your product."
     },
     {
-      question: "How do I care for my jewelry?",
-      answer: "Store pieces in a dry place away from direct sunlight. Clean with a soft cloth. Avoid exposure to chemicals, perfumes, and water when possible."
+      question: "How do I care for my Jewellery?",
+      answer: "Silver will scratch and dull over time, to bring back its sparkle we recommend buying a polishing cloth. If your jewellery has become dirty, simply boil some water and use washing up liquid and an old toothbrush to clean it.\n\nThere can be a chemical reaction to silver from sweat, plus other external chemicals in lotions, soaps and chlorine. Please remove your items before showering, exercising or swimming. Highly chlorinated pools will instantly change the silver to black, if you forget and need your items to be polished please contact us and we will advise you on the fee and lead time."
     }
   ];
 
@@ -45,7 +45,7 @@ function About() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            About Jungli
+            About
           </motion.h1>
 
           <motion.div
@@ -61,9 +61,10 @@ function About() {
               fontFamily: "'Evil Green Plant', serif",
               fontSize: '1.3rem',
               marginBottom: '1.5rem',
-              color: '#E8E0D0'
+              color: '#E8E0D0',
+              fontStyle: 'italic'
             }}>
-              Jungli was born from a desire to create objects that feel both ancient and contemporary—pieces that carry the weight of time without being bound by it.
+              Jungli: animals and plants that live or grow in the wild.
             </p>
 
             <p style={{
@@ -72,16 +73,16 @@ function About() {
               marginBottom: '1.5rem',
               color: '#E8E0D0'
             }}>
-              We draw inspiration from the organic world: the irregular curves of river stones, the asymmetry of tree branches, the quiet persistence of natural forms. Each piece is designed and crafted by hand in our small studio, where we prioritize slow processes over mass production.
+              Growing up in London, my Jungle is a concrete one. Jungli was born during the 2020 Lockdown. From a desire to create Jewellery I wanted to wear. Taking ideas from My city, spirituality and the everyday parts of us being human.
             </p>
 
             <p style={{
               fontFamily: "'Evil Green Plant', serif",
               fontSize: '1.3rem',
-              marginBottom: '1.5rem',
+              marginBottom: '2.5rem',
               color: '#E8E0D0'
             }}>
-              Our approach is intentionally limited. We make small batches, use traditional techniques, and let materials guide the final form. This means no two pieces are exactly alike—each carries its own subtle variations, its own character.
+              I've created every piece by hand over the past 5 years with the intention of making artefacts that speak to our experience of being on this beautiful planet.
             </p>
 
             <p style={{
@@ -89,7 +90,7 @@ function About() {
               fontSize: '1.3rem',
               color: '#E8E0D0'
             }}>
-              We believe in objects that endure. That age well. That become more meaningful over time, not less.
+              Momin Isiah Hai.
             </p>
           </motion.div>
 
