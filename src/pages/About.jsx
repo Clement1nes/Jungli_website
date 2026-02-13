@@ -97,6 +97,25 @@ function About() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.6 }}
+            style={{ marginBottom: '4rem', display: 'flex', justifyContent: 'center' }}
+          >
+            <img
+              src="/assets/momin.jpeg"
+              alt="Momin Isiah Hai"
+              style={{
+                width: '100%',
+                maxWidth: '480px',
+                objectFit: 'cover',
+                display: 'block',
+                filter: 'saturate(0.9) contrast(1.05)'
+              }}
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
             <h2 style={{

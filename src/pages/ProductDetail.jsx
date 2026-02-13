@@ -10,6 +10,16 @@ function ProductDetail() {
   const [selectedMetal, setSelectedMetal] = useState('gold');
   const [selectedSize, setSelectedSize] = useState('7');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [showSizeChart, setShowSizeChart] = useState(false);
+
+  const sizeChart = [
+    { us: '5', diameter: '15.7mm', circumference: '49.3mm' },
+    { us: '6', diameter: '16.5mm', circumference: '51.8mm' },
+    { us: '7', diameter: '17.3mm', circumference: '54.4mm' },
+    { us: '8', diameter: '18.2mm', circumference: '57.1mm' },
+    { us: '9', diameter: '19.0mm', circumference: '59.7mm' },
+    { us: '10', diameter: '19.8mm', circumference: '62.2mm' },
+  ];
 
   const products = {
     eye: {
@@ -268,7 +278,67 @@ function ProductDetail() {
 
             {/* Size Selector */}
             <div className="size-selector">
-              <label className="selector-label">Select Size</label>
+              <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                <label className="selector-label" style={{ marginBottom: 0 }}>Select Size</label>
+                <button
+                  onClick={() => setShowSizeChart(!showSizeChart)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontFamily: "'Evil Green Plant', serif",
+                    fontSize: '0.75rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.12em',
+                    color: 'rgba(255, 245, 218, 0.5)',
+                    textDecoration: 'underline',
+                    padding: 0
+                  }}
+                >
+                  size guide
+                </button>
+              </div>
+
+              {showSizeChart && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  style={{
+                    marginBottom: '1.5rem',
+                    borderTop: '1px solid rgba(255,245,218,0.1)',
+                    borderBottom: '1px solid rgba(255,245,218,0.1)',
+                    padding: '1rem 0'
+                  }}
+                >
+                  <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: "'Evil Green Plant', serif" }}>
+                    <thead>
+                      <tr>
+                        {['US Size', 'Diameter', 'Circumference'].map(h => (
+                          <th key={h} style={{ textAlign: 'left', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'rgba(255,245,218,0.45)', paddingBottom: '0.6rem', fontWeight: 'normal' }}>{h}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {sizeChart.map(row => (
+                        <tr
+                          key={row.us}
+                          style={{ borderTop: '1px solid rgba(255,245,218,0.07)', cursor: 'pointer' }}
+                          onClick={() => { setSelectedSize(row.us); setShowSizeChart(false); }}
+                        >
+                          <td style={{ padding: '0.5rem 0', fontSize: '0.95rem', color: selectedSize === row.us ? '#8faf70' : 'rgba(255,245,218,0.85)' }}>{row.us}</td>
+                          <td style={{ padding: '0.5rem 0', fontSize: '0.85rem', color: 'rgba(255,245,218,0.6)' }}>{row.diameter}</td>
+                          <td style={{ padding: '0.5rem 0', fontSize: '0.85rem', color: 'rgba(255,245,218,0.6)' }}>{row.circumference}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <p style={{ fontFamily: "'Evil Green Plant', serif", fontSize: '0.75rem', color: 'rgba(255,245,218,0.35)', marginTop: '0.75rem' }}>
+                    Tap a size to select it. Unsure? We recommend measuring your finger with a strip of paper.
+                  </p>
+                </motion.div>
+              )}
+
               <div className="size-buttons">
                 {[5, 6, 7, 8, 9, 10].map(size => (
                   <motion.button
