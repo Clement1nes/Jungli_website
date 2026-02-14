@@ -73,7 +73,7 @@ function About() {
               marginBottom: '1.5rem',
               color: '#E8E0D0'
             }}>
-              Growing up in London, my Jungle is a concrete one. Jungli was born during the 2020 Lockdown. From a desire to create Jewellery I wanted to wear. Taking ideas from My city, spirituality and the everyday parts of us being human.
+              Jungli was born during the 2020 Lockdown. From a desire to create Jewellery I wanted to wear. Born and raised in London, my Jungle is a concrete one. Taking inspiration directly from my city, my spirituality and everyday parts of us being human.
             </p>
 
             <p style={{
