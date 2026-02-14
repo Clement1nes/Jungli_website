@@ -41,41 +41,6 @@ function AppContent() {
                 <li><Link to="/contact">Contact</Link></li>
               </ul>
             </nav>
-            <div className="basket-icon">
-              <Link to="/home" style={{ textDecoration: 'none', color: '#fff5da', position: 'relative' }}>
-                <svg
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  style={{ transition: 'all 0.3s ease' }}
-                >
-                  <circle cx="9" cy="21" r="1"></circle>
-                  <circle cx="20" cy="21" r="1"></circle>
-                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                </svg>
-                <span style={{
-                  position: 'absolute',
-                  top: '-5px',
-                  right: '-5px',
-                  backgroundColor: '#D4AF37',
-                  color: '#1A1A1D',
-                  borderRadius: '50%',
-                  width: '18px',
-                  height: '18px',
-                  fontSize: '0.65rem',
-                  fontWeight: '600',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontFamily: "'Evil Green Plant', serif"
-                }}>0</span>
-              </Link>
-            </div>
           </div>
         </header>
       )}
