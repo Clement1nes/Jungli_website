@@ -3,8 +3,6 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import '../styles/ProductDetail.css';
 import { RockButton } from '../components/RockButton';
-import { fetchProducts } from '../utils/shopify';
-import { useShopify } from '../context/ShopifyContext';
 
 function ProductDetail() {
   const { id } = useParams();
@@ -13,11 +11,7 @@ function ProductDetail() {
   const [selectedSize, setSelectedSize] = useState('7');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showSizeChart, setShowSizeChart] = useState(false);
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [allProducts, setAllProducts] = useState([]);
   const [includeRingSizer, setIncludeRingSizer] = useState(false);
-  const { buyNow } = useShopify();
 
   const sizeChart = [
     { us: '5', uk: 'J', diameter: '15.7mm', circumference: '49.3mm' },
@@ -28,62 +22,115 @@ function ProductDetail() {
     { us: '10', uk: 'T', diameter: '19.8mm', circumference: '62.2mm' },
   ];
 
+  const products = {
+    eye: {
+      id: 'eye',
+      name: 'Eye Ring',
+      price: '$140',
+      description: 'We look with Two Eyes but see with Three…',
+      goldImages: [
+        '/assets/Highdef/eye face gold.png',
+        '/assets/Highdef/Gold face front.png',
+        '/assets/Highdef/gold eye up.png',
+        '/assets/Facegoldside.png'
+      ],
+      silverImages: [
+        '/assets/Highdef/eye face silver.png',
+        '/assets/Highdef/Face eye silveer.png',
+        '/assets/Highdef/eye up silver.png',
+        '/assets/Faceright.png'
+      ],
+      goldAnimation3d: '/assets/gold-eye-ring.gif',
+      silverAnimation3d: '/assets/silver_eye.gif',
+      background: '/assets/backgrounds/eye_background.gif',
+      alt: 'Eye Ring',
+      type: 'eye',
+      details: [
+        "Inspired from the painting 'Aperture' by Alex Grey.",
+        'Hallmarked 925. Sterling Silver.',
+        '15 Grams.',
+        'Solid Gold available upon request'
+      ]
+    },
+    star: {
+      id: 'star',
+      name: 'Star Ring',
+      price: '$160',
+      description: 'When you Shoot for the stars remember we were made from them.',
+      goldImages: [
+        '/assets/Highdef/gold star front.png',
+        '/assets/Highdef/gold forward star.png',
+        '/assets/Highdef/gold star back.png',
+        '/assets/Highdef/gold star right.png'
+      ],
+      silverImages: [
+        '/assets/Highdef/silver star front.png',
+        '/assets/Highdef/star side silver.png',
+        '/assets/Highdef/silver back star.png',
+        '/assets/Highdef/silver star main.png'
+      ],
+      goldAnimation3d: '/assets/GoldShootingStar-ezgif.com-gif-maker (1).gif',
+      silverAnimation3d: '/assets/silver_ring.gif',
+      background: '/assets/backgrounds/star_background.gif',
+      alt: 'Star Ring',
+      type: 'star',
+      details: [
+        'Adjustable design',
+        'Hallmarked 925. Sterling Silver.',
+        '10 Grams.',
+        'Solid Gold available upon request'
+      ]
+    },
+    foot: {
+      id: 'foot',
+      name: 'Foot Ring',
+      price: '$150',
+      description: 'A reminder of the steps taken and the steps to come…',
+      goldImages: [
+        '/assets/Highdef/gold foot up.png',
+        '/assets/Highdef/gold foot main.png',
+        '/assets/Highdef/gold foot back.png',
+        '/assets/Highdef/Foot side.png'
+      ],
+      silverImages: [
+        '/assets/Highdef/foot up silver.png',
+        '/assets/Highdef/foot side silver.png',
+        '/assets/Highdef/silver_foot_ring.png'
+      ],
+      goldAnimation3d: '/assets/ezgif.com-coalesce.gif',
+      silverAnimation3d: '/assets/ezgif.com-coalesce.gif',
+      background: '/assets/backgrounds/foot_background_new.gif',
+      alt: 'Foot Ring',
+      type: 'foot',
+      details: [
+        'Stamps an actual Footprint.',
+        'Hallmarked 925. Sterling Silver.',
+        '30 Grams.',
+        'Solid Gold available upon request'
+      ]
+    }
+  };
+
+  const product = products[id];
+
   useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        const shopifyProducts = await fetchProducts();
-        setAllProducts(shopifyProducts);
-
-        // Find the product matching the ID from URL
-        const foundProduct = shopifyProducts.find(p => p.id === id);
-        if (foundProduct) {
-          setProduct(foundProduct);
-        } else {
-          navigate('/shop');
-        }
-      } catch (error) {
-        console.error('Error loading products:', error);
-        navigate('/shop');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadProducts();
-  }, [id, navigate]);
-
-  if (loading) {
-    return (
-      <main className="product-detail-container">
-        <div style={{ padding: '2rem', textAlign: 'center' }}>
-          <h1 style={{
-            fontFamily: "'Evil Green Plant', serif",
-            fontSize: '3rem',
-            fontWeight: 'normal',
-            color: '#FFF5DA'
-          }}>Loading product...</h1>
-        </div>
-      </main>
-    );
-  }
+    if (!product) {
+      navigate('/');
+    }
+  }, [product, navigate]);
 
   if (!product) return null;
 
-  // Get the selected variant based on metal and size selections
-  const getSelectedVariant = () => {
-    // Try to find variant that matches both metal and size
-    return product.variants.find(v => {
-      const title = v.title.toLowerCase();
-      const matchesMetal = title.includes(selectedMetal);
-      const matchesSize = title.includes(selectedSize);
-      return matchesMetal && matchesSize;
-    }) || product.variants[0]; // Fallback to first variant
-  };
+  const currentImages = selectedMetal === 'gold' ? product.goldImages : product.silverImages;
+  const current3dAnimation = selectedMetal === 'gold' ? product.goldAnimation3d : product.silverAnimation3d;
 
-  const selectedVariant = getSelectedVariant();
-  const productImages = product.images.map(img => img.src);
-  const currentImage = productImages[currentImageIndex] || '/assets/placeholder.jpg';
-  const totalImages = productImages.length;
+  // If 3D animation exists, it's at index 0, static images start at index 1
+  // If no 3D animation, static images start at index 0
+  const currentImage = current3dAnimation
+    ? (currentImageIndex === 0 ? current3dAnimation : currentImages[currentImageIndex - 1])
+    : currentImages[currentImageIndex];
+
+  const totalImages = currentImages.length + (current3dAnimation ? 1 : 0);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % totalImages);
@@ -97,6 +144,11 @@ function ProductDetail() {
     <main className="product-detail-container">
       {/* Animated GIF Background */}
       <div className="product-environment">
+        <img
+          src={product.background}
+          alt=""
+          className="environment-gif"
+        />
         <div className="environment-overlay" />
       </div>
 
@@ -127,7 +179,7 @@ function ProductDetail() {
             <motion.img
               key={currentImage}
               src={currentImage}
-              alt={product.title}
+              alt={product.alt}
               className="gallery-image"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -145,19 +197,35 @@ function ProductDetail() {
           </motion.div>
 
           {/* Thumbnail Strip */}
-          {productImages.length > 1 && (
+          {currentImages.length >= 1 && (
             <div className="gallery-thumbnails">
-              {productImages.map((img, index) => (
+              {/* 3D Animation Thumbnail FIRST - only show if exists for current metal */}
+              {current3dAnimation && (
                 <motion.button
-                  key={index}
-                  className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
-                  onClick={() => setCurrentImageIndex(index)}
+                  key="3d-animation"
+                  className={`thumbnail ${currentImageIndex === 0 ? 'active' : ''}`}
+                  onClick={() => setCurrentImageIndex(0)}
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <img src={img} alt={`View ${index + 1}`} />
+                  <img src={current3dAnimation} alt="3D Animation" />
                 </motion.button>
-              ))}
+              )}
+              {/* Static images follow */}
+              {currentImages.map((img, index) => {
+                const thumbnailIndex = current3dAnimation ? index + 1 : index;
+                return (
+                  <motion.button
+                    key={index}
+                    className={`thumbnail ${thumbnailIndex === currentImageIndex ? 'active' : ''}`}
+                    onClick={() => setCurrentImageIndex(thumbnailIndex)}
+                    whileHover={{ scale: 1.1, y: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <img src={img} alt={`View ${index + 1}`} />
+                  </motion.button>
+                );
+              })}
             </div>
           )}
         </motion.div>
@@ -175,10 +243,8 @@ function ProductDetail() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            <h1 className="product-title">{product.title}</h1>
-            <p className="product-price">
-              {selectedVariant.price.currencyCode === 'USD' ? '$' : ''}{selectedVariant.price.amount}
-            </p>
+            <h1 className="product-title">{product.name}</h1>
+            <p className="product-price">{product.price}</p>
 
             {/* Metal Selector */}
             <div className="metal-selector">
@@ -326,15 +392,7 @@ function ProductDetail() {
               <RockButton
                 variant="cream"
                 size="md"
-                onClick={async () => {
-                  try {
-                    console.log('Buy Now clicked', { metal: selectedMetal, size: selectedSize, ringSizer: includeRingSizer });
-                    await buyNow(selectedVariant.id, 1);
-                  } catch (error) {
-                    console.error('Error purchasing:', error);
-                    alert('Error processing purchase. Please try again.');
-                  }
-                }}
+                onClick={() => console.log('Buy Now clicked', { metal: selectedMetal, size: selectedSize, ringSizer: includeRingSizer })}
               >
                 Buy Now
               </RockButton>
@@ -342,53 +400,65 @@ function ProductDetail() {
 
             {/* Product Details */}
             <div className="product-details">
-              <h3 className="details-title">Description</h3>
-              <div
-                className="product-description"
-                dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
-              />
+              <h3 className="details-title">Details</h3>
+              <ul className="details-list">
+                {product.details.map((detail, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 + (index * 0.1) }}
+                  >
+                    {detail}
+                  </motion.li>
+                ))}
+              </ul>
             </div>
+
+            <p className="product-description">{product.description}</p>
           </motion.div>
         </motion.div>
       </div>
 
       {/* Other Products Section */}
-      {allProducts.length > 1 && (
-        <motion.div
-          className="other-products-section"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <div className="other-products-grid">
-            {allProducts
-              .filter(p => p.id !== id)
-              .map((otherProduct, index) => (
-                <motion.div
-                  key={otherProduct.id}
-                  className="other-product-card"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 + (index * 0.2) }}
-                  whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                  onClick={() => {
-                    navigate(`/product/${otherProduct.id}`);
-                    setCurrentImageIndex(0);
-                    setSelectedMetal('gold');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
-                >
-                  <div className="other-product-image">
-                    <img
-                      src={otherProduct.images[0]?.src || '/assets/placeholder.jpg'}
-                      alt={otherProduct.title}
-                    />
-                  </div>
-                </motion.div>
-              ))}
-          </div>
-        </motion.div>
-      )}
+      <motion.div
+        className="other-products-section"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+      >
+        <div className="other-products-grid">
+          {Object.values(products)
+            .filter(p => p.id !== id)
+            .map((otherProduct, index) => (
+              <motion.div
+                key={otherProduct.id}
+                className="other-product-card"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 + (index * 0.2) }}
+                whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                onClick={() => {
+                  navigate(`/product/${otherProduct.id}`);
+                  setCurrentImageIndex(0);
+                  setSelectedMetal('gold');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              >
+                <div className="other-product-image">
+                  <img
+                    src={selectedMetal === 'gold' ? otherProduct.goldImages[0] : otherProduct.silverImages[0]}
+                    alt={otherProduct.name}
+                  />
+                </div>
+                <div className="other-product-info">
+                  <h3>{otherProduct.name}</h3>
+                  <p className="other-product-price">{otherProduct.price}</p>
+                </div>
+              </motion.div>
+            ))}
+        </div>
+      </motion.div>
     </main>
   );
 }
