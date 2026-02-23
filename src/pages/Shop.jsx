@@ -1,45 +1,36 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { fetchProducts } from '../utils/shopify';
-import { useShopify } from '../context/ShopifyContext';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Shop() {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const { buyNow, addItemToCart } = useShopify();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        const shopifyProducts = await fetchProducts();
-        setProducts(shopifyProducts);
-      } catch (error) {
-        console.error('Error loading products:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadProducts();
-  }, []);
-
-  if (loading) {
-    return (
-      <main style={{ background: '#0A0A0A', minHeight: '100vh', paddingTop: '120px' }}>
-        <section className="content-section">
-          <div style={{ padding: '2rem', textAlign: 'center' }}>
-            <h1 style={{
-              fontFamily: "'Evil Green Plant', serif",
-              fontSize: '3rem',
-              fontWeight: 'normal',
-              color: '#FFF5DA'
-            }}>Loading products...</h1>
-          </div>
-        </section>
-      </main>
-    );
-  }
+  // Hardcoded product data matching ProductDetail
+  const products = [
+    {
+      id: 'eye',
+      name: 'Eye Ring',
+      price: '$140',
+      image: '/assets/Highdef/eye face gold.png'
+    },
+    {
+      id: 'star',
+      name: 'Star Ring',
+      price: '$160',
+      image: '/assets/Highdef/gold star front.png'
+    },
+    {
+      id: 'foot',
+      name: 'Foot Ring',
+      price: '$150',
+      image: '/assets/Highdef/gold foot up.png'
+    },
+    {
+      id: 'sizer',
+      name: 'Ring Sizer',
+      price: 'Free + Postage',
+      image: '/assets/placeholder.jpg'
+    }
+  ];
 
   return (
     <main style={{ background: '#0A0A0A', minHeight: '100vh', paddingTop: '120px' }}>
@@ -61,13 +52,7 @@ function Shop() {
             gap: '2rem',
             padding: '1rem'
           }}>
-            {products.map((product, index) => {
-              const variant = product.variants[0];
-              const price = variant.price.amount;
-              const currencyCode = variant.price.currencyCode;
-              const imageUrl = product.images[0]?.src || '/assets/placeholder.jpg';
-
-              return (
+            {products.map((product, index) => (
                 <motion.div
                   key={product.id}
                   style={{
@@ -75,7 +60,8 @@ function Shop() {
                     padding: '1.5rem',
                     backgroundColor: 'rgba(255, 245, 218, 0.03)',
                     backdropFilter: 'blur(10px)',
-                    transform: `rotate(${Math.random() * 4 - 2}deg)`
+                    transform: `rotate(${Math.random() * 4 - 2}deg)`,
+                    cursor: 'pointer'
                   }}
                   initial={{ opacity: 0, y: 50, rotate: Math.random() * 10 - 5 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -85,6 +71,7 @@ function Shop() {
                     rotate: Math.random() * 6 - 3,
                     transition: { type: 'spring', stiffness: 300 }
                   }}
+                  onClick={() => navigate(`/product/${product.id}`)}
                 >
                   <div style={{
                     width: '100%',
@@ -98,8 +85,8 @@ function Shop() {
                     border: '1px solid rgba(255, 245, 218, 0.1)'
                   }}>
                     <img
-                      src={imageUrl}
-                      alt={product.title}
+                      src={product.image}
+                      alt={product.name}
                       style={{
                         maxWidth: '100%',
                         maxHeight: '100%',
@@ -114,77 +101,38 @@ function Shop() {
                     fontWeight: 'normal',
                     marginBottom: '0.5rem',
                     color: '#FFF5DA'
-                  }}>{product.title}</h3>
+                  }}>{product.name}</h3>
 
                   <p style={{
                     fontFamily: "'Evil Green Plant', serif",
                     fontSize: '1.2rem',
                     marginBottom: '1rem',
                     color: '#D4AF37'
-                  }}>{currencyCode === 'USD' ? '$' : ''}{price}</p>
+                  }}>{product.price}</p>
 
-                  <div style={{ display: 'flex', gap: '0.5rem', flexDirection: 'column' }}>
-                    <motion.button
-                      onClick={async () => {
-                        try {
-                          await buyNow(variant.id, 1);
-                        } catch (error) {
-                          console.error('Error purchasing:', error);
-                          alert('Error processing purchase. Please try again.');
-                        }
-                      }}
-                      style={{
-                        fontFamily: "'Evil Green Plant', serif",
-                        fontSize: '1rem',
-                        padding: '0.8rem',
-                        backgroundColor: '#8faf70',
-                        color: '#0A0A0A',
-                        border: 'none',
-                        cursor: 'pointer',
-                        fontWeight: 'normal',
-                        width: '100%'
-                      }}
-                      whileHover={{ scale: 1.05, rotate: 1 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Buy Now
-                    </motion.button>
-
-                    <motion.button
-                      onClick={async () => {
-                        try {
-                          await addItemToCart(variant.id, 1);
-                          alert('Added to cart!');
-                        } catch (error) {
-                          console.error('Error adding to cart:', error);
-                          alert('Error adding to cart. Please try again.');
-                        }
-                      }}
-                      style={{
-                        fontFamily: "'Evil Green Plant', serif",
-                        fontSize: '1rem',
-                        padding: '0.8rem',
-                        backgroundColor: 'transparent',
-                        color: '#FFF5DA',
-                        border: '2px solid rgba(255, 245, 218, 0.3)',
-                        cursor: 'pointer',
-                        fontWeight: 'normal'
-                      }}
-                      whileHover={{
-                        scale: 1.05,
-                        rotate: -1,
-                        backgroundColor: 'rgba(255, 245, 218, 0.1)',
-                        borderColor: '#8faf70',
-                        color: '#8faf70'
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Add to Basket
-                    </motion.button>
-                  </div>
+                  <motion.button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate(`/product/${product.id}`);
+                    }}
+                    style={{
+                      fontFamily: "'Evil Green Plant', serif",
+                      fontSize: '1rem',
+                      padding: '0.8rem',
+                      backgroundColor: '#8faf70',
+                      color: '#0A0A0A',
+                      border: 'none',
+                      cursor: 'pointer',
+                      fontWeight: 'normal',
+                      width: '100%'
+                    }}
+                    whileHover={{ scale: 1.05, rotate: 1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    View Details
+                  </motion.button>
                 </motion.div>
-              );
-            })}
+            ))}
           </div>
         </div>
       </section>
