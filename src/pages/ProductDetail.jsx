@@ -11,7 +11,6 @@ function ProductDetail() {
   const [selectedSize, setSelectedSize] = useState('7');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showSizeChart, setShowSizeChart] = useState(false);
-  const [includeRingSizer, setIncludeRingSizer] = useState(false);
 
   const sizeChart = [
     { us: '5', uk: 'J', diameter: '15.7mm', circumference: '49.3mm' },
@@ -108,6 +107,26 @@ function ProductDetail() {
         '30 Grams.',
         'Solid Gold available upon request'
       ]
+    },
+    sizer: {
+      id: 'sizer',
+      name: 'Ring Sizer',
+      price: 'Free + Postage',
+      description: 'Not sure of your ring size? Order our professional ring sizer tool.',
+      images: [
+        '/assets/placeholder.jpg'
+      ],
+      background: '/assets/backgrounds/eye_background.gif',
+      alt: 'Ring Sizer Tool',
+      type: 'sizer',
+      details: [
+        'Professional ring sizing tool',
+        'Measures US sizes 1-17',
+        'Includes UK size conversions',
+        'Free - just pay postage',
+        'Fast delivery'
+      ],
+      isSizer: true
     }
   };
 
@@ -121,8 +140,14 @@ function ProductDetail() {
 
   if (!product) return null;
 
-  const currentImages = selectedMetal === 'gold' ? product.goldImages : product.silverImages;
-  const current3dAnimation = selectedMetal === 'gold' ? product.goldAnimation3d : product.silverAnimation3d;
+  // Ring sizer uses simple images array, rings use metal-specific images
+  const currentImages = product.isSizer
+    ? product.images
+    : (selectedMetal === 'gold' ? product.goldImages : product.silverImages);
+
+  const current3dAnimation = product.isSizer
+    ? null
+    : (selectedMetal === 'gold' ? product.goldAnimation3d : product.silverAnimation3d);
 
   // If 3D animation exists, it's at index 0, static images start at index 1
   // If no 3D animation, static images start at index 0
@@ -246,7 +271,8 @@ function ProductDetail() {
             <h1 className="product-title">{product.name}</h1>
             <p className="product-price">{product.price}</p>
 
-            {/* Metal Selector */}
+            {/* Metal Selector - Only for rings */}
+            {!product.isSizer && (
             <div className="metal-selector">
               <label className="selector-label">Select Material</label>
               <div className="metal-buttons">
@@ -276,8 +302,10 @@ function ProductDetail() {
                 </motion.button>
               </div>
             </div>
+            )}
 
-            {/* Size Selector */}
+            {/* Size Selector - Only for rings */}
+            {!product.isSizer && (
             <div className="size-selector">
               <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '1rem' }}>
                 <label className="selector-label" style={{ marginBottom: 0 }}>Select Size</label>
@@ -355,32 +383,7 @@ function ProductDetail() {
                 ))}
               </div>
             </div>
-
-            {/* Ring Sizer Option */}
-            <motion.div
-              className="ring-sizer-option"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-            >
-              <label className="ring-sizer-checkbox">
-                <input
-                  type="checkbox"
-                  checked={includeRingSizer}
-                  onChange={(e) => setIncludeRingSizer(e.target.checked)}
-                  className="ring-sizer-input"
-                />
-                <span className="checkbox-custom"></span>
-                <span className="checkbox-label-container">
-                  <span className="checkbox-label">
-                    Add Ring Sizer <span style={{ color: '#8faf70' }}>(+$5)</span>
-                  </span>
-                  <span className="checkbox-sublabel">
-                    Not sure of your size? We'll include a sizing tool
-                  </span>
-                </span>
-              </label>
-            </motion.div>
+            )}
 
             {/* Action Buttons */}
             <motion.div
@@ -392,7 +395,7 @@ function ProductDetail() {
               <RockButton
                 variant="cream"
                 size="md"
-                onClick={() => console.log('Buy Now clicked', { metal: selectedMetal, size: selectedSize, ringSizer: includeRingSizer })}
+                onClick={() => console.log('Buy Now clicked', { metal: selectedMetal, size: selectedSize })}
               >
                 Buy Now
               </RockButton>
