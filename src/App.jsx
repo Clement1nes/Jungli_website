@@ -30,7 +30,7 @@ function AppContent() {
         <header className="main-header" style={{ opacity: headerOpacity }}>
           <div className="header-logo">
             <Link to="/home">
-              <img src="/assets/newlogo.png" alt="Jungli Logo" className="site-logo" />
+              <img src="/assets/CREAM_FULL.svg" alt="Jungli Logo" className="site-logo" />
             </Link>
           </div>
           <div className="nav-corner" style={{ position: 'absolute', top: '1rem', right: '2rem', display: 'flex', alignItems: 'center', gap: '2.5rem' }}>

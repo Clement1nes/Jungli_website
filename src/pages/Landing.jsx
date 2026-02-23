@@ -30,7 +30,7 @@ function Landing() {
           style={{ marginBottom: '3rem' }}
         >
           <img
-            src="/assets/newlogo.png"
+            src="/assets/CREAM_FULL.svg"
             alt="Jungli Logo"
             style={{ height: '280px', width: 'auto' }}
           />
