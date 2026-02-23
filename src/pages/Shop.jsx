@@ -26,13 +26,14 @@ function Shop() {
 
   if (loading) {
     return (
-      <main>
+      <main style={{ background: '#0A0A0A', minHeight: '100vh', paddingTop: '120px' }}>
         <section className="content-section">
           <div style={{ padding: '2rem', textAlign: 'center' }}>
             <h1 style={{
               fontFamily: "'Evil Green Plant', serif",
               fontSize: '3rem',
-              fontWeight: 'normal'
+              fontWeight: 'normal',
+              color: '#FFF5DA'
             }}>Loading products...</h1>
           </div>
         </section>
@@ -41,16 +42,17 @@ function Shop() {
   }
 
   return (
-    <main>
+    <main style={{ background: '#0A0A0A', minHeight: '100vh', paddingTop: '120px' }}>
       <section className="content-section">
-        <div style={{ padding: '2rem' }}>
+        <div style={{ padding: '2rem', maxWidth: '1400px', margin: '0 auto' }}>
           <h1 style={{
             fontFamily: "'Evil Green Plant', serif",
             fontSize: '3rem',
             fontWeight: 'normal',
             textAlign: 'center',
             marginBottom: '3rem',
-            transform: 'rotate(-1deg)'
+            transform: 'rotate(-1deg)',
+            color: '#FFF5DA'
           }}>Shop</h1>
 
           <div style={{
@@ -69,9 +71,10 @@ function Shop() {
                 <motion.div
                   key={product.id}
                   style={{
-                    border: '2px solid #222',
+                    border: '2px solid rgba(255, 245, 218, 0.2)',
                     padding: '1.5rem',
-                    backgroundColor: '#F8F5F2',
+                    backgroundColor: 'rgba(255, 245, 218, 0.03)',
+                    backdropFilter: 'blur(10px)',
                     transform: `rotate(${Math.random() * 4 - 2}deg)`
                   }}
                   initial={{ opacity: 0, y: 50, rotate: Math.random() * 10 - 5 }}
@@ -86,12 +89,13 @@ function Shop() {
                   <div style={{
                     width: '100%',
                     height: '250px',
-                    backgroundColor: '#fff',
+                    backgroundColor: 'rgba(10, 10, 10, 0.5)',
                     marginBottom: '1rem',
                     overflow: 'hidden',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    border: '1px solid rgba(255, 245, 218, 0.1)'
                   }}>
                     <img
                       src={imageUrl}
@@ -108,14 +112,15 @@ function Shop() {
                     fontFamily: "'Evil Green Plant', serif",
                     fontSize: '1.5rem',
                     fontWeight: 'normal',
-                    marginBottom: '0.5rem'
+                    marginBottom: '0.5rem',
+                    color: '#FFF5DA'
                   }}>{product.title}</h3>
 
                   <p style={{
                     fontFamily: "'Evil Green Plant', serif",
                     fontSize: '1.2rem',
                     marginBottom: '1rem',
-                    color: '#666'
+                    color: '#D4AF37'
                   }}>{currencyCode === 'USD' ? '$' : ''}{price}</p>
 
                   <div style={{ display: 'flex', gap: '0.5rem', flexDirection: 'column' }}>
@@ -132,8 +137,8 @@ function Shop() {
                         fontFamily: "'Evil Green Plant', serif",
                         fontSize: '1rem',
                         padding: '0.8rem',
-                        backgroundColor: '#222',
-                        color: '#F8F5F2',
+                        backgroundColor: '#8faf70',
+                        color: '#0A0A0A',
                         border: 'none',
                         cursor: 'pointer',
                         fontWeight: 'normal',
@@ -160,16 +165,17 @@ function Shop() {
                         fontSize: '1rem',
                         padding: '0.8rem',
                         backgroundColor: 'transparent',
-                        color: '#222',
-                        border: '2px solid #222',
+                        color: '#FFF5DA',
+                        border: '2px solid rgba(255, 245, 218, 0.3)',
                         cursor: 'pointer',
                         fontWeight: 'normal'
                       }}
                       whileHover={{
                         scale: 1.05,
                         rotate: -1,
-                        backgroundColor: '#222',
-                        color: '#F8F5F2'
+                        backgroundColor: 'rgba(255, 245, 218, 0.1)',
+                        borderColor: '#8faf70',
+                        color: '#8faf70'
                       }}
                       whileTap={{ scale: 0.95 }}
                     >
