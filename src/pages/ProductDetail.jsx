@@ -142,8 +142,8 @@ function ProductDetail() {
 
   // Ring sizer uses simple images array, rings use metal-specific images
   const currentImages = product.isSizer
-    ? product.images
-    : (selectedMetal === 'gold' ? product.goldImages : product.silverImages);
+    ? (product.images || [])
+    : (selectedMetal === 'gold' ? (product.goldImages || []) : (product.silverImages || []));
 
   const current3dAnimation = product.isSizer
     ? null
@@ -153,7 +153,7 @@ function ProductDetail() {
   // If no 3D animation, static images start at index 0
   const currentImage = current3dAnimation
     ? (currentImageIndex === 0 ? current3dAnimation : currentImages[currentImageIndex - 1])
-    : currentImages[currentImageIndex];
+    : (currentImages[currentImageIndex] || '/assets/placeholder.jpg');
 
   const totalImages = currentImages.length + (current3dAnimation ? 1 : 0);
 
@@ -222,7 +222,7 @@ function ProductDetail() {
           </motion.div>
 
           {/* Thumbnail Strip */}
-          {currentImages.length >= 1 && (
+          {currentImages && currentImages.length >= 1 && (
             <div className="gallery-thumbnails">
               {/* 3D Animation Thumbnail FIRST - only show if exists for current metal */}
               {current3dAnimation && (
