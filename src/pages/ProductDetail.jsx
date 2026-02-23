@@ -16,15 +16,16 @@ function ProductDetail() {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [allProducts, setAllProducts] = useState([]);
+  const [includeRingSizer, setIncludeRingSizer] = useState(false);
   const { buyNow } = useShopify();
 
   const sizeChart = [
-    { us: '5', diameter: '15.7mm', circumference: '49.3mm' },
-    { us: '6', diameter: '16.5mm', circumference: '51.8mm' },
-    { us: '7', diameter: '17.3mm', circumference: '54.4mm' },
-    { us: '8', diameter: '18.2mm', circumference: '57.1mm' },
-    { us: '9', diameter: '19.0mm', circumference: '59.7mm' },
-    { us: '10', diameter: '19.8mm', circumference: '62.2mm' },
+    { us: '5', uk: 'J', diameter: '15.7mm', circumference: '49.3mm' },
+    { us: '6', uk: 'L', diameter: '16.5mm', circumference: '51.8mm' },
+    { us: '7', uk: 'N', diameter: '17.3mm', circumference: '54.4mm' },
+    { us: '8', uk: 'P', diameter: '18.2mm', circumference: '57.1mm' },
+    { us: '9', uk: 'R', diameter: '19.0mm', circumference: '59.7mm' },
+    { us: '10', uk: 'T', diameter: '19.8mm', circumference: '62.2mm' },
   ];
 
   useEffect(() => {
@@ -248,7 +249,7 @@ function ProductDetail() {
                   <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: "'Evil Green Plant', serif" }}>
                     <thead>
                       <tr>
-                        {['US Size', 'Diameter', 'Circumference'].map(h => (
+                        {['US Size', 'UK Size', 'Diameter', 'Circumference'].map(h => (
                           <th key={h} style={{ textAlign: 'left', fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.12em', color: 'rgba(255,245,218,0.45)', paddingBottom: '0.6rem', fontWeight: 'normal' }}>{h}</th>
                         ))}
                       </tr>
@@ -261,6 +262,7 @@ function ProductDetail() {
                           onClick={() => { setSelectedSize(row.us); setShowSizeChart(false); }}
                         >
                           <td style={{ padding: '0.5rem 0', fontSize: '0.95rem', color: selectedSize === row.us ? '#8faf70' : 'rgba(255,245,218,0.85)' }}>{row.us}</td>
+                          <td style={{ padding: '0.5rem 0', fontSize: '0.95rem', color: selectedSize === row.us ? '#8faf70' : 'rgba(255,245,218,0.85)' }}>{row.uk}</td>
                           <td style={{ padding: '0.5rem 0', fontSize: '0.85rem', color: 'rgba(255,245,218,0.6)' }}>{row.diameter}</td>
                           <td style={{ padding: '0.5rem 0', fontSize: '0.85rem', color: 'rgba(255,245,218,0.6)' }}>{row.circumference}</td>
                         </tr>
@@ -274,19 +276,45 @@ function ProductDetail() {
               )}
 
               <div className="size-buttons">
-                {[5, 6, 7, 8, 9, 10].map(size => (
+                {sizeChart.map(size => (
                   <motion.button
-                    key={size}
-                    className={`size-option ${selectedSize === size.toString() ? 'active' : ''}`}
-                    onClick={() => setSelectedSize(size.toString())}
+                    key={size.us}
+                    className={`size-option ${selectedSize === size.us ? 'active' : ''}`}
+                    onClick={() => setSelectedSize(size.us)}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    {size}
+                    {size.us} <span style={{ fontSize: '0.85em', opacity: 0.7 }}>({size.uk})</span>
                   </motion.button>
                 ))}
               </div>
             </div>
+
+            {/* Ring Sizer Option */}
+            <motion.div
+              className="ring-sizer-option"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+            >
+              <label className="ring-sizer-checkbox">
+                <input
+                  type="checkbox"
+                  checked={includeRingSizer}
+                  onChange={(e) => setIncludeRingSizer(e.target.checked)}
+                  className="ring-sizer-input"
+                />
+                <span className="checkbox-custom"></span>
+                <span className="checkbox-label-container">
+                  <span className="checkbox-label">
+                    Add Ring Sizer <span style={{ color: '#8faf70' }}>(+$5)</span>
+                  </span>
+                  <span className="checkbox-sublabel">
+                    Not sure of your size? We'll include a sizing tool
+                  </span>
+                </span>
+              </label>
+            </motion.div>
 
             {/* Action Buttons */}
             <motion.div
@@ -300,6 +328,7 @@ function ProductDetail() {
                 size="md"
                 onClick={async () => {
                   try {
+                    console.log('Buy Now clicked', { metal: selectedMetal, size: selectedSize, ringSizer: includeRingSizer });
                     await buyNow(selectedVariant.id, 1);
                   } catch (error) {
                     console.error('Error purchasing:', error);

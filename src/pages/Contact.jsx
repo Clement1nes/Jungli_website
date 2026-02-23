@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useWindowSize } from '../hooks/useWindowSize';
 
 function Contact() {
+  const { width } = useWindowSize();
+  const isMobile = width <= 640;
+  const isSmallMobile = width <= 390;
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -26,14 +31,14 @@ function Contact() {
   return (
     <main style={{ background: '#3d3428', minHeight: '100vh', paddingTop: '120px' }}>
       <section className="content-section">
-        <div style={{ maxWidth: '900px', margin: '0 auto', padding: '2rem' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', padding: isSmallMobile ? '1rem' : isMobile ? '1.5rem' : '2rem' }}>
           <motion.h1
             style={{
               fontFamily: "'Evil Green Plant', serif",
-              fontSize: '3.5rem',
+              fontSize: isSmallMobile ? '2rem' : isMobile ? '2.5rem' : '3.5rem',
               fontWeight: 'normal',
               textAlign: 'center',
-              marginBottom: '2rem',
+              marginBottom: isMobile ? '1.5rem' : '2rem',
               transform: 'rotate(-1deg)',
               color: '#F7F4ED'
             }}
@@ -47,9 +52,9 @@ function Contact() {
           <motion.p
             style={{
               fontFamily: "'Evil Green Plant', serif",
-              fontSize: '1.3rem',
+              fontSize: isMobile ? '1.1rem' : '1.3rem',
               textAlign: 'center',
-              marginBottom: '3rem',
+              marginBottom: isMobile ? '2rem' : '3rem',
               color: '#E8E0D0'
             }}
             initial={{ opacity: 0 }}
@@ -61,9 +66,9 @@ function Contact() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '3rem',
-            marginBottom: '3rem'
+            gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+            gap: isMobile ? '2rem' : '3rem',
+            marginBottom: isMobile ? '2rem' : '3rem'
           }}>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -72,7 +77,7 @@ function Contact() {
             >
               <h2 style={{
                 fontFamily: "'Evil Green Plant', serif",
-                fontSize: '2rem',
+                fontSize: isMobile ? '1.5rem' : '2rem',
                 fontWeight: 'normal',
                 marginBottom: '1.5rem',
                 transform: 'rotate(1deg)',
@@ -81,7 +86,7 @@ function Contact() {
                 Contact Information
               </h2>
 
-              <div style={{ fontFamily: "'Evil Green Plant', serif", fontSize: '1.2rem', lineHeight: '2.5', color: '#E8E0D0' }}>
+              <div style={{ fontFamily: "'Evil Green Plant', serif", fontSize: isMobile ? '1rem' : '1.2rem', lineHeight: isMobile ? '2' : '2.5', color: '#E8E0D0' }}>
                 <p style={{ marginBottom: '1rem' }}>
                   <strong>Email:</strong><br />
                   <a href="mailto:hello@jungli.com" style={{ color: '#4A7C2C', textDecoration: 'underline' }}>
@@ -107,7 +112,7 @@ function Contact() {
               onSubmit={handleSubmit}
               style={{
                 border: '2px solid #4A7C2C',
-                padding: '2rem',
+                padding: isMobile ? '1.5rem' : '2rem',
                 backgroundColor: '#2a2418',
                 transform: 'rotate(-1deg)'
               }}
@@ -119,7 +124,7 @@ function Contact() {
               <div style={{ marginBottom: '1.5rem' }}>
                 <label style={{
                   fontFamily: "'Evil Green Plant', serif",
-                  fontSize: '1.1rem',
+                  fontSize: isMobile ? '1rem' : '1.1rem',
                   display: 'block',
                   marginBottom: '0.5rem',
                   color: '#E8E0D0'
@@ -147,9 +152,10 @@ function Contact() {
               <div style={{ marginBottom: '1.5rem' }}>
                 <label style={{
                   fontFamily: "'Evil Green Plant', serif",
-                  fontSize: '1.1rem',
+                  fontSize: isMobile ? '1rem' : '1.1rem',
                   display: 'block',
-                  marginBottom: '0.5rem'
+                  marginBottom: '0.5rem',
+                  color: '#E8E0D0'
                 }}>
                   Email
                 </label>
@@ -174,9 +180,10 @@ function Contact() {
               <div style={{ marginBottom: '1.5rem' }}>
                 <label style={{
                   fontFamily: "'Evil Green Plant', serif",
-                  fontSize: '1.1rem',
+                  fontSize: isMobile ? '1rem' : '1.1rem',
                   display: 'block',
-                  marginBottom: '0.5rem'
+                  marginBottom: '0.5rem',
+                  color: '#E8E0D0'
                 }}>
                   Subject
                 </label>
@@ -201,9 +208,10 @@ function Contact() {
               <div style={{ marginBottom: '1.5rem' }}>
                 <label style={{
                   fontFamily: "'Evil Green Plant', serif",
-                  fontSize: '1.1rem',
+                  fontSize: isMobile ? '1rem' : '1.1rem',
                   display: 'block',
-                  marginBottom: '0.5rem'
+                  marginBottom: '0.5rem',
+                  color: '#E8E0D0'
                 }}>
                   Message
                 </label>

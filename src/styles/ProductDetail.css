@@ -432,6 +432,86 @@
     0 0 8px rgba(74, 124, 44, 0.3);
 }
 
+/* Ring Sizer Option */
+.ring-sizer-option {
+  margin: 2rem 0;
+  padding: 1.5rem 0;
+}
+
+.ring-sizer-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ring-sizer-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkbox-custom {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border: 2px solid rgba(255, 245, 218, 0.3);
+  background: transparent;
+  position: relative;
+  transition: all 0.3s ease;
+  margin-top: 0.2rem;
+}
+
+.checkbox-custom::after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #8faf70;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.ring-sizer-input:checked ~ .checkbox-custom {
+  background: rgba(143, 175, 112, 0.1);
+  border-color: #8faf70;
+  box-shadow: 0 0 8px rgba(143, 175, 112, 0.3);
+}
+
+.ring-sizer-input:checked ~ .checkbox-custom::after {
+  display: block;
+}
+
+.ring-sizer-checkbox:hover .checkbox-custom {
+  border-color: rgba(143, 175, 112, 0.6);
+}
+
+.checkbox-label-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.checkbox-label {
+  font-family: 'Evil Green Plant', serif;
+  font-size: 1.05rem;
+  color: rgba(255, 245, 218, 0.9);
+  letter-spacing: 0.02em;
+  font-weight: normal;
+}
+
+.checkbox-sublabel {
+  font-family: 'Evil Green Plant', serif;
+  font-size: 0.85rem;
+  color: rgba(255, 245, 218, 0.5);
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
+
 /* Product Details */
 .product-details {
   margin: 0 0 2.5rem 0;
