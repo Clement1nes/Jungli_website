@@ -450,7 +450,11 @@ function ProductDetail() {
               >
                 <div className="other-product-image">
                   <img
-                    src={selectedMetal === 'gold' ? otherProduct.goldImages[0] : otherProduct.silverImages[0]}
+                    src={
+                      otherProduct.isSizer
+                        ? otherProduct.images[0]
+                        : (selectedMetal === 'gold' ? otherProduct.goldImages[0] : otherProduct.silverImages[0])
+                    }
                     alt={otherProduct.name}
                   />
                 </div>
