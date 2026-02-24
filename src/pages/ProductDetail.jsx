@@ -395,7 +395,14 @@ function ProductDetail() {
               <RockButton
                 variant="cream"
                 size="md"
-                onClick={() => console.log('Buy Now clicked', { metal: selectedMetal, size: selectedSize })}
+                onClick={() => {
+                  const subject = `Order: ${product.name}`;
+                  const body = product.isSizer
+                    ? `Hi,\n\nI would like to order:\n\nProduct: ${product.name}\nPrice: ${product.price}\n\nPlease send payment and shipping details.\n\nThank you!`
+                    : `Hi,\n\nI would like to order:\n\nProduct: ${product.name}\nMaterial: ${selectedMetal === 'gold' ? '14K Gold' : 'Sterling Silver'}\nSize: US ${selectedSize} (UK ${sizeChart.find(s => s.us === selectedSize)?.uk})\nPrice: ${product.price}\n\nPlease send payment and shipping details.\n\nThank you!`;
+
+                  window.location.href = `mailto:hello@jungli.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                }}
               >
                 Buy Now
               </RockButton>
