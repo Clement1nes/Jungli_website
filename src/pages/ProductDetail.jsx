@@ -3,10 +3,12 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import '../styles/ProductDetail.css';
 import { RockButton } from '../components/RockButton';
+import { useShopify } from '../context/ShopifyContext';
 
 function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { buyNow } = useShopify();
   const [selectedMetal, setSelectedMetal] = useState('gold');
   const [selectedSize, setSelectedSize] = useState('7');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -395,13 +397,24 @@ function ProductDetail() {
               <RockButton
                 variant="cream"
                 size="md"
-                onClick={() => {
-                  const subject = `Order: ${product.name}`;
-                  const body = product.isSizer
-                    ? `Hi,\n\nI would like to order:\n\nProduct: ${product.name}\nPrice: ${product.price}\n\nPlease send payment and shipping details.\n\nThank you!`
-                    : `Hi,\n\nI would like to order:\n\nProduct: ${product.name}\nMaterial: ${selectedMetal === 'gold' ? '14K Gold' : 'Sterling Silver'}\nSize: US ${selectedSize} (UK ${sizeChart.find(s => s.us === selectedSize)?.uk})\nPrice: ${product.price}\n\nPlease send payment and shipping details.\n\nThank you!`;
+                onClick={async () => {
+                  if (product.shopifyVariantId) {
+                    // Use Shopify checkout
+                    try {
+                      await buyNow(product.shopifyVariantId, 1);
+                    } catch (error) {
+                      console.error('Error with Shopify checkout:', error);
+                      alert('Error processing checkout. Please try again or contact us.');
+                    }
+                  } else {
+                    // Fallback to email for products without Shopify integration
+                    const subject = `Order: ${product.name}`;
+                    const body = product.isSizer
+                      ? `Hi,\n\nI would like to order:\n\nProduct: ${product.name}\nPrice: ${product.price}\n\nPlease send payment and shipping details.\n\nThank you!`
+                      : `Hi,\n\nI would like to order:\n\nProduct: ${product.name}\nMaterial: ${selectedMetal === 'gold' ? '14K Gold' : 'Sterling Silver'}\nSize: US ${selectedSize} (UK ${sizeChart.find(s => s.us === selectedSize)?.uk})\nPrice: ${product.price}\n\nPlease send payment and shipping details.\n\nThank you!`;
 
-                  window.location.href = `mailto:hello@jungli.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                    window.location.href = `mailto:hello@jungli.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                  }
                 }}
               >
                 Buy Now
