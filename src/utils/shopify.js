@@ -31,7 +31,12 @@ export const fetchProducts = async () => {
 // Fetch a single product by ID
 export const fetchProductById = async (productId) => {
   try {
-    const product = await client.product.fetch(productId);
+    // Convert numeric ID to GID format if needed
+    const gid = productId.startsWith('gid://')
+      ? productId
+      : `gid://shopify/Product/${productId}`;
+
+    const product = await client.product.fetch(gid);
     return product;
   } catch (error) {
     console.error('Error fetching product:', error);

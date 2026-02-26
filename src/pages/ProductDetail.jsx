@@ -458,12 +458,26 @@ function ProductDetail() {
                 variant="cream"
                 size="md"
                 onClick={async () => {
-                  if (shopifyProduct && product.shopifyProductId) {
-                    // Use Shopify checkout - find matching variant
+                  // Try to fetch and checkout via Shopify
+                  if (product.shopifyProductId) {
                     try {
+                      console.log('Attempting Shopify checkout...');
+                      console.log('Product ID:', product.shopifyProductId);
+                      console.log('Selected metal:', selectedMetal);
+                      console.log('Selected size:', selectedSize);
+
+                      // Fetch product if not already loaded
+                      const productData = shopifyProduct || await fetchProductById(product.shopifyProductId);
+                      console.log('Shopify product data:', productData);
+
+                      if (!productData) {
+                        throw new Error('Could not load product from Shopify');
+                      }
+
                       // Find the variant that matches the selected metal and size
-                      const matchingVariant = shopifyProduct.variants.find(variant => {
+                      const matchingVariant = productData.variants.find(variant => {
                         const variantTitle = variant.title.toLowerCase();
+                        console.log('Checking variant:', variantTitle);
                         const metalMatch = variantTitle.includes(selectedMetal);
                         const sizeMatch = variantTitle.includes(`size ${selectedSize}`) ||
                                         variantTitle.includes(`us ${selectedSize}`) ||
@@ -471,20 +485,22 @@ function ProductDetail() {
                         return metalMatch && sizeMatch;
                       });
 
+                      console.log('Matching variant:', matchingVariant);
+
                       if (matchingVariant) {
                         await buyNow(matchingVariant.id, 1);
                       } else {
-                        // If no matching variant, use first available or show error
+                        // If no matching variant, use first available
                         console.warn('No matching variant found, using first available');
-                        if (shopifyProduct.variants.length > 0) {
-                          await buyNow(shopifyProduct.variants[0].id, 1);
+                        if (productData.variants.length > 0) {
+                          await buyNow(productData.variants[0].id, 1);
                         } else {
                           throw new Error('No variants available');
                         }
                       }
                     } catch (error) {
                       console.error('Error with Shopify checkout:', error);
-                      alert('Error processing checkout. Please try again or contact us.');
+                      alert(`Error processing checkout: ${error.message}. Please try again or contact us.`);
                     }
                   } else {
                     // Fallback to email for products without Shopify integration
