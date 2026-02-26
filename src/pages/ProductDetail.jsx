@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import '../styles/ProductDetail.css';
 import { RockButton } from '../components/RockButton';
 import { useShopify } from '../context/ShopifyContext';
+import { fetchProductById } from '../utils/shopify';
 
 function ProductDetail() {
   const { id } = useParams();
@@ -13,6 +14,7 @@ function ProductDetail() {
   const [selectedSize, setSelectedSize] = useState('7');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showSizeChart, setShowSizeChart] = useState(false);
+  const [shopifyProduct, setShopifyProduct] = useState(null);
 
   const sizeChart = [
     { us: '5', uk: 'J', diameter: '15.7mm', circumference: '49.3mm' },
@@ -29,6 +31,7 @@ function ProductDetail() {
       name: 'Eye Ring',
       price: '$140',
       description: 'We look with Two Eyes but see with Three…',
+      shopifyProductId: '8128692388158',
       goldImages: [
         '/assets/Highdef/eye face gold.png',
         '/assets/Highdef/Gold face front.png',
@@ -58,6 +61,7 @@ function ProductDetail() {
       name: 'Star Ring',
       price: '$160',
       description: 'When you Shoot for the stars remember we were made from them.',
+      shopifyProductId: '12277117354302',
       goldImages: [
         '/assets/Highdef/gold star front.png',
         '/assets/Highdef/gold forward star.png',
@@ -87,6 +91,7 @@ function ProductDetail() {
       name: 'Foot Ring',
       price: '$150',
       description: 'A reminder of the steps taken and the steps to come…',
+      shopifyProductId: '8128703234366',
       goldImages: [
         '/assets/Highdef/gold foot up.png',
         '/assets/Highdef/gold foot main.png',
@@ -115,6 +120,7 @@ function ProductDetail() {
       name: 'Ring Sizer',
       price: 'Free + Postage',
       description: 'Not sure of your ring size? Order our professional ring sizer tool.',
+      shopifyProductId: '12277121548606',
       images: [
         '/assets/placeholder.jpg'
       ],
@@ -139,6 +145,21 @@ function ProductDetail() {
       navigate('/');
     }
   }, [product, navigate]);
+
+  // Fetch Shopify product data if shopifyProductId exists
+  useEffect(() => {
+    const loadShopifyProduct = async () => {
+      if (product?.shopifyProductId) {
+        try {
+          const shopifyData = await fetchProductById(product.shopifyProductId);
+          setShopifyProduct(shopifyData);
+        } catch (error) {
+          console.error('Error loading Shopify product:', error);
+        }
+      }
+    };
+    loadShopifyProduct();
+  }, [product]);
 
   if (!product) return null;
 
@@ -384,6 +405,45 @@ function ProductDetail() {
                   </motion.button>
                 ))}
               </div>
+
+              <motion.div
+                style={{
+                  marginTop: '1rem',
+                  textAlign: 'center'
+                }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+              >
+                <button
+                  onClick={async () => {
+                    try {
+                      const sizerProduct = await fetchProductById('12277121548606');
+                      if (sizerProduct && sizerProduct.variants.length > 0) {
+                        await buyNow(sizerProduct.variants[0].id, 1);
+                      }
+                    } catch (error) {
+                      console.error('Error ordering ring sizer:', error);
+                      alert('Error processing ring sizer order. Please try again.');
+                    }
+                  }}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontFamily: "'Evil Green Plant', serif",
+                    fontSize: '0.85rem',
+                    color: 'rgba(255, 245, 218, 0.6)',
+                    textDecoration: 'underline',
+                    padding: '0.5rem',
+                    transition: 'color 0.2s'
+                  }}
+                  onMouseEnter={(e) => e.target.style.color = '#8faf70'}
+                  onMouseLeave={(e) => e.target.style.color = 'rgba(255, 245, 218, 0.6)'}
+                >
+                  I don't know my size - Order a free ring sizer
+                </button>
+              </motion.div>
             </div>
             )}
 
@@ -398,10 +458,30 @@ function ProductDetail() {
                 variant="cream"
                 size="md"
                 onClick={async () => {
-                  if (product.shopifyVariantId) {
-                    // Use Shopify checkout
+                  if (shopifyProduct && product.shopifyProductId) {
+                    // Use Shopify checkout - find matching variant
                     try {
-                      await buyNow(product.shopifyVariantId, 1);
+                      // Find the variant that matches the selected metal and size
+                      const matchingVariant = shopifyProduct.variants.find(variant => {
+                        const variantTitle = variant.title.toLowerCase();
+                        const metalMatch = variantTitle.includes(selectedMetal);
+                        const sizeMatch = variantTitle.includes(`size ${selectedSize}`) ||
+                                        variantTitle.includes(`us ${selectedSize}`) ||
+                                        variantTitle.includes(`${selectedSize} /`);
+                        return metalMatch && sizeMatch;
+                      });
+
+                      if (matchingVariant) {
+                        await buyNow(matchingVariant.id, 1);
+                      } else {
+                        // If no matching variant, use first available or show error
+                        console.warn('No matching variant found, using first available');
+                        if (shopifyProduct.variants.length > 0) {
+                          await buyNow(shopifyProduct.variants[0].id, 1);
+                        } else {
+                          throw new Error('No variants available');
+                        }
+                      }
                     } catch (error) {
                       console.error('Error with Shopify checkout:', error);
                       alert('Error processing checkout. Please try again or contact us.');
@@ -452,7 +532,7 @@ function ProductDetail() {
       >
         <div className="other-products-grid">
           {Object.values(products)
-            .filter(p => p.id !== id)
+            .filter(p => p.id !== id && !p.isSizer)
             .map((otherProduct, index) => (
               <motion.div
                 key={otherProduct.id}

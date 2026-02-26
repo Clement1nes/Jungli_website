@@ -23,12 +23,6 @@ function Shop() {
       name: 'Foot Ring',
       price: '$150',
       image: '/assets/Highdef/gold foot up.png'
-    },
-    {
-      id: 'sizer',
-      name: 'Ring Sizer',
-      price: 'Free + Postage',
-      image: '/assets/placeholder.jpg'
     }
   ];
 
