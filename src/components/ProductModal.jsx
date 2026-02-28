@@ -138,13 +138,13 @@ function ProductModal({ product, isOpen, onClose }) {
                       className={`metal-button ${selectedMetal === 'gold' ? 'active' : ''}`}
                       onClick={() => setSelectedMetal('gold')}
                     >
-                      Gold
+                      18K Gold Plated
                     </button>
                     <button
                       className={`metal-button ${selectedMetal === 'silver' ? 'active' : ''}`}
                       onClick={() => setSelectedMetal('silver')}
                     >
-                      Silver
+                      Sterling Silver
                     </button>
                   </motion.div>
 

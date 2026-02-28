@@ -64,7 +64,7 @@ function About() {
               color: '#E8E0D0',
               fontStyle: 'italic'
             }}>
-              Jungli: animals and plants that live or grow in the wild.
+              Jungli: Animals and plants that live or grow in the wild.
             </p>
 
             <p style={{
@@ -73,7 +73,25 @@ function About() {
               marginBottom: '1.5rem',
               color: '#E8E0D0'
             }}>
-              Jungli was born during the 2020 Lockdown. From a desire to create Jewellery I wanted to wear. Born and raised in London, my Jungle is a concrete one. Taking inspiration directly from my city, my spirituality and everyday parts of us being human.
+              Jungli was born from a desire to capture iconography that has meaning. Every piece has been made by hand over the years with the intention of creating artefacts that speak to our collective experience of being human.
+            </p>
+
+            <p style={{
+              fontFamily: "'Evil Green Plant', serif",
+              fontSize: '1.3rem',
+              marginBottom: '1.5rem',
+              color: '#E8E0D0'
+            }}>
+              Born and Raised in London; my jungle is a concrete one. I take inspiration directly from my city, my spirituality, travels and the everyday interactions with the world around me.
+            </p>
+
+            <p style={{
+              fontFamily: "'Evil Green Plant', serif",
+              fontSize: '1.3rem',
+              marginBottom: '1.5rem',
+              color: '#E8E0D0'
+            }}>
+              Jewellery found me.
             </p>
 
             <p style={{
@@ -82,7 +100,7 @@ function About() {
               marginBottom: '2.5rem',
               color: '#E8E0D0'
             }}>
-              I've created every piece by hand over the past 5 years with the intention of making artefacts that speak to our experience of being on this beautiful planet.
+              I hope my jewellery finds you.
             </p>
 
             <p style={{

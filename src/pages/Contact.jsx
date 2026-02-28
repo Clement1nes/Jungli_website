@@ -65,49 +65,9 @@ function Contact() {
           </motion.p>
 
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-            gap: isMobile ? '2rem' : '3rem',
-            marginBottom: isMobile ? '2rem' : '3rem'
+            maxWidth: '700px',
+            margin: '0 auto'
           }}>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <h2 style={{
-                fontFamily: "'Evil Green Plant', serif",
-                fontSize: isMobile ? '1.5rem' : '2rem',
-                fontWeight: 'normal',
-                marginBottom: '1.5rem',
-                transform: 'rotate(1deg)',
-                color: '#F7F4ED'
-              }}>
-                Contact Information
-              </h2>
-
-              <div style={{ fontFamily: "'Evil Green Plant', serif", fontSize: isMobile ? '1rem' : '1.2rem', lineHeight: isMobile ? '2' : '2.5', color: '#E8E0D0' }}>
-                <p style={{ marginBottom: '1rem' }}>
-                  <strong>Email:</strong><br />
-                  <a href="mailto:hello@jungli.com" style={{ color: '#4A7C2C', textDecoration: 'underline' }}>
-                    hello@jungli.com
-                  </a>
-                </p>
-
-                <p style={{ marginBottom: '1rem' }}>
-                  <strong>Studio Hours:</strong><br />
-                  Monday - Friday: 9am - 5pm<br />
-                  Saturday: By appointment<br />
-                  Sunday: Closed
-                </p>
-
-                <p>
-                  <strong>Response Time:</strong><br />
-                  We typically respond within 24-48 hours
-                </p>
-              </div>
-            </motion.div>
-
             <motion.form
               onSubmit={handleSubmit}
               style={{
