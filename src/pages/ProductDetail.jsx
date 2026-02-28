@@ -31,7 +31,13 @@ function ProductDetail() {
       name: 'Third Eye Ring',
       price: '£140',
       description: 'We look with Two Eyes but see with Three…',
-      aboutTheRing: 'In my previous life I was enamored with idea of spiritual awakening. One day, during a deep meditation a person appeared before me… My eyes were closed but the person opposite me was clear as day. They were cross-legged, also meditating. It looked as though they had not moved for centuries. They were wearing a turmeric yellow robe and a purple crystal hung from their neck. Their head was bald and had a deep crease running from the centre of their forehead to the back of their skull. I was about to call out and had barely opened my mouth when their head split open to reveal an Eye embedded in their cranium. They spoke. "Two eyes to look, One eye to see. Three eyes together will set you free"…',
+      aboutTheRing: [
+        'In my previous life I was enamored with idea of spiritual awakening. One day, during a deep meditation a person appeared before me…',
+        'My eyes were closed but the person opposite me was clear as day. They were cross-legged, also meditating. It looked as though they had not moved for centuries. They were wearing a turmeric yellow robe and a purple crystal hung from their neck. Their head was bald and had a deep crease running from the centre of their forehead to the back of their skull.',
+        'I was about to call out and had barely opened my mouth when their head split open to reveal an Eye embedded in their cranium.',
+        'They spoke.',
+        '"Two eyes to look, One eye to see. Three eyes together will set you free"…'
+      ],
       shopifyProductId: '8128692388158',
       goldImages: [
         '/assets/Highdef/eye face gold.png',
@@ -62,7 +68,12 @@ function ProductDetail() {
       name: 'Shooting Star Ring',
       price: '£160',
       description: 'When you Shoot for the stars remember we were made from them.',
-      aboutTheRing: 'Late one night, deep in the forests of North Vietnam; I was perched high on the branch of an ancient Banyan tree when the sky lit up above me in a fiery blaze. What I thought was a meteor hurtling towards my location was, in fact, a small star. Mesmerised, I followed its trajectory, watching as it poked through the canopy and landed into the dirt a few feet away from me. The star was cold to the touch. Its trail perfectly preserved. I took it home with me and forged it into this ring. A Shooting Star. Immortalised forever.',
+      aboutTheRing: [
+        'Late one night, deep in the forests of North Vietnam; I was perched high on the branch of an ancient Banyan tree when the sky lit up above me in a fiery blaze.',
+        'What I thought was a meteor hurtling towards my location was, in fact, a small star. Mesmerised, I followed its trajectory, watching as it poked through the canopy and landed into the dirt a few feet away from me.',
+        'The star was cold to the touch. Its trail perfectly preserved. I took it home with me and forged it into this ring.',
+        'A Shooting Star. Immortalised forever.'
+      ],
       shopifyProductId: '12277117354302',
       goldImages: [
         '/assets/Highdef/gold star front.png',
@@ -93,7 +104,13 @@ function ProductDetail() {
       name: 'Footprint Ring',
       price: '£150',
       description: 'A reminder of the steps taken and the steps to come…',
-      aboutTheRing: 'This ring was made as a reminder. A reminder to stay grounded. A reminder of where we have been, where we plant our feet now, and the steps yet to be taken. It is a reminder of the people that have stood before us and an encouragement to put ourselves in others\' shoes. This ring stamps a footprint as a way to leave our mark on the world.',
+      aboutTheRing: [
+        'This ring was made as a reminder.',
+        'A reminder to stay grounded.',
+        'A reminder of where we have been, where we plant our feet now, and the steps yet to be taken.',
+        'It is a reminder of the people that have stood before us and an encouragement to put ourselves in others\' shoes.',
+        'This ring stamps a footprint as a way to leave our mark on the world.'
+      ],
       shopifyProductId: '8128703234366',
       goldImages: [
         '/assets/Highdef/gold foot up.png',
@@ -544,10 +561,18 @@ function ProductDetail() {
             {/* About the Ring Section */}
             {product.aboutTheRing && (
               <div className="product-details" style={{ marginTop: '3rem', marginBottom: '3rem' }}>
-                <h3 className="details-title" style={{ marginBottom: '1.5rem' }}>About the Ring</h3>
-                <p className="product-description" style={{ fontSize: '0.95rem', lineHeight: '2', color: 'rgba(255, 245, 218, 0.75)' }}>
-                  {product.aboutTheRing}
-                </p>
+                <h3 className="details-title" style={{ marginBottom: '2rem' }}>About the Ring</h3>
+                {Array.isArray(product.aboutTheRing) ? (
+                  product.aboutTheRing.map((paragraph, index) => (
+                    <p key={index} className="product-description" style={{ fontSize: '0.95rem', lineHeight: '1.8', color: 'rgba(255, 245, 218, 0.75)', marginBottom: '2rem' }}>
+                      {paragraph}
+                    </p>
+                  ))
+                ) : (
+                  <p className="product-description" style={{ fontSize: '0.95rem', lineHeight: '2', color: 'rgba(255, 245, 218, 0.75)' }}>
+                    {product.aboutTheRing}
+                  </p>
+                )}
               </div>
             )}
 
