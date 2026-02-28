@@ -288,7 +288,7 @@
   }
 
   .product-float-inner {
-    max-width: 280px;
+    max-width: 350px;
   }
 
   .hero-image-wrapper {
@@ -300,7 +300,7 @@
   .floating-products {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
     max-width: 500px;
   }
 
@@ -310,7 +310,7 @@
   }
 
   .product-float-inner {
-    max-width: 220px;
+    max-width: 300px;
   }
 
   .hero-section {
