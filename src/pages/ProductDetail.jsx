@@ -520,7 +520,7 @@ function ProductDetail() {
                   }
                 }}
               >
-                BUY NOW
+                Buy Now
               </RockButton>
             </motion.div>
 

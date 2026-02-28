@@ -921,5 +921,5 @@
 
 /* Uppercase button override */
 .uppercase-button .rock-button-text {
-  text-transform: uppercase !important;
+  text-transform: capitalize !important;
 }

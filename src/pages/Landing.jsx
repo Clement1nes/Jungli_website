@@ -62,7 +62,7 @@ function Landing() {
             </defs>
             <text className="circular-text">
               <textPath href="#circlePath" startOffset="0%">
-                ENTER THE JUNGLE • ENTER THE JUNGLE • ENTER THE JUNGLE •
+                Enter The Jungle • Enter The Jungle • Enter The Jungle •
               </textPath>
             </text>
           </svg>
