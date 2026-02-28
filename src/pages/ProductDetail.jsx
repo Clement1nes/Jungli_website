@@ -545,11 +545,9 @@ function ProductDetail() {
             {product.aboutTheRing && (
               <div className="product-details" style={{ marginTop: '3rem', marginBottom: '3rem' }}>
                 <h3 className="details-title" style={{ marginBottom: '1.5rem' }}>About the Ring</h3>
-                {product.aboutTheRing.split(/\.(?=\s|$)/).filter(sentence => sentence.trim()).map((sentence, index) => (
-                  <p key={index} className="product-description" style={{ fontSize: '0.95rem', lineHeight: '2.2', color: 'rgba(255, 245, 218, 0.75)', marginBottom: '2rem' }}>
-                    {sentence.trim()}.
-                  </p>
-                ))}
+                <p className="product-description" style={{ fontSize: '0.95rem', lineHeight: '2', color: 'rgba(255, 245, 218, 0.75)' }}>
+                  {product.aboutTheRing}
+                </p>
               </div>
             )}
 
@@ -587,6 +585,18 @@ function ProductDetail() {
                   <img
                     src={otherProduct.goldAnimation3d}
                     alt={otherProduct.name}
+                  />
+                </div>
+              </motion.div>
+            ))}
+        </div>
+      </motion.div>
+    </main>
+  );
+}
+
+export default ProductDetail;
+name}
                   />
                 </div>
               </motion.div>
