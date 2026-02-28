@@ -583,7 +583,7 @@ function ProductDetail() {
               >
                 <div className="other-product-image">
                   <img
-                    src={otherProduct.goldImage || otherProduct.goldImages[0]}
+                    src={otherProduct.goldAnimation3d}
                     alt={otherProduct.name}
                   />
                 </div>
