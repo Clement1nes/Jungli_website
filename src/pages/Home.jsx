@@ -64,7 +64,7 @@ function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8 }}
         >
-          select your ring
+          Select your ring
         </motion.h2>
         <div className="floating-products">
           {products.map((product, index) => (
