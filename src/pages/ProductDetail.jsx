@@ -543,9 +543,9 @@ function ProductDetail() {
 
             {/* About the Ring Section */}
             {product.aboutTheRing && (
-              <div className="product-details" style={{ marginTop: '2rem' }}>
-                <h3 className="details-title">About the Ring</h3>
-                <p className="product-description" style={{ fontSize: '0.95rem', lineHeight: '1.7', color: 'rgba(255, 245, 218, 0.75)' }}>
+              <div className="product-details" style={{ marginTop: '3rem', marginBottom: '3rem' }}>
+                <h3 className="details-title" style={{ marginBottom: '1.5rem' }}>About the Ring</h3>
+                <p className="product-description" style={{ fontSize: '0.95rem', lineHeight: '2.2', color: 'rgba(255, 245, 218, 0.75)' }}>
                   {product.aboutTheRing}
                 </p>
               </div>
