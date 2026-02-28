@@ -142,7 +142,7 @@
   font-size: 24px;
   fill: #fff5da;
   letter-spacing: 0.15em;
-  text-transform: lowercase;
+  text-transform: uppercase;
   text-shadow:
     0 2px 10px rgba(0, 0, 0, 0.8),
     0 0 20px rgba(143, 175, 112, 0.4);
