@@ -583,17 +583,9 @@ function ProductDetail() {
               >
                 <div className="other-product-image">
                   <img
-                    src={
-                      otherProduct.isSizer
-                        ? otherProduct.images[0]
-                        : (selectedMetal === 'gold' ? otherProduct.goldImages[0] : otherProduct.silverImages[0])
-                    }
+                    src={otherProduct.goldImage || otherProduct.goldImages[0]}
                     alt={otherProduct.name}
                   />
-                </div>
-                <div className="other-product-info">
-                  <h3>{otherProduct.name}</h3>
-                  <p className="other-product-price">{otherProduct.price}</p>
                 </div>
               </motion.div>
             ))}
