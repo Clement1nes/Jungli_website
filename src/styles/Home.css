@@ -288,7 +288,8 @@
   }
 
   .product-float-inner {
-    max-width: 350px;
+    width: 280px;
+    max-width: 280px;
   }
 
   .hero-image-wrapper {
@@ -310,7 +311,8 @@
   }
 
   .product-float-inner {
-    max-width: 300px;
+    width: 240px;
+    max-width: 240px;
   }
 
   .hero-section {
