@@ -920,3 +920,8 @@
     font-size: 1rem;
   }
 }
+
+/* Uppercase button override */
+.uppercase-button .rock-button-text {
+  text-transform: uppercase !important;
+}
