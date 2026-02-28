@@ -163,10 +163,10 @@
   display: flex;
   justify-content: center;
   gap: 5rem;
-  max-width: 1200px;
+  max-width: 1400px;
   width: 100%;
   margin: 0 auto;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .product-float {
@@ -276,7 +276,15 @@
   }
 
   .floating-products {
-    gap: 2.5rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 600px;
+  }
+
+  .product-float:first-child {
+    grid-column: 1 / -1;
+    justify-self: center;
   }
 
   .product-float-inner {
@@ -290,11 +298,19 @@
 
 @media (max-width: 480px) {
   .floating-products {
-    gap: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 500px;
+  }
+
+  .product-float:first-child {
+    grid-column: 1 / -1;
+    justify-self: center;
   }
 
   .product-float-inner {
-    max-width: 320px;
+    max-width: 220px;
   }
 
   .hero-section {
