@@ -58,6 +58,14 @@ function Home() {
 
       {/* Floating Products Section */}
       <section className="products-showcase">
+        <motion.h2
+          className="showcase-title"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          SELECT YOUR RING
+        </motion.h2>
         <div className="floating-products">
           {products.map((product, index) => (
             <motion.div

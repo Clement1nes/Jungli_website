@@ -157,8 +157,8 @@
 
 /* Size Variants */
 .rock-button.sm .rock-button-face {
-  padding: 0.5rem 1rem;
-  min-width: 100px;
+  padding: 0.75rem 1.25rem;
+  min-width: 110px;
 }
 
 .rock-button.sm .rock-button-text {
@@ -166,8 +166,8 @@
 }
 
 .rock-button.md .rock-button-face {
-  padding: 0.75rem 1.5rem;
-  min-width: 120px;
+  padding: 1.25rem 2rem;
+  min-width: 140px;
 }
 
 .rock-button.md .rock-button-text {
@@ -175,8 +175,8 @@
 }
 
 .rock-button.lg .rock-button-face {
-  padding: 1rem 2rem;
-  min-width: 160px;
+  padding: 1.5rem 2.5rem;
+  min-width: 180px;
 }
 
 .rock-button.lg .rock-button-text {

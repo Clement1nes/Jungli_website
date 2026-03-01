@@ -315,7 +315,7 @@ function ProductDetail() {
                   whileTap={{ scale: 0.95 }}
                 >
                   <span className="metal-swatch gold-swatch" />
-                  <span>18K Gold Plated</span>
+                  <span>18K GOLD PLATED</span>
                 </motion.button>
                 <motion.button
                   className={`metal-option ${selectedMetal === 'silver' ? 'active' : ''}`}
@@ -327,7 +327,7 @@ function ProductDetail() {
                   whileTap={{ scale: 0.95 }}
                 >
                   <span className="metal-swatch silver-swatch" />
-                  <span>Sterling Silver</span>
+                  <span>STERLING SILVER</span>
                 </motion.button>
               </div>
             </div>
