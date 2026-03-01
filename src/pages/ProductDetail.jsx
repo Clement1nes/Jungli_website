@@ -621,15 +621,3 @@ function ProductDetail() {
 }
 
 export default ProductDetail;
-name}
-                  />
-                </div>
-              </motion.div>
-            ))}
-        </div>
-      </motion.div>
-    </main>
-  );
-}
-
-export default ProductDetail;
