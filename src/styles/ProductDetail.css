@@ -62,7 +62,7 @@
   max-width: 1600px;
   margin: 0 auto;
   padding: 4rem 3rem 4rem;
-  align-items: center;
+  align-items: start;
 }
 
 /* Product Gallery */
@@ -229,7 +229,7 @@
   font-size: 1.1rem;
   line-height: 1.8;
   color: rgba(255, 245, 218, 0.85);
-  margin: 0 0 2.5rem 0;
+  margin: 0 0 4rem 0;
 }
 
 /* Metal Selector */
@@ -514,10 +514,8 @@
 
 /* Product Details */
 .product-details {
-  margin: 0 0 2.5rem 0;
+  margin: 0 0 4rem 0;
   padding: 1.5rem 0;
-  border-top: 1px solid rgba(255, 245, 218, 0.1);
-  border-bottom: 1px solid rgba(255, 245, 218, 0.1);
 }
 
 .details-title {
@@ -919,4 +917,9 @@
   .other-product-price {
     font-size: 1rem;
   }
+}
+
+/* Uppercase button override */
+.uppercase-button .rock-button-text {
+  text-transform: capitalize !important;
 }

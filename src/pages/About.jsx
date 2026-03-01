@@ -64,7 +64,8 @@ function About() {
               color: '#E8E0D0',
               fontStyle: 'italic'
             }}>
-              Jungli: Animals and plants that live or grow in the wild.
+              Jungli:<br />
+              Animals and plants that live or grow in the wild.
             </p>
 
             <p style={{

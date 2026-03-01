@@ -27,7 +27,7 @@ function Landing() {
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-          style={{ marginBottom: '3rem' }}
+          style={{ marginBottom: '1rem' }}
         >
           <img
             src="/assets/newlogo.png"
@@ -62,7 +62,7 @@ function Landing() {
             </defs>
             <text className="circular-text">
               <textPath href="#circlePath" startOffset="0%">
-                enter the jungle • enter the jungle • enter the jungle •
+                ENTER THE JUNGLE • ENTER THE JUNGLE • ENTER THE JUNGLE •
               </textPath>
             </text>
           </svg>

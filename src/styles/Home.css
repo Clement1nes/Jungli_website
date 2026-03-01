@@ -148,14 +148,26 @@
   text-transform: uppercase;
 }
 
+.select-ring-text {
+  font-family: 'Evil Green Plant', serif;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: normal;
+  color: #fff5da;
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: 0.08em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  text-transform: lowercase;
+}
+
 .floating-products {
   display: flex;
   justify-content: center;
   gap: 5rem;
-  max-width: 1200px;
+  max-width: 1400px;
   width: 100%;
   margin: 0 auto;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .product-float {
@@ -265,11 +277,24 @@
   }
 
   .floating-products {
-    gap: 2.5rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    max-width: 600px;
+  }
+
+  .product-float {
+    padding: 1rem;
+  }
+
+  .product-float:first-child {
+    grid-column: 1 / -1;
+    justify-self: center;
   }
 
   .product-float-inner {
-    max-width: 280px;
+    width: 240px;
+    max-width: 240px;
   }
 
   .hero-image-wrapper {
@@ -279,11 +304,24 @@
 
 @media (max-width: 480px) {
   .floating-products {
-    gap: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    max-width: 500px;
+  }
+
+  .product-float {
+    padding: 0.5rem;
+  }
+
+  .product-float:first-child {
+    grid-column: 1 / -1;
+    justify-self: center;
   }
 
   .product-float-inner {
-    max-width: 320px;
+    width: 200px;
+    max-width: 200px;
   }
 
   .hero-section {
