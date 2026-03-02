@@ -12,9 +12,21 @@ function ProductDetail() {
   const { buyNow } = useShopify();
   const [selectedMetal, setSelectedMetal] = useState('gold');
   const [selectedSize, setSelectedSize] = useState('7');
+  const [selectedStone, setSelectedStone] = useState('blue-sapphire');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showSizeChart, setShowSizeChart] = useState(false);
   const [shopifyProduct, setShopifyProduct] = useState(null);
+
+  const stoneOptions = [
+    { id: 'blue-sapphire', name: 'Blue Sapphire', color: '#0F52BA' },
+    { id: 'red-ruby', name: 'Red Ruby', color: '#E0115F' },
+    { id: 'green-emerald', name: 'Green Emerald', color: '#50C878' },
+    { id: 'yellow-citrine', name: 'Yellow Citrine', color: '#E4D00A' },
+    { id: 'purple-amethyst', name: 'Purple Amethyst', color: '#9966CC' },
+    { id: 'pink-sapphire', name: 'Pink Sapphire', color: '#F984EF' },
+    { id: 'white-diamond', name: 'White Diamond', color: '#F0F8FF' },
+    { id: 'black-diamond', name: 'Black Diamond', color: '#1C1C1C' },
+  ];
 
   const sizeChart = [
     { us: '5', uk: 'J', diameter: '15.7mm', circumference: '49.3mm' },
@@ -350,6 +362,33 @@ function ProductDetail() {
             </div>
             )}
 
+            {/* Stone Selector - Only for Third Eye Ring */}
+            {!product.isSizer && product.id === 'eye' && (
+            <div className="stone-selector">
+              <label className="selector-label">Select Stone</label>
+              <div className="stone-buttons">
+                {stoneOptions.map((stone) => (
+                  <motion.button
+                    key={stone.id}
+                    className={`stone-option ${selectedStone === stone.id ? 'active' : ''}`}
+                    onClick={() => setSelectedStone(stone.id)}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <span
+                      className="stone-gem"
+                      style={{
+                        backgroundColor: stone.color,
+                        boxShadow: stone.id === 'white-diamond' ? '0 0 8px rgba(240, 248, 255, 0.6), inset 0 0 4px rgba(0, 0, 0, 0.2)' : `0 0 8px ${stone.color}80`
+                      }}
+                    />
+                    <span>{stone.name}</span>
+                  </motion.button>
+                ))}
+              </div>
+            </div>
+            )}
+
             {/* Size Selector - Only for rings */}
             {!product.isSizer && (
             <div className="size-selector">
@@ -498,7 +537,7 @@ function ProductDetail() {
                         throw new Error('Could not load product from Shopify');
                       }
 
-                      // Find the variant that matches the selected metal and size
+                      // Find the variant that matches the selected metal, size, and stone (if applicable)
                       const matchingVariant = productData.variants.find(variant => {
                         const variantTitle = variant.title.toLowerCase();
                         console.log('Checking variant:', variantTitle);
@@ -506,6 +545,13 @@ function ProductDetail() {
                         const sizeMatch = variantTitle.includes(`size ${selectedSize}`) ||
                                         variantTitle.includes(`us ${selectedSize}`) ||
                                         variantTitle.includes(`${selectedSize} /`);
+
+                        // For third eye ring, also match stone
+                        if (product.id === 'eye') {
+                          const stoneMatch = variantTitle.includes(selectedStone.replace('-', ' '));
+                          return metalMatch && sizeMatch && stoneMatch;
+                        }
+
                         return metalMatch && sizeMatch;
                       });
 

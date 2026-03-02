@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install shopify-buy)",
+      "Bash(git init)",
+      "Bash(git remote add origin https://github.com/Clement1nes/Jungli_website.git)",
+      "Bash(git add .)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nAdd full Shopify integration with checkout functionality\n\nIntegrated Shopify Storefront API to enable e-commerce functionality:\n- Installed shopify-buy SDK for API communication\n- Created Shopify service utility with product fetching and checkout management\n- Implemented ShopifyContext for global cart state management\n- Updated Shop page to display products from Shopify with Buy Now and Add to Cart buttons\n- Updated ProductDetail page with Shopify product data and checkout integration\n- Updated ProductModal component with Shopify checkout functionality\n- Added environment variables for Shopify configuration\n- All product purchases now redirect to Shopify''s secure checkout page\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push -u origin master)",
+      "Bash(git pull origin master --allow-unrelated-histories)",
+      "Bash(git checkout --ours .)",
+      "Bash(git commit -m \"Merge with remote and keep Shopify integration\")",
+      "Bash(git add .env src/pages/ProductDetail.jsx src/pages/Shop.jsx)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nIntegrate Shopify checkout with product variants and add ring sizer option\n\n- Updated Shopify domain to rooted-6518.myshopify.com\n- Added Shopify product IDs to all rings (Eye, Star, Foot)\n- Implemented dynamic variant matching based on metal type and size selection\n- Added ring sizer (product ID: 12277121548606) as \"I don 't know my size\" link below size selector\n- Removed ring sizer from shop page and other products section\n- Buy Now button now redirects to Shopify checkout with correct variant\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push origin master)",
+      "Bash(git add src/utils/shopify.js src/pages/ProductDetail.jsx)",
+      "Bash(git add index.html src/components/ProductModal.jsx src/pages/About.jsx src/pages/Contact.jsx src/pages/ProductDetail.jsx)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nUpdate website content and styling\n\n- Update About page with new Jungli brand story and mission\n- Add \"About the Ring\" section to product pages with origin stories for each ring\n- Flip Star ring animation upside down with CSS transform\n- Add periods to all details section items for consistency\n- Remove contact information from Contact page, show only form\n- Update metal labels to \"Sterling Silver\" and \"18K Gold Plated\" with proper capitalization\n- Add multiple favicon size declarations for better browser support\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git log -3 --format='%h %s')",
+      "Bash(git add src/pages/Home.jsx src/pages/ProductDetail.jsx src/styles/Home.css src/styles/RockButton.css)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nUpdate UI styling and product presentation\n\n- Add \"SELECT YOUR RING\" title to home page products section (all caps)\n- Move products section higher on page (reduced top padding from 10rem to 6rem)\n- Capitalize material options: \"18K GOLD PLATED\" and \"STERLING SILVER\"\n- Make Buy Now button thicker and boxier (increased padding across all sizes)\n- Improved vertical spacing and visual hierarchy\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git pull origin master)",
+      "Bash(git add src/pages/Home.jsx src/pages/ProductDetail.jsx)",
+      "Bash(git commit -m \"Merge remote changes and apply UI styling updates\")",
+      "Bash(git rev-parse master)",
+      "Bash(git add src/pages/ProductDetail.jsx)",
+      "Bash(git commit -m \"Fix syntax error in ProductDetail.jsx - remove duplicate code\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
