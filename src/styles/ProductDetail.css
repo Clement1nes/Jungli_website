@@ -363,6 +363,8 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.75rem;
+  overflow: hidden;
+  margin-top: 0.5rem;
 }
 
 .stone-option {
@@ -403,13 +405,11 @@
     2px 0 0 1px rgba(232, 224, 208, 0.5);
 }
 
-.stone-gem {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.4);
+.stone-emoji {
+  font-size: 1.5rem;
   flex-shrink: 0;
   transition: all 0.3s ease;
+  line-height: 1;
 }
 
 .stone-option:hover {
@@ -423,8 +423,8 @@
   opacity: 0.9;
 }
 
-.stone-option:hover .stone-gem {
-  transform: scale(1.1);
+.stone-option:hover .stone-emoji {
+  transform: scale(1.15);
 }
 
 .stone-option:active {
@@ -448,9 +448,8 @@
     0 0 8px rgba(74, 124, 44, 0.3);
 }
 
-.stone-option.active .stone-gem {
-  border-color: #8faf70;
-  transform: scale(1.15);
+.stone-option.active .stone-emoji {
+  transform: scale(1.2);
 }
 
 /* Size Selector */

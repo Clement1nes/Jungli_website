@@ -15,17 +15,18 @@ function ProductDetail() {
   const [selectedStone, setSelectedStone] = useState('blue-sapphire');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showSizeChart, setShowSizeChart] = useState(false);
+  const [showStoneSelector, setShowStoneSelector] = useState(false);
   const [shopifyProduct, setShopifyProduct] = useState(null);
 
   const stoneOptions = [
-    { id: 'blue-sapphire', name: 'Blue Sapphire', color: '#0F52BA' },
-    { id: 'red-ruby', name: 'Red Ruby', color: '#E0115F' },
-    { id: 'green-emerald', name: 'Green Emerald', color: '#50C878' },
-    { id: 'yellow-citrine', name: 'Yellow Citrine', color: '#E4D00A' },
-    { id: 'purple-amethyst', name: 'Purple Amethyst', color: '#9966CC' },
-    { id: 'pink-sapphire', name: 'Pink Sapphire', color: '#F984EF' },
-    { id: 'white-diamond', name: 'White Diamond', color: '#F0F8FF' },
-    { id: 'black-diamond', name: 'Black Diamond', color: '#1C1C1C' },
+    { id: 'blue-sapphire', name: 'Blue Sapphire', emoji: '💎' },
+    { id: 'red-ruby', name: 'Red Ruby', emoji: '❤️' },
+    { id: 'green-emerald', name: 'Green Emerald', emoji: '💚' },
+    { id: 'yellow-citrine', name: 'Yellow Citrine', emoji: '💛' },
+    { id: 'purple-amethyst', name: 'Purple Amethyst', emoji: '💜' },
+    { id: 'pink-sapphire', name: 'Pink Sapphire', emoji: '💖' },
+    { id: 'white-diamond', name: 'White Diamond', emoji: '🤍' },
+    { id: 'black-diamond', name: 'Black Diamond', emoji: '🖤' },
   ];
 
   const sizeChart = [
@@ -365,27 +366,55 @@ function ProductDetail() {
             {/* Stone Selector - Only for Third Eye Ring */}
             {!product.isSizer && product.id === 'eye' && (
             <div className="stone-selector">
-              <label className="selector-label">Select Stone</label>
-              <div className="stone-buttons">
-                {stoneOptions.map((stone) => (
-                  <motion.button
-                    key={stone.id}
-                    className={`stone-option ${selectedStone === stone.id ? 'active' : ''}`}
-                    onClick={() => setSelectedStone(stone.id)}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <span
-                      className="stone-gem"
-                      style={{
-                        backgroundColor: stone.color,
-                        boxShadow: stone.id === 'white-diamond' ? '0 0 8px rgba(240, 248, 255, 0.6), inset 0 0 4px rgba(0, 0, 0, 0.2)' : `0 0 8px ${stone.color}80`
-                      }}
-                    />
-                    <span>{stone.name}</span>
-                  </motion.button>
-                ))}
+              <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                <label className="selector-label" style={{ marginBottom: 0 }}>Select Stone</label>
+                <button
+                  onClick={() => setShowStoneSelector(!showStoneSelector)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontFamily: "'Evil Green Plant', serif",
+                    fontSize: '0.9rem',
+                    color: 'rgba(255, 245, 218, 0.85)',
+                    padding: 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem'
+                  }}
+                >
+                  <span className="stone-emoji" style={{ fontSize: '1.2rem' }}>
+                    {stoneOptions.find(s => s.id === selectedStone)?.emoji}
+                  </span>
+                  <span>{stoneOptions.find(s => s.id === selectedStone)?.name}</span>
+                  <span style={{ fontSize: '0.7rem', opacity: 0.6 }}>{showStoneSelector ? '▲' : '▼'}</span>
+                </button>
               </div>
+
+              {showStoneSelector && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="stone-buttons"
+                >
+                  {stoneOptions.map((stone) => (
+                    <motion.button
+                      key={stone.id}
+                      className={`stone-option ${selectedStone === stone.id ? 'active' : ''}`}
+                      onClick={() => {
+                        setSelectedStone(stone.id);
+                        setShowStoneSelector(false);
+                      }}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <span className="stone-emoji">{stone.emoji}</span>
+                      <span>{stone.name}</span>
+                    </motion.button>
+                  ))}
+                </motion.div>
+              )}
             </div>
             )}
 
