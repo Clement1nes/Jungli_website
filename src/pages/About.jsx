@@ -74,7 +74,7 @@ function About() {
               marginBottom: '1.5rem',
               color: '#E8E0D0'
             }}>
-              Jungli was born from a desire to capture iconography that has meaning. Every piece has been made by hand over the years with the intention of creating artefacts that speak to our collective experience of being human.
+              Born and raised in London, the jungle I grew up in is a concrete one. I take inspiration from the city, history, my travels and the everyday interactions with the world around me.
             </p>
 
             <p style={{
@@ -83,7 +83,7 @@ function About() {
               marginBottom: '1.5rem',
               color: '#E8E0D0'
             }}>
-              Born and Raised in London; my jungle is a concrete one. I take inspiration directly from my city, my spirituality, travels and the everyday interactions with the world around me.
+              Every piece has been made by hand over the years with the intention of creating artefacts that speak to our collective human experience.
             </p>
 
             <p style={{
@@ -92,7 +92,7 @@ function About() {
               marginBottom: '1.5rem',
               color: '#E8E0D0'
             }}>
-              Jewellery found me.
+              Every piece is meticulously crafted and brought into today. Iconography that tells a tale of Us. Designs that go beyond adornment. Objects that when unearthed in centuries to come will be a memento of our past.
             </p>
 
             <p style={{
@@ -101,7 +101,7 @@ function About() {
               marginBottom: '2.5rem',
               color: '#E8E0D0'
             }}>
-              I hope my jewellery finds you.
+              I create to honour this life, the next one and the life that has come before us.
             </p>
 
             <p style={{
