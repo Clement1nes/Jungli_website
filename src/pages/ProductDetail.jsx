@@ -650,8 +650,6 @@ function ProductDetail() {
                 )}
               </div>
             )}
-
-            <p className="product-description">{product.description}</p>
           </motion.div>
         </motion.div>
       </div>
