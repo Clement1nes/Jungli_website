@@ -34,7 +34,7 @@ function AppContent() {
               <img src="/assets/newlogo.png" alt="Jungli Logo" className="site-logo" />
             </Link>
           </div>
-          <div className="nav-corner" style={{ position: 'absolute', top: '1rem', left: 2rem', display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
+          <div className="nav-corner" style={{ position: 'absolute', top: '1rem', left: '2rem', display: 'flex', alignItems: 'center', gap: '2.5rem' }}>
             <nav className="main-nav">
               <ul>
                 {/* <li><Link to="/gallery">Gallery</Link></li> */}
