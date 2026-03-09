@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/cart/clear",
+      "destination": "/home",
+      "permanent": false
+    }
+  ]
+}
