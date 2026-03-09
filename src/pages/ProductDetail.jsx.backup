@@ -12,20 +12,21 @@ function ProductDetail() {
   const { buyNow } = useShopify();
   const [selectedMetal, setSelectedMetal] = useState('gold');
   const [selectedSize, setSelectedSize] = useState('7');
-  const [selectedStone, setSelectedStone] = useState('blue');
+  const [selectedStone, setSelectedStone] = useState('blue-sapphire');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showSizeChart, setShowSizeChart] = useState(false);
+  const [showStoneSelector, setShowStoneSelector] = useState(false);
   const [shopifyProduct, setShopifyProduct] = useState(null);
 
   const stoneOptions = [
-    { id: 'blue', name: 'Blue Sapphire', image: '/images/stones/blue.png' },
-    { id: 'red', name: 'Red Ruby', image: '/images/stones/red.png' },
-    { id: 'green', name: 'Green Emerald', image: '/images/stones/green.png' },
-    { id: 'orange', name: 'Orange Citrine', image: '/images/stones/orange.png' },
-    { id: 'purple', name: 'Purple Amethyst', image: '/images/stones/Purple.png' },
-    { id: 'pink', name: 'Pink Sapphire', image: '/images/stones/pink.png' },
-    { id: 'silver', name: 'White Diamond', image: '/images/stones/silver.png' },
-    { id: 'black', name: 'Black Diamond', image: '/images/stones/black.png' },
+    { id: 'blue-sapphire', name: 'Blue Sapphire', emoji: '💎' },
+    { id: 'red-ruby', name: 'Red Ruby', emoji: '❤️' },
+    { id: 'green-emerald', name: 'Green Emerald', emoji: '💚' },
+    { id: 'yellow-citrine', name: 'Yellow Citrine', emoji: '💛' },
+    { id: 'purple-amethyst', name: 'Purple Amethyst', emoji: '💜' },
+    { id: 'pink-sapphire', name: 'Pink Sapphire', emoji: '💖' },
+    { id: 'white-diamond', name: 'White Diamond', emoji: '🤍' },
+    { id: 'black-diamond', name: 'Black Diamond', emoji: '🖤' },
   ];
 
   const sizeChart = [
@@ -44,11 +45,11 @@ function ProductDetail() {
       price: '£140',
       description: 'We look with Two Eyes but see with Three…',
       aboutTheRing: [
-        'In my earlier years I was enamored with the idea of spiritual awakening. One day, during a deep meditation a figure appeared before me…',
-        'My eyes were closed but the person opposite me appeared as clear as day. They were cross-legged, also meditating. It looked as though they had not moved for centuries. They were wearing a turmeric yellow robe and a purple crystal hung from their neck. Their head was skin bald and had a deep crease running from the centre of their forehead to the back of their skull.',
-        'I was about to call out but had barely parted my lips when their head split open to reveal an Eye embedded in their cranium.',
+        'In my previous life I was enamored with idea of spiritual awakening. One day, during a deep meditation a person appeared before me…',
+        'My eyes were closed but the person opposite me was clear as day. They were cross-legged, also meditating. It looked as though they had not moved for centuries. They were wearing a turmeric yellow robe and a purple crystal hung from their neck. Their head was bald and had a deep crease running from the centre of their forehead to the back of their skull.',
+        'I was about to call out and had barely opened my mouth when their head split open to reveal an Eye embedded in their cranium.',
         'They spoke.',
-        '"Two eyes to look, one eye to see. Three eyes together will set you free"…'
+        '"Two eyes to look, One eye to see. Three eyes together will set you free"…'
       ],
       shopifyProductId: '8128692388158',
       goldImages: [
@@ -63,29 +64,6 @@ function ProductDetail() {
         '/assets/Highdef/eye up silver.png',
         '/assets/Faceright.png'
       ],
-      // Gem-specific images for Third Eye Ring
-      gemImages: {
-        gold: {
-          blue: '/images/eye-ring-gems/gold_blue.png',
-          red: '/images/eye-ring-gems/gold_red.png',
-          green: '/images/eye-ring-gems/gold_green.png',
-          orange: '/images/eye-ring-gems/gold_orange.png',
-          purple: '/images/eye-ring-gems/gold_purple.png',
-          pink: '/images/eye-ring-gems/gold_pink.png',
-          silver: '/images/eye-ring-gems/gold_silver.png',
-          black: '/images/eye-ring-gems/gold_black.png',
-        },
-        silver: {
-          blue: '/images/eye-ring-gems/silver_blue.png',
-          red: '/images/eye-ring-gems/silver_red.png',
-          green: '/images/eye-ring-gems/silver_green.png',
-          orange: '/images/eye-ring-gems/silver_orange.png',
-          purple: '/images/eye-ring-gems/silver_purple.png',
-          pink: '/images/eye-ring-gems/silver_pink.png',
-          silver: '/images/eye-ring-gems/silver_silver.png',
-          black: '/images/eye-ring-gems/silver_black.png',
-        }
-      },
       goldAnimation3d: '/assets/gold-eye-ring.gif',
       silverAnimation3d: '/assets/silver_eye.gif',
       background: '/assets/backgrounds/eye_background.gif',
@@ -104,9 +82,9 @@ function ProductDetail() {
       price: '£160',
       description: 'When you Shoot for the stars remember we were made from them.',
       aboutTheRing: [
-        'Late one night, deep in the forests of North Vietnam, I was perched high up on the branch of an ancient Banyan tree when the sky lit up above me in a fiery blaze.',
-        'What I thought was a meteor hurtling towards my location was, in fact, a small star. Mesmerised, I followed its trajectory, watching as it poked through the canopy and landed in the dirt a few feet away from me.',
-        'The star was cold to the touch, its trail perfectly preserved. I took it home with me and forged it into this ring.',
+        'Late one night, deep in the forests of North Vietnam; I was perched high on the branch of an ancient Banyan tree when the sky lit up above me in a fiery blaze.',
+        'What I thought was a meteor hurtling towards my location was, in fact, a small star. Mesmerised, I followed its trajectory, watching as it poked through the canopy and landed into the dirt a few feet away from me.',
+        'The star was cold to the touch. Its trail perfectly preserved. I took it home with me and forged it into this ring.',
         'A Shooting Star. Immortalised forever.'
       ],
       shopifyProductId: '12277117354302',
@@ -219,20 +197,9 @@ function ProductDetail() {
   if (!product) return null;
 
   // Ring sizer uses simple images array, rings use metal-specific images
-  // For Third Eye Ring with gems, show gem image first, then other images
-  let currentImages = [];
-  if (product.isSizer) {
-    currentImages = product.images || [];
-  } else if (product.id === 'eye' && product.gemImages) {
-    // Add gem-specific image first
-    const gemImage = product.gemImages[selectedMetal][selectedStone];
-    currentImages = [
-      gemImage,
-      ...(selectedMetal === 'gold' ? product.goldImages : product.silverImages)
-    ];
-  } else {
-    currentImages = selectedMetal === 'gold' ? (product.goldImages || []) : (product.silverImages || []);
-  }
+  const currentImages = product.isSizer
+    ? (product.images || [])
+    : (selectedMetal === 'gold' ? (product.goldImages || []) : (product.silverImages || []));
 
   const current3dAnimation = product.isSizer
     ? null
@@ -396,27 +363,58 @@ function ProductDetail() {
             </div>
             )}
 
-            {/* Stone Selector - Only for Third Eye Ring - Grid Layout */}
+            {/* Stone Selector - Only for Third Eye Ring */}
             {!product.isSizer && product.id === 'eye' && (
             <div className="stone-selector">
-              <label className="selector-label">Select Stone</label>
-              <div className="stone-buttons">
-                {stoneOptions.map((stone) => (
-                  <motion.button
-                    key={stone.id}
-                    className={`stone-option ${selectedStone === stone.id ? 'active' : ''}`}
-                    onClick={() => {
-                      setSelectedStone(stone.id);
-                      setCurrentImageIndex(0);
-                    }}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <img src={stone.image} alt={stone.name} style={{ width: '30px', height: '30px', objectFit: 'contain' }} />
-                    <span>{stone.name}</span>
-                  </motion.button>
-                ))}
+              <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                <label className="selector-label" style={{ marginBottom: 0 }}>Select Stone</label>
+                <button
+                  onClick={() => setShowStoneSelector(!showStoneSelector)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontFamily: "'Evil Green Plant', serif",
+                    fontSize: '0.9rem',
+                    color: 'rgba(255, 245, 218, 0.85)',
+                    padding: 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem'
+                  }}
+                >
+                  <span className="stone-emoji" style={{ fontSize: '1.2rem' }}>
+                    {stoneOptions.find(s => s.id === selectedStone)?.emoji}
+                  </span>
+                  <span>{stoneOptions.find(s => s.id === selectedStone)?.name}</span>
+                  <span style={{ fontSize: '0.7rem', opacity: 0.6 }}>{showStoneSelector ? '▲' : '▼'}</span>
+                </button>
               </div>
+
+              {showStoneSelector && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="stone-buttons"
+                >
+                  {stoneOptions.map((stone) => (
+                    <motion.button
+                      key={stone.id}
+                      className={`stone-option ${selectedStone === stone.id ? 'active' : ''}`}
+                      onClick={() => {
+                        setSelectedStone(stone.id);
+                        setShowStoneSelector(false);
+                      }}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <span className="stone-emoji">{stone.emoji}</span>
+                      <span>{stone.name}</span>
+                    </motion.button>
+                  ))}
+                </motion.div>
+              )}
             </div>
             )}
 
@@ -579,7 +577,7 @@ function ProductDetail() {
 
                         // For third eye ring, also match stone
                         if (product.id === 'eye') {
-                          const stoneMatch = variantTitle.includes(selectedStone);
+                          const stoneMatch = variantTitle.includes(selectedStone.replace('-', ' '));
                           return metalMatch && sizeMatch && stoneMatch;
                         }
 
