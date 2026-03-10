@@ -224,22 +224,25 @@ function ProductDetail() {
   if (product.isSizer) {
     currentImages = product.images || [];
   } else if (product.id === 'eye' && product.gemImages) {
-    // Add gem-specific image first
+    // Add gem-specific image first, then 3D animation, then other images
     const gemImage = product.gemImages[selectedMetal][selectedStone];
+    const animation3d = selectedMetal === 'gold' ? product.goldAnimation3d : product.silverAnimation3d;
+    const otherImages = selectedMetal === 'gold' ? product.goldImages : product.silverImages;
     currentImages = [
       gemImage,
-      ...(selectedMetal === 'gold' ? product.goldImages : product.silverImages)
+      animation3d,
+      ...otherImages
     ];
   } else {
     currentImages = selectedMetal === 'gold' ? (product.goldImages || []) : (product.silverImages || []);
   }
 
-  const current3dAnimation = product.isSizer
+  const current3dAnimation = (product.isSizer || (product.id === 'eye' && product.gemImages))
     ? null
     : (selectedMetal === 'gold' ? product.goldAnimation3d : product.silverAnimation3d);
 
-  // If 3D animation exists, it's at index 0, static images start at index 1
-  // If no 3D animation, static images start at index 0
+  // For Third Eye Ring, all images are in the array (gem image at 0, 3D at 1, etc)
+  // For other rings, 3D animation is at index 0, static images start at index 1
   const currentImage = current3dAnimation
     ? (currentImageIndex === 0 ? current3dAnimation : currentImages[currentImageIndex - 1])
     : (currentImages[currentImageIndex] || '/assets/placeholder.jpg');
