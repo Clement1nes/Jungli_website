@@ -399,7 +399,7 @@ function ProductDetail() {
             </div>
             )}
 
-            {/* Stone Selector - Only for Third Eye Ring - Grid Layout */}
+            {/* Stone Selector - Only for Third Eye Ring - Horizontal Layout */}
             {!product.isSizer && product.id === 'eye' && (
             <div className="stone-selector">
               <label className="selector-label">Select Stone</label>
@@ -412,11 +412,10 @@ function ProductDetail() {
                       setSelectedStone(stone.id);
                       setCurrentImageIndex(0);
                     }}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <img src={stone.image} alt={stone.name} style={{ width: '30px', height: '30px', objectFit: 'contain' }} />
-                    <span>{stone.name}</span>
+                    <img src={stone.image} alt={stone.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                   </motion.button>
                 ))}
               </div>
