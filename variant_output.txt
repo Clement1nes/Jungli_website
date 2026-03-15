@@ -1,0 +1,207 @@
+Fetching Third Eye Ring variants from Shopify...
+
+Product: 3rd Eye RIng
+Total variants: 132
+
+Processing: Gold No Gemstone / J (ID: 44526684275006)
+Processing: Gold No Gemstone / L (ID: 53173846212926)
+Processing: Gold No Gemstone / N (ID: 53173846245694)
+Processing: Gold No Gemstone / P (ID: 53173846278462)
+Processing: Gold No Gemstone / R (ID: 53173846311230)
+Processing: Gold No Gemstone / T (ID: 53173846343998)
+Processing: Gold With a Black Gemstone / J (ID: 44526684307774)
+Processing: Gold With a Black Gemstone / L (ID: 53173846376766)
+Processing: Gold With a Black Gemstone / N (ID: 53173846409534)
+Processing: Gold With a Black Gemstone / P (ID: 53173846442302)
+Processing: Gold With a Black Gemstone / R (ID: 53173846475070)
+Processing: Gold With a Black Gemstone / T (ID: 53173846507838)
+Processing: Silver No Gemstone / J (ID: 53168230629694)
+Processing: Silver No Gemstone / L (ID: 53173846540606)
+Processing: Silver No Gemstone / N (ID: 53173846573374)
+Processing: Silver No Gemstone / P (ID: 53173846606142)
+Processing: Silver No Gemstone / R (ID: 53173846638910)
+Processing: Silver No Gemstone / T (ID: 53173846671678)
+Processing: Silver With a Black gemstone / J (ID: 53168230760766)
+Processing: Silver With a Black gemstone / L (ID: 53173846704446)
+Processing: Silver With a Black gemstone / N (ID: 53173846737214)
+Processing: Silver With a Black gemstone / P (ID: 53173846769982)
+Processing: Silver With a Black gemstone / R (ID: 53173846802750)
+Processing: Silver With a Black gemstone / T (ID: 53173846835518)
+Processing: Gold With a Blue Gemstone / J (ID: 53173203075390)
+Processing: Gold With a Blue Gemstone / L (ID: 53173846868286)
+Processing: Gold With a Blue Gemstone / N (ID: 53173846901054)
+Processing: Gold With a Blue Gemstone / P (ID: 53173846933822)
+Processing: Gold With a Blue Gemstone / R (ID: 53173846966590)
+Processing: Gold With a Blue Gemstone / T (ID: 53173846999358)
+Processing: Gold With a Gold Gemstone / J (ID: 53173205631294)
+Processing: Gold With a Gold Gemstone / L (ID: 53173847032126)
+Processing: Gold With a Gold Gemstone / N (ID: 53173847064894)
+Processing: Gold With a Gold Gemstone / P (ID: 53173847097662)
+Processing: Gold With a Gold Gemstone / R (ID: 53173847130430)
+Processing: Gold With a Gold Gemstone / T (ID: 53173847163198)
+Processing: Gold With a Green Gemstone / J (ID: 53173209497918)
+Processing: Gold With a Green Gemstone / L (ID: 53173847195966)
+Processing: Gold With a Green Gemstone / N (ID: 53173847228734)
+Processing: Gold With a Green Gemstone / P (ID: 53173847261502)
+Processing: Gold With a Green Gemstone / R (ID: 53173847294270)
+Processing: Gold With a Green Gemstone / T (ID: 53173847327038)
+Processing: Gold With a Orange Gemstone / J (ID: 53173211365694)
+Processing: Gold With a Orange Gemstone / L (ID: 53173847359806)
+Processing: Gold With a Orange Gemstone / N (ID: 53173847392574)
+Processing: Gold With a Orange Gemstone / P (ID: 53173847425342)
+Processing: Gold With a Orange Gemstone / R (ID: 53173847458110)
+Processing: Gold With a Orange Gemstone / T (ID: 53173847490878)
+Processing: Gold With a Pink Gemstone / J (ID: 53173216837950)
+Processing: Gold With a Pink Gemstone / L (ID: 53173847523646)
+Processing: Gold With a Pink Gemstone / N (ID: 53173847556414)
+Processing: Gold With a Pink Gemstone / P (ID: 53173847589182)
+Processing: Gold With a Pink Gemstone / R (ID: 53173847621950)
+Processing: Gold With a Pink Gemstone / T (ID: 53173847654718)
+Processing: Gold With a Purple Gemstone / J (ID: 53173217657150)
+Processing: Gold With a Purple Gemstone / L (ID: 53173847687486)
+Processing: Gold With a Purple Gemstone / N (ID: 53173847720254)
+Processing: Gold With a Purple Gemstone / P (ID: 53173847753022)
+Processing: Gold With a Purple Gemstone / R (ID: 53173847785790)
+Processing: Gold With a Purple Gemstone / T (ID: 53173847818558)
+Processing: Gold With a Silver Gemstone / J (ID: 53173219230014)
+Processing: Gold With a Silver Gemstone / L (ID: 53173847851326)
+Processing: Gold With a Silver Gemstone / N (ID: 53173847884094)
+Processing: Gold With a Silver Gemstone / P (ID: 53173847916862)
+Processing: Gold With a Silver Gemstone / R (ID: 53173847949630)
+Processing: Gold With a Silver Gemstone / T (ID: 53173847982398)
+Processing: Gold With a Yellow Gemstone / J (ID: 53173219983678)
+Processing: Gold With a Yellow Gemstone / L (ID: 53173848015166)
+Processing: Gold With a Yellow Gemstone / N (ID: 53173848047934)
+Processing: Gold With a Yellow Gemstone / P (ID: 53173848080702)
+Processing: Gold With a Yellow Gemstone / R (ID: 53173848113470)
+Processing: Gold With a Yellow Gemstone / T (ID: 53173848146238)
+Processing: Silver With a Blue gemstone / J (ID: 53173229748542)
+Processing: Silver With a Blue gemstone / L (ID: 53173848179006)
+Processing: Silver With a Blue gemstone / N (ID: 53173848211774)
+Processing: Silver With a Blue gemstone / P (ID: 53173848244542)
+Processing: Silver With a Blue gemstone / R (ID: 53173848277310)
+Processing: Silver With a Blue gemstone / T (ID: 53173848310078)
+Processing: Silver With a gold gemstone / J (ID: 53173235220798)
+Processing: Silver With a gold gemstone / L (ID: 53173848342846)
+Processing: Silver With a gold gemstone / N (ID: 53173848375614)
+Processing: Silver With a gold gemstone / P (ID: 53173848408382)
+Processing: Silver With a gold gemstone / R (ID: 53173848441150)
+Processing: Silver With a gold gemstone / T (ID: 53173848473918)
+Processing: Silver With a Green gemstone / J (ID: 53173238661438)
+Processing: Silver With a Green gemstone / L (ID: 53173848506686)
+Processing: Silver With a Green gemstone / N (ID: 53173848539454)
+Processing: Silver With a Green gemstone / P (ID: 53173848572222)
+Processing: Silver With a Green gemstone / R (ID: 53173848604990)
+Processing: Silver With a Green gemstone / T (ID: 53173848637758)
+Processing: Silver With a Orange gemstone / J (ID: 53173244002622)
+Processing: Silver With a Orange gemstone / L (ID: 53173848670526)
+Processing: Silver With a Orange gemstone / N (ID: 53173848703294)
+Processing: Silver With a Orange gemstone / P (ID: 53173848736062)
+Processing: Silver With a Orange gemstone / R (ID: 53173848768830)
+Processing: Silver With a Orange gemstone / T (ID: 53173848801598)
+Processing: Silver With a Purple gemstone / J (ID: 53173248819518)
+Processing: Silver With a Purple gemstone / L (ID: 53173848834366)
+Processing: Silver With a Purple gemstone / N (ID: 53173848867134)
+Processing: Silver With a Purple gemstone / P (ID: 53173848899902)
+Processing: Silver With a Purple gemstone / R (ID: 53173848932670)
+Processing: Silver With a Purple gemstone / T (ID: 53173848965438)
+Processing: Silver With a Pink gemstone / J (ID: 53173261402430)
+Processing: Silver With a Pink gemstone / L (ID: 53173848998206)
+Processing: Silver With a Pink gemstone / N (ID: 53173849030974)
+Processing: Silver With a Pink gemstone / P (ID: 53173849063742)
+Processing: Silver With a Pink gemstone / R (ID: 53173849096510)
+Processing: Silver With a Pink gemstone / T (ID: 53173849129278)
+Processing: Silver With a Red gemstone / J (ID: 53173268283710)
+Processing: Silver With a Red gemstone / L (ID: 53173849162046)
+Processing: Silver With a Red gemstone / N (ID: 53173849194814)
+Processing: Silver With a Red gemstone / P (ID: 53173849227582)
+Processing: Silver With a Red gemstone / R (ID: 53173849260350)
+Processing: Silver With a Red gemstone / T (ID: 53173849293118)
+Processing: Silver With a Silver gemstone / J (ID: 53173271658814)
+Processing: Silver With a Silver gemstone / L (ID: 53173849325886)
+Processing: Silver With a Silver gemstone / N (ID: 53173849358654)
+Processing: Silver With a Silver gemstone / P (ID: 53173849391422)
+Processing: Silver With a Silver gemstone / R (ID: 53173849424190)
+Processing: Silver With a Silver gemstone / T (ID: 53173849456958)
+Processing: Silver With a Yellow gemstone / J (ID: 53173274673470)
+Processing: Silver With a Yellow gemstone / L (ID: 53173849489726)
+Processing: Silver With a Yellow gemstone / N (ID: 53173849522494)
+Processing: Silver With a Yellow gemstone / P (ID: 53173849555262)
+Processing: Silver With a Yellow gemstone / R (ID: 53173849588030)
+Processing: Silver With a Yellow gemstone / T (ID: 53173849620798)
+Processing: Gold With a Red Gemstone / J (ID: 53173530427710)
+Processing: Gold With a Red Gemstone / L (ID: 53173849653566)
+Processing: Gold With a Red Gemstone / N (ID: 53173849686334)
+Processing: Gold With a Red Gemstone / P (ID: 53173849719102)
+Processing: Gold With a Red Gemstone / R (ID: 53173849751870)
+Processing: Gold With a Red Gemstone / T (ID: 53173849784638)
+
+
+=== GENERATED VARIANT MAPPING ===
+
+shopifyVariants: {
+  gold: {
+    black: {
+    },
+    blue: {
+    },
+    green: {
+    },
+    none: {
+    },
+    orange: {
+    },
+    pink: {
+    },
+    purple: {
+    },
+    red: {
+    },
+    yellow: {
+    },
+  },
+  silver: {
+    black: {
+    },
+    blue: {
+    },
+    green: {
+    },
+    none: {
+    },
+    orange: {
+    },
+    pink: {
+    },
+    purple: {
+    },
+    red: {
+    },
+    yellow: {
+    },
+  },
+}
+
+
+=== STATISTICS ===
+Total variants mapped: 132
+gold + none: 0 sizes
+gold + black: 0 sizes
+gold + blue: 0 sizes
+gold + green: 0 sizes
+gold + orange: 0 sizes
+gold + pink: 0 sizes
+gold + purple: 0 sizes
+gold + yellow: 0 sizes
+gold + red: 0 sizes
+silver + none: 0 sizes
+silver + black: 0 sizes
+silver + blue: 0 sizes
+silver + green: 0 sizes
+silver + orange: 0 sizes
+silver + purple: 0 sizes
+silver + pink: 0 sizes
+silver + red: 0 sizes
+silver + yellow: 0 sizes
+
+Variants successfully mapped: 0

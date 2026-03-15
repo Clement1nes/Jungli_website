@@ -337,6 +337,20 @@
   opacity: 0.9;
 }
 
+.metal-option.active {
+  color: #D4AF37;
+  transform: translateY(-2px);
+}
+
+.metal-option.active::after {
+  background: #D4AF37;
+  opacity: 1;
+  height: 3px;
+  box-shadow:
+    0 0 8px rgba(212, 175, 55, 0.6),
+    0 0 0 1px #D4AF37;
+}
+
 .metal-option:hover .metal-swatch {
   transform: rotate(45deg) scale(1.1);
 }
@@ -411,6 +425,19 @@
     -1px 0 0 1px rgba(232, 224, 208, 0.7),
     0 1px 0 1px rgba(232, 224, 208, 0.6),
     2px 0 0 1px rgba(232, 224, 208, 0.5);
+}
+
+.stone-option.active {
+  transform: translateY(-3px);
+}
+
+.stone-option.active::after {
+  background: #D4AF37;
+  opacity: 1;
+  height: 3px;
+  box-shadow:
+    0 0 8px rgba(212, 175, 55, 0.8),
+    0 0 0 1px #D4AF37;
 }
 
 .stone-emoji {
@@ -507,6 +534,20 @@
   right: 10%;
   height: 3px;
   opacity: 0.9;
+}
+
+.size-option.active {
+  color: #D4AF37;
+  transform: translateY(-2px);
+}
+
+.size-option.active::after {
+  background: #D4AF37;
+  opacity: 1;
+  height: 3px;
+  box-shadow:
+    0 0 8px rgba(212, 175, 55, 0.6),
+    0 0 0 1px #D4AF37;
 }
 
 .size-option:active {

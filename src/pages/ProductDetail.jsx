@@ -16,6 +16,7 @@ function ProductDetail() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showSizeChart, setShowSizeChart] = useState(false);
   const [shopifyProduct, setShopifyProduct] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const stoneOptions = [
     { id: 'blue', name: 'Blue Sapphire', image: '/images/stones/blue.png' },
@@ -373,6 +374,7 @@ function ProductDetail() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
               draggable={false}
+              loading={currentImageIndex === 0 ? "eager" : "lazy"}
             />
 
             {/* Swipe indicator */}
@@ -447,6 +449,8 @@ function ProductDetail() {
                   }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  aria-label="Select Sterling Silver"
+                  aria-pressed={selectedMetal === 'silver'}
                 >
                   <span className="metal-swatch silver-swatch" />
                   <span>Sterling Silver</span>
@@ -459,6 +463,8 @@ function ProductDetail() {
                   }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  aria-label="Select 18k Gold Plated"
+                  aria-pressed={selectedMetal === 'gold'}
                 >
                   <span className="metal-swatch gold-swatch" />
                   <span>18k Gold Plated</span>
@@ -482,11 +488,14 @@ function ProductDetail() {
                     }}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
+                    title={stone.name}
+                    aria-label={`Select ${stone.name}`}
+                    aria-pressed={selectedStone === stone.id}
                   >
                     {stone.id === 'none' ? (
                       <span style={{ fontSize: '0.7rem', fontFamily: "'Evil Green Plant', serif", color: '#E8E0D0' }}>No Stone</span>
                     ) : (
-                      <img src={stone.image} alt={stone.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                      <img src={stone.image} alt={stone.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} loading="lazy" />
                     )}
                   </motion.button>
                 ))}
@@ -628,6 +637,7 @@ function ProductDetail() {
                 onClick={async () => {
                   // Try to fetch and checkout via Shopify
                   if (product.shopifyProductId) {
+                    setIsLoading(true);
                     try {
                       console.log('Attempting Shopify checkout...');
                       console.log('Product ID:', product.shopifyProductId);
@@ -684,6 +694,8 @@ function ProductDetail() {
                     } catch (error) {
                       console.error('Error with Shopify checkout:', error);
                       alert(`Error processing checkout: ${error.message}. Please try again or contact us.`);
+                    } finally {
+                      setIsLoading(false);
                     }
                   } else {
                     // Fallback to email for products without Shopify integration
@@ -696,7 +708,7 @@ function ProductDetail() {
                   }
                 }}
               >
-                Buy Now
+                {isLoading ? 'Processing...' : 'Buy Now'}
               </RockButton>
             </motion.div>
 
