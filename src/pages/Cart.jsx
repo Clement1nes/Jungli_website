@@ -36,8 +36,6 @@ function Cart() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1 className="cart-title">Your Cart</h1>
-
         {(!cart || !cart.lines || cart.lines.edges.length === 0) ? (
           <div className="cart-empty">
             <p>Your cart is empty</p>
@@ -86,6 +84,7 @@ function Cart() {
                 <RockButton
                   variant="outline"
                   onClick={() => navigate('/home')}
+                  style={{ whiteSpace: 'nowrap' }}
                 >
                   Continue Shopping
                 </RockButton>

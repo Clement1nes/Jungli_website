@@ -99,7 +99,6 @@
   transform: translate(-50%, -50%);
   z-index: 20;
   font-family: 'Evil Green Plant', serif;
-  text-transform: lowercase;
   letter-spacing: 0.05em;
   line-height: 1.2;
   pointer-events: none;
