@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+ffmpeg-bin/
+ffmpeg.zip
+conversion-log.txt

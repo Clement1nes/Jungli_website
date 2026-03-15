@@ -13,9 +13,12 @@ function Landing() {
     <main className="landing-container">
       {/* Animated Environment Background */}
       <div className="environment-background">
-        <img
-          src="/assets/Background.gif"
-          alt=""
+        <video
+          src="/assets/Background.webm"
+          autoPlay
+          loop
+          muted
+          playsInline
           className="background-gif-layer"
         />
       </div>
@@ -46,9 +49,12 @@ function Landing() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.98 }}
         >
-          <img
-            src="/assets/mainfront.gif"
-            alt="Anatomy Ring"
+          <video
+            src="/assets/mainfront.webm"
+            autoPlay
+            loop
+            muted
+            playsInline
             className="landing-ring"
           />
 

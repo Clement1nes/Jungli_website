@@ -9,19 +9,19 @@ function Gallery() {
     {
       id: 'eye',
       name: 'Eye Ring',
-      image: '/assets/silver_eye.gif',
+      image: '/assets/silver_eye.webm',
       alt: 'Eye Ring Animation'
     },
     {
       id: 'star',
       name: 'Star Ring',
-      image: '/assets/GoldShootingStar-ezgif.com-gif-maker (1).gif',
+      image: '/assets/GoldShootingStar-ezgif.com-gif-maker (1).webm',
       alt: 'Star Ring Animation'
     },
     {
       id: 'foot',
       name: 'Foot Ring',
-      image: '/assets/ezgif.com-coalesce.gif',
+      image: '/assets/ezgif.com-coalesce.webm',
       alt: 'Foot Ring Animation'
     },
     {
@@ -55,9 +55,12 @@ function Gallery() {
     <main className="gallery-container">
       {/* Animated Environment Background */}
       <div className="environment-background">
-        <img
-          src="/assets/Background.gif"
-          alt=""
+        <video
+          src="/assets/Background.webm"
+          autoPlay
+          loop
+          muted
+          playsInline
           className="background-gif-layer"
         />
       </div>
@@ -87,11 +90,22 @@ function Gallery() {
               onClick={() => handleItemClick(item)}
             >
               <div className="gallery-item-inner">
-                <img
-                  src={item.image}
-                  alt={item.alt}
-                  className="gallery-image"
-                />
+                {item.image.endsWith('.webm') ? (
+                  <video
+                    src={item.image}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="gallery-image"
+                  />
+                ) : (
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    className="gallery-image"
+                  />
+                )}
                 <div className="gallery-item-overlay">
                   <span className="gallery-item-name">{item.name}</span>
                 </div>

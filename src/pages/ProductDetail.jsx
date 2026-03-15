@@ -122,9 +122,9 @@ function ProductDetail() {
           black: '/images/eye-ring-gems/silver_black.png',
         }
       },
-      goldAnimation3d: '/assets/gold-eye-ring.gif',
-      silverAnimation3d: '/assets/silver_eye.gif',
-      background: '/assets/backgrounds/eye_background.gif',
+      goldAnimation3d: '/assets/gold-eye-ring.webm',
+      silverAnimation3d: '/assets/silver_eye.webm',
+      background: '/assets/backgrounds/eye_background.webm',
       alt: 'Eye Ring',
       type: 'eye',
       details: [
@@ -160,9 +160,9 @@ function ProductDetail() {
         '/assets/Highdef/silver back star.png',
         '/assets/Highdef/silver star main.png'
       ],
-      goldAnimation3d: '/assets/GoldShootingStar-ezgif.com-gif-maker (1).gif',
-      silverAnimation3d: '/assets/silver_ring.gif',
-      background: '/assets/backgrounds/star_background.gif',
+      goldAnimation3d: '/assets/GoldShootingStar-ezgif.com-gif-maker (1).webm',
+      silverAnimation3d: '/assets/silver_ring.webm',
+      background: '/assets/backgrounds/star_background.webm',
       alt: 'Star Ring',
       type: 'star',
       details: [
@@ -198,9 +198,9 @@ function ProductDetail() {
         '/assets/Highdef/foot side silver.png',
         '/assets/Highdef/silver_foot_ring.png'
       ],
-      goldAnimation3d: '/assets/ezgif.com-coalesce.gif',
-      silverAnimation3d: '/assets/ezgif.com-coalesce.gif',
-      background: '/assets/backgrounds/foot_background_new.gif',
+      goldAnimation3d: '/assets/ezgif.com-coalesce.webm',
+      silverAnimation3d: '/assets/ezgif.com-coalesce.webm',
+      background: '/assets/backgrounds/foot_background_new.webm',
       alt: 'Foot Ring',
       type: 'foot',
       details: [
@@ -219,7 +219,7 @@ function ProductDetail() {
       images: [
         '/assets/placeholder.jpg'
       ],
-      background: '/assets/backgrounds/eye_background.gif',
+      background: '/assets/backgrounds/eye_background.webm',
       alt: 'Ring Sizer Tool',
       type: 'sizer',
       details: [
@@ -347,9 +347,12 @@ function ProductDetail() {
     <main className="product-detail-container">
       {/* Animated GIF Background */}
       <div className="product-environment">
-        <img
+        <video
           src={product.background}
-          alt=""
+          autoPlay
+          loop
+          muted
+          playsInline
           className="environment-gif"
         />
         <div className="environment-overlay" />
@@ -379,20 +382,39 @@ function ProductDetail() {
               }
             }}
           >
-            <motion.img
-              key={currentImage}
-              src={currentImage}
-              alt={product.alt}
-              className="gallery-image"
-              style={{
-                transform: product.type === 'star' && currentImageIndex === 0 ? 'rotate(180deg)' : 'none'
-              }}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              draggable={false}
-              loading={currentImageIndex === 0 ? "eager" : "lazy"}
-            />
+            {currentImage.endsWith('.webm') ? (
+              <motion.video
+                key={currentImage}
+                src={currentImage}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="gallery-image"
+                style={{
+                  transform: product.type === 'star' && currentImageIndex === 0 ? 'rotate(180deg)' : 'none'
+                }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                draggable={false}
+              />
+            ) : (
+              <motion.img
+                key={currentImage}
+                src={currentImage}
+                alt={product.alt}
+                className="gallery-image"
+                style={{
+                  transform: product.type === 'star' && currentImageIndex === 0 ? 'rotate(180deg)' : 'none'
+                }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                draggable={false}
+                loading={currentImageIndex === 0 ? "eager" : "lazy"}
+              />
+            )}
 
             {/* Swipe indicator */}
             {totalImages > 1 && (
