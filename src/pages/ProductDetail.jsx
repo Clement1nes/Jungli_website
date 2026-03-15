@@ -409,7 +409,7 @@ function ProductDetail() {
                 {stoneOptions.map((stone) => (
                   <motion.button
                     key={stone.id}
-                    className={`stone-option ${selectedStone === stone.id ? 'active' : ''}`}
+                    className={`stone-option ${selectedStone === stone.id ? 'active' : ''} ${stone.id === 'none' ? 'no-stone-option' : ''}`}
                     onClick={() => {
                       setSelectedStone(stone.id);
                       setCurrentImageIndex(0);
@@ -417,7 +417,11 @@ function ProductDetail() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <img src={stone.image} alt={stone.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                    {stone.id === 'none' ? (
+                      <span style={{ fontSize: '0.7rem', fontFamily: "'Evil Green Plant', serif", color: '#E8E0D0' }}>No Stone</span>
+                    ) : (
+                      <img src={stone.image} alt={stone.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                    )}
                   </motion.button>
                 ))}
               </div>
