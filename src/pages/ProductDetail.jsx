@@ -258,6 +258,23 @@ function ProductDetail() {
 
   if (!product) return null;
 
+  // Check if a specific variant is available
+  const isVariantAvailable = (metal, stone, size) => {
+    if (product.id !== 'eye' || !product.shopifyVariants || !shopifyProduct) {
+      return true; // Default to available if we can't check
+    }
+
+    const variantId = product.shopifyVariants[metal]?.[stone]?.[size];
+    if (!variantId) return false;
+
+    // Find the variant in Shopify product data
+    const variant = shopifyProduct.variants.find(v =>
+      v.id === `gid://shopify/ProductVariant/${variantId}`
+    );
+
+    return variant ? variant.available : false;
+  };
+
   // Calculate dynamic price based on product, metal, and stone selection
   const getCurrentPrice = () => {
     if (product.isSizer) return product.price;
@@ -569,17 +586,22 @@ function ProductDetail() {
               )}
 
               <div className="size-buttons">
-                {sizeChart.map(size => (
-                  <motion.button
-                    key={size.us}
-                    className={`size-option ${selectedSize === size.us ? 'active' : ''}`}
-                    onClick={() => setSelectedSize(size.us)}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {size.uk} <span style={{ fontSize: '0.85em', opacity: 0.7 }}>({size.us})</span>
-                  </motion.button>
-                ))}
+                {sizeChart.map(size => {
+                  const available = isVariantAvailable(selectedMetal, selectedStone, size.us);
+                  return (
+                    <motion.button
+                      key={size.us}
+                      className={`size-option ${selectedSize === size.us ? 'active' : ''} ${!available ? 'out-of-stock' : ''}`}
+                      onClick={() => available && setSelectedSize(size.us)}
+                      whileHover={available ? { scale: 1.05 } : {}}
+                      whileTap={available ? { scale: 0.95 } : {}}
+                      disabled={!available}
+                      title={!available ? 'Out of Stock' : ''}
+                    >
+                      {size.uk} <span style={{ fontSize: '0.85em', opacity: 0.7 }}>({size.us})</span>
+                    </motion.button>
+                  );
+                })}
               </div>
 
               <motion.div

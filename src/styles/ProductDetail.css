@@ -359,6 +359,16 @@
   transform: translateY(1px);
 }
 
+.metal-option.out-of-stock {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.metal-option.out-of-stock::after {
+  opacity: 0.2;
+}
+
 .metal-option.active {
   color: #8faf70;
 }
@@ -438,6 +448,17 @@
   box-shadow:
     0 0 8px rgba(212, 175, 55, 0.8),
     0 0 0 1px #D4AF37;
+}
+
+.stone-option.out-of-stock {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+  filter: grayscale(100%);
+}
+
+.stone-option.out-of-stock::after {
+  opacity: 0.2;
 }
 
 .stone-emoji {
@@ -552,6 +573,17 @@
 
 .size-option:active {
   transform: translateY(1px);
+}
+
+.size-option.out-of-stock {
+  opacity: 0.3;
+  cursor: not-allowed;
+  text-decoration: line-through;
+  pointer-events: none;
+}
+
+.size-option.out-of-stock::after {
+  opacity: 0.2;
 }
 
 .size-option.active {
