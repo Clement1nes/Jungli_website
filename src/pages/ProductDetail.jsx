@@ -437,7 +437,11 @@ function ProductDetail() {
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <img src={current3dAnimation} alt="3D Animation" />
+                  {current3dAnimation.endsWith('.webm') ? (
+                    <video src={current3dAnimation} autoPlay loop muted playsInline />
+                  ) : (
+                    <img src={current3dAnimation} alt="3D Animation" />
+                  )}
                 </motion.button>
               )}
               {/* Static images follow */}
@@ -451,7 +455,11 @@ function ProductDetail() {
                     whileHover={{ scale: 1.1, y: -3 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <img src={img} alt={`View ${index + 1}`} />
+                    {img.endsWith('.webm') ? (
+                      <video src={img} autoPlay loop muted playsInline />
+                    ) : (
+                      <img src={img} alt={`View ${index + 1}`} />
+                    )}
                   </motion.button>
                 );
               })}
