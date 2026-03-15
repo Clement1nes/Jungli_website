@@ -2,7 +2,7 @@
   min-height: 100vh;
   position: relative;
   background: #0A0A0A;
-  padding-top: 120px;
+  padding-top: 180px;
   padding-bottom: 4rem;
 }
 
@@ -30,7 +30,7 @@
   z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem 2rem 2rem;
 }
 
 .cart-title {
