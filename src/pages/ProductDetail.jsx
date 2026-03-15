@@ -68,7 +68,7 @@ function ProductDetail() {
           orange: '53173211365694',
           pink: '53173216837950',
           purple: '53173217657150',
-          red: '53173211365694', // Second green gem entry assumed to be red
+          red: '53173530427710',
           silver: '53173219230014',
           yellow: '53173219983678',
         },
