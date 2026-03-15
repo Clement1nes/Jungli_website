@@ -84,6 +84,7 @@ function Cart() {
               <div className="cart-actions">
                 <RockButton
                   variant="outline"
+                  size="lg"
                   onClick={() => navigate('/home')}
                   style={{ whiteSpace: 'nowrap' }}
                 >
@@ -91,6 +92,7 @@ function Cart() {
                 </RockButton>
                 <RockButton
                   variant="cream"
+                  size="lg"
                   onClick={() => {
                     if (cart.checkoutUrl) {
                       window.location.href = cart.checkoutUrl;
