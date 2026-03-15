@@ -49,12 +49,9 @@ function Landing() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.98 }}
         >
-          <video
-            src="/assets/mainfront.webm"
-            autoPlay
-            loop
-            muted
-            playsInline
+          <img
+            src="/assets/mainfront.gif"
+            alt="Anatomy Ring"
             className="landing-ring"
           />
 

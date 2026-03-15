@@ -9,19 +9,19 @@ function Gallery() {
     {
       id: 'eye',
       name: 'Eye Ring',
-      image: '/assets/silver_eye.webm',
+      image: '/assets/silver_eye.gif',
       alt: 'Eye Ring Animation'
     },
     {
       id: 'star',
       name: 'Star Ring',
-      image: '/assets/GoldShootingStar-ezgif.com-gif-maker (1).webm',
+      image: '/assets/GoldShootingStar-ezgif.com-gif-maker (1).gif',
       alt: 'Star Ring Animation'
     },
     {
       id: 'foot',
       name: 'Foot Ring',
-      image: '/assets/ezgif.com-coalesce.webm',
+      image: '/assets/ezgif.com-coalesce.gif',
       alt: 'Foot Ring Animation'
     },
     {
@@ -90,22 +90,11 @@ function Gallery() {
               onClick={() => handleItemClick(item)}
             >
               <div className="gallery-item-inner">
-                {item.image.endsWith('.webm') ? (
-                  <video
-                    src={item.image}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="gallery-image"
-                  />
-                ) : (
-                  <img
-                    src={item.image}
-                    alt={item.alt}
-                    className="gallery-image"
-                  />
-                )}
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  className="gallery-image"
+                />
                 <div className="gallery-item-overlay">
                   <span className="gallery-item-name">{item.name}</span>
                 </div>

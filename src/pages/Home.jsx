@@ -11,8 +11,8 @@ function Home() {
       name: 'Foot Ring',
       price: '$150',
       description: 'A reminder of the steps taken and the steps to come…',
-      goldImage: '/assets/ezgif.com-coalesce.webm',
-      silverImage: '/assets/ezgif.com-coalesce.webm',
+      goldImage: '/assets/ezgif.com-coalesce.gif',
+      silverImage: '/assets/ezgif.com-coalesce.gif',
       background: '/assets/backgrounds/foot_background.webm',
       alt: 'Foot Ring',
       type: 'foot'
@@ -22,8 +22,8 @@ function Home() {
       name: 'Star Ring',
       price: '$160',
       description: 'When you Shoot for the stars remember we were made from them.',
-      goldImage: '/assets/GoldShootingStar-ezgif.com-gif-maker (1).webm',
-      silverImage: '/assets/GoldShootingStar-ezgif.com-gif-maker (1).webm',
+      goldImage: '/assets/GoldShootingStar-ezgif.com-gif-maker (1).gif',
+      silverImage: '/assets/GoldShootingStar-ezgif.com-gif-maker (1).gif',
       background: '/assets/backgrounds/star_background.webm',
       alt: 'Star Ring',
       type: 'star'
@@ -33,8 +33,8 @@ function Home() {
       name: 'Eye Ring',
       price: '$140',
       description: 'We look with Two Eyes but see with Three…',
-      goldImage: '/assets/silver_eye.webm',
-      silverImage: '/assets/silver_eye.webm',
+      goldImage: '/assets/silver_eye.gif',
+      silverImage: '/assets/silver_eye.gif',
       background: '/assets/backgrounds/eye_background.webm',
       alt: 'Eye Ring',
       type: 'eye'
@@ -85,12 +85,9 @@ function Home() {
               onClick={() => handleProductClick(product)}
             >
               <div className="product-float-inner">
-                <video
+                <img
                   src={product.goldImage}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
+                  alt={product.alt}
                   className="product-image"
                 />
               </div>

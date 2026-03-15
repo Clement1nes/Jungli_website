@@ -122,8 +122,8 @@ function ProductDetail() {
           black: '/images/eye-ring-gems/silver_black.png',
         }
       },
-      goldAnimation3d: '/assets/gold-eye-ring.webm',
-      silverAnimation3d: '/assets/silver_eye.webm',
+      goldAnimation3d: '/assets/gold-eye-ring.gif',
+      silverAnimation3d: '/assets/silver_eye.gif',
       background: '/assets/backgrounds/eye_background.webm',
       alt: 'Eye Ring',
       type: 'eye',
@@ -160,8 +160,8 @@ function ProductDetail() {
         '/assets/Highdef/silver back star.png',
         '/assets/Highdef/silver star main.png'
       ],
-      goldAnimation3d: '/assets/GoldShootingStar-ezgif.com-gif-maker (1).webm',
-      silverAnimation3d: '/assets/silver_ring.webm',
+      goldAnimation3d: '/assets/GoldShootingStar-ezgif.com-gif-maker (1).gif',
+      silverAnimation3d: '/assets/silver_ring.gif',
       background: '/assets/backgrounds/star_background.webm',
       alt: 'Star Ring',
       type: 'star',
@@ -198,8 +198,8 @@ function ProductDetail() {
         '/assets/Highdef/foot side silver.png',
         '/assets/Highdef/silver_foot_ring.png'
       ],
-      goldAnimation3d: '/assets/ezgif.com-coalesce.webm',
-      silverAnimation3d: '/assets/ezgif.com-coalesce.webm',
+      goldAnimation3d: '/assets/ezgif.com-coalesce.gif',
+      silverAnimation3d: '/assets/ezgif.com-coalesce.gif',
       background: '/assets/backgrounds/foot_background_new.webm',
       alt: 'Foot Ring',
       type: 'foot',
@@ -382,39 +382,20 @@ function ProductDetail() {
               }
             }}
           >
-            {currentImage.endsWith('.webm') ? (
-              <motion.video
-                key={currentImage}
-                src={currentImage}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="gallery-image"
-                style={{
-                  transform: product.type === 'star' && currentImageIndex === 0 ? 'rotate(180deg)' : 'none'
-                }}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                draggable={false}
-              />
-            ) : (
-              <motion.img
-                key={currentImage}
-                src={currentImage}
-                alt={product.alt}
-                className="gallery-image"
-                style={{
-                  transform: product.type === 'star' && currentImageIndex === 0 ? 'rotate(180deg)' : 'none'
-                }}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                draggable={false}
-                loading={currentImageIndex === 0 ? "eager" : "lazy"}
-              />
-            )}
+            <motion.img
+              key={currentImage}
+              src={currentImage}
+              alt={product.alt}
+              className="gallery-image"
+              style={{
+                transform: product.type === 'star' && currentImageIndex === 0 ? 'rotate(180deg)' : 'none'
+              }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              draggable={false}
+              loading={currentImageIndex === 0 ? "eager" : "lazy"}
+            />
 
             {/* Swipe indicator */}
             {totalImages > 1 && (
@@ -437,11 +418,7 @@ function ProductDetail() {
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {current3dAnimation.endsWith('.webm') ? (
-                    <video src={current3dAnimation} autoPlay loop muted playsInline />
-                  ) : (
-                    <img src={current3dAnimation} alt="3D Animation" />
-                  )}
+                  <img src={current3dAnimation} alt="3D Animation" />
                 </motion.button>
               )}
               {/* Static images follow */}
@@ -455,11 +432,7 @@ function ProductDetail() {
                     whileHover={{ scale: 1.1, y: -3 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    {img.endsWith('.webm') ? (
-                      <video src={img} autoPlay loop muted playsInline />
-                    ) : (
-                      <img src={img} alt={`View ${index + 1}`} />
-                    )}
+                    <img src={img} alt={`View ${index + 1}`} />
                   </motion.button>
                 );
               })}
