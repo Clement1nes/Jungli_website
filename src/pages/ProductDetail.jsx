@@ -43,7 +43,11 @@ function ProductDetail() {
     eye: {
       id: 'eye',
       name: 'Third Eye Ring',
-      price: '£140',
+      price: '£175',
+      silverPrice: 175,
+      silverPriceWithStone: 200,
+      goldPriceNoStone: 225,
+      goldPriceWithStone: 250,
       description: 'We look with Two Eyes but see with Three…',
       aboutTheRing: [
         'In my earlier years I was enamored with the idea of spiritual awakening. One day, during a deep meditation a figure appeared before me…',
@@ -103,7 +107,9 @@ function ProductDetail() {
     star: {
       id: 'star',
       name: 'Shooting Star Ring',
-      price: '£160',
+      price: '£150',
+      silverPrice: 150,
+      goldPrice: 200,
       description: 'When you Shoot for the stars remember we were made from them.',
       aboutTheRing: [
         'Late one night, deep in the forests of North Vietnam, I was perched high up on the branch of an ancient Banyan tree when the sky lit up above me in a fiery blaze.',
@@ -139,7 +145,9 @@ function ProductDetail() {
     foot: {
       id: 'foot',
       name: 'Footprint Ring',
-      price: '£150',
+      price: '£250',
+      silverPrice: 250,
+      goldPrice: 300,
       description: 'A reminder of the steps taken and the steps to come…',
       aboutTheRing: [
         'This ring was made as a reminder.',
@@ -219,6 +227,25 @@ function ProductDetail() {
   }, [product]);
 
   if (!product) return null;
+
+  // Calculate dynamic price based on product, metal, and stone selection
+  const getCurrentPrice = () => {
+    if (product.isSizer) return product.price;
+
+    if (product.id === 'eye') {
+      // Third Eye Ring: £175 silver, £200 silver with stone, £225 gold no stone, £250 gold with stone
+      if (selectedMetal === 'silver') {
+        return selectedStone === 'none' ? `£${product.silverPrice}` : `£${product.silverPriceWithStone}`;
+      } else {
+        return selectedStone === 'none' ? `£${product.goldPriceNoStone}` : `£${product.goldPriceWithStone}`;
+      }
+    } else if (product.silverPrice && product.goldPrice) {
+      // Other rings with dynamic pricing
+      return selectedMetal === 'silver' ? `£${product.silverPrice}` : `£${product.goldPrice}`;
+    }
+
+    return product.price;
+  };
 
   // Ring sizer uses simple images array, rings use metal-specific images
   // For Third Eye Ring with gems, show gem image first, then other images
@@ -366,7 +393,7 @@ function ProductDetail() {
             transition={{ delay: 0.4 }}
           >
             <h1 className="product-title">{product.name}</h1>
-            <p className="product-price">{product.price}</p>
+            <p className="product-price">{getCurrentPrice()}</p>
 
             {/* Metal Selector - Only for rings */}
             {!product.isSizer && (
