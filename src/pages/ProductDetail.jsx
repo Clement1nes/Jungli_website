@@ -24,8 +24,10 @@ function ProductDetail() {
     { id: 'orange', name: 'Orange Citrine', image: '/images/stones/orange.png' },
     { id: 'purple', name: 'Purple Amethyst', image: '/images/stones/Purple.png' },
     { id: 'pink', name: 'Pink Sapphire', image: '/images/stones/pink.png' },
+    { id: 'yellow', name: 'Yellow Citrine', image: '/images/stones/yellow.png' },
     { id: 'silver', name: 'White Diamond', image: '/images/stones/silver.png' },
     { id: 'black', name: 'Black Diamond', image: '/images/stones/black.png' },
+    { id: 'none', name: 'No Stone', image: '/images/stones/none.png' },
   ];
 
   const sizeChart = [
@@ -372,18 +374,6 @@ function ProductDetail() {
               <label className="selector-label">Select Material</label>
               <div className="metal-buttons">
                 <motion.button
-                  className={`metal-option ${selectedMetal === 'gold' ? 'active' : ''}`}
-                  onClick={() => {
-                    setSelectedMetal('gold');
-                    setCurrentImageIndex(0);
-                  }}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="metal-swatch gold-swatch" />
-                  <span>18K GOLD PLATED</span>
-                </motion.button>
-                <motion.button
                   className={`metal-option ${selectedMetal === 'silver' ? 'active' : ''}`}
                   onClick={() => {
                     setSelectedMetal('silver');
@@ -393,7 +383,19 @@ function ProductDetail() {
                   whileTap={{ scale: 0.95 }}
                 >
                   <span className="metal-swatch silver-swatch" />
-                  <span>STERLING SILVER</span>
+                  <span>Sterling Silver</span>
+                </motion.button>
+                <motion.button
+                  className={`metal-option ${selectedMetal === 'gold' ? 'active' : ''}`}
+                  onClick={() => {
+                    setSelectedMetal('gold');
+                    setCurrentImageIndex(0);
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="metal-swatch gold-swatch" />
+                  <span>18k Gold Plated</span>
                 </motion.button>
               </div>
             </div>
@@ -639,7 +641,7 @@ function ProductDetail() {
 
             {/* About the Ring Section */}
             {product.aboutTheRing && (
-              <div className="product-details" style={{ marginTop: '3rem', marginBottom: '3rem' }}>
+              <div className="product-details" style={{ marginTop: '1rem', marginBottom: '3rem' }}>
                 <h3 className="details-title" style={{ marginBottom: '2rem' }}>About the Ring</h3>
                 {Array.isArray(product.aboutTheRing) ? (
                   product.aboutTheRing.map((paragraph, index) => (
