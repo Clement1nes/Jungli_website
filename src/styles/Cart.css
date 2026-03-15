@@ -143,9 +143,14 @@
 
 .cart-actions {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   justify-content: flex-end;
   flex-wrap: wrap;
+  align-items: center;
+}
+
+.cart-actions .rock-button {
+  min-width: 180px;
 }
 
 @media (max-width: 768px) {
