@@ -7,6 +7,7 @@ import Contact from './pages/Contact';
 import Gallery from './pages/Gallery';
 import Shop from './pages/Shop';
 import ProductDetail from './pages/ProductDetail';
+import Cart from './pages/Cart';
 
 function AppContent() {
   const location = useLocation();
@@ -51,6 +52,7 @@ function AppContent() {
         <Route path="/home" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
