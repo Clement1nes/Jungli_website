@@ -283,14 +283,24 @@ function ProductDetail() {
     currentImages = product.images || [];
   } else if (product.id === 'eye' && product.gemImages) {
     // Add gem-specific image first, then 3D animation, then other images
-    const gemImage = product.gemImages[selectedMetal][selectedStone];
     const animation3d = selectedMetal === 'gold' ? product.goldAnimation3d : product.silverAnimation3d;
     const otherImages = selectedMetal === 'gold' ? product.goldImages : product.silverImages;
-    currentImages = [
-      gemImage,
-      animation3d,
-      ...otherImages
-    ];
+
+    // If "No Stone" is selected, show 3D animation first, then other images
+    if (selectedStone === 'none') {
+      currentImages = [
+        animation3d,
+        ...otherImages
+      ];
+    } else {
+      // If a stone is selected, show gem image first
+      const gemImage = product.gemImages[selectedMetal][selectedStone];
+      currentImages = [
+        gemImage,
+        animation3d,
+        ...otherImages
+      ];
+    }
   } else {
     currentImages = selectedMetal === 'gold' ? (product.goldImages || []) : (product.silverImages || []);
   }
