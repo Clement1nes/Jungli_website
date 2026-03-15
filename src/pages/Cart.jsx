@@ -9,19 +9,20 @@ function Cart() {
   const { cart } = useShopify();
 
   const getTotalPrice = () => {
-    if (!cart || !cart.lines || !cart.lines.edges) return '£0.00';
+    if (!cart || !cart.lineItems || cart.lineItems.length === 0) return '£0.00';
 
-    const total = cart.lines.edges.reduce((sum, { node }) => {
-      const price = parseFloat(node.cost.totalAmount.amount);
-      return sum + price;
+    const total = cart.lineItems.reduce((sum, item) => {
+      const price = parseFloat(item.variant.price.amount);
+      const quantity = item.quantity;
+      return sum + (price * quantity);
     }, 0);
 
     return `£${total.toFixed(2)}`;
   };
 
   const getItemCount = () => {
-    if (!cart || !cart.lines || !cart.lines.edges) return 0;
-    return cart.lines.edges.reduce((sum, { node }) => sum + node.quantity, 0);
+    if (!cart || !cart.lineItems) return 0;
+    return cart.lineItems.reduce((sum, item) => sum + item.quantity, 0);
   };
 
   return (
@@ -36,7 +37,7 @@ function Cart() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        {(!cart || !cart.lines || cart.lines.edges.length === 0) ? (
+        {(!cart || !cart.lineItems || cart.lineItems.length === 0) ? (
           <div className="cart-empty">
             <p>Your cart is empty</p>
             <RockButton
@@ -49,26 +50,26 @@ function Cart() {
         ) : (
           <>
             <div className="cart-items">
-              {cart.lines.edges.map(({ node }) => (
+              {cart.lineItems.map((item) => (
                 <motion.div
-                  key={node.id}
+                  key={item.id}
                   className="cart-item"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4 }}
                 >
                   <div className="cart-item-image">
-                    {node.merchandise.image && (
-                      <img src={node.merchandise.image.url} alt={node.merchandise.product.title} />
+                    {item.variant.image && (
+                      <img src={item.variant.image.src} alt={item.title} />
                     )}
                   </div>
                   <div className="cart-item-details">
-                    <h3>{node.merchandise.product.title}</h3>
-                    <p className="cart-item-variant">{node.merchandise.title}</p>
-                    <p className="cart-item-quantity">Quantity: {node.quantity}</p>
+                    <h3>{item.title}</h3>
+                    <p className="cart-item-variant">{item.variant.title}</p>
+                    <p className="cart-item-quantity">Quantity: {item.quantity}</p>
                   </div>
                   <div className="cart-item-price">
-                    £{parseFloat(node.cost.totalAmount.amount).toFixed(2)}
+                    £{(parseFloat(item.variant.price.amount) * item.quantity).toFixed(2)}
                   </div>
                 </motion.div>
               ))}

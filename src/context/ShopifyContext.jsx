@@ -15,7 +15,7 @@ export const ShopifyProvider = ({ children }) => {
   const [checkout, setCheckout] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Initialize or restore checkout on mount
+  // Initialize or restore checkout on mount and when page gains focus
   useEffect(() => {
     const initializeCheckout = async () => {
       const existingCheckoutId = localStorage.getItem('shopify_checkout_id');
@@ -25,8 +25,9 @@ export const ShopifyProvider = ({ children }) => {
           // Try to fetch existing checkout
           const existingCheckout = await fetchCheckout(existingCheckoutId);
 
-          // If checkout is completed, create a new one
-          if (existingCheckout.completedAt) {
+          // If checkout is completed or order is processed, create a new one
+          if (existingCheckout.completedAt || existingCheckout.order) {
+            console.log('Checkout completed, creating new checkout');
             const newCheckout = await createCheckout();
             setCheckout(newCheckout);
             localStorage.setItem('shopify_checkout_id', newCheckout.id);
@@ -49,6 +50,15 @@ export const ShopifyProvider = ({ children }) => {
     };
 
     initializeCheckout();
+
+    // Re-check checkout when window regains focus (user returns from Shopify)
+    const handleFocus = () => {
+      console.log('Window focused, refreshing checkout');
+      initializeCheckout();
+    };
+
+    window.addEventListener('focus', handleFocus);
+    return () => window.removeEventListener('focus', handleFocus);
   }, []);
 
   const addItemToCart = async (variantId, quantity = 1) => {
@@ -96,6 +106,7 @@ export const ShopifyProvider = ({ children }) => {
 
   const value = {
     checkout,
+    cart: checkout, // Expose as cart for Cart page compatibility
     isLoading,
     addItemToCart,
     goToCheckout,
