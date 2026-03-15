@@ -57,6 +57,35 @@ function ProductDetail() {
         '"Two eyes to look, one eye to see. Three eyes together will set you free"…'
       ],
       shopifyProductId: '8128692388158',
+      // Shopify variant IDs mapped by metal and stone
+      shopifyVariants: {
+        gold: {
+          none: '44526684275006',
+          black: '44526684307774',
+          blue: '53173203075390',
+          gold: '53173205631294',
+          green: '53173209497918',
+          orange: '53173211365694',
+          pink: '53173216837950',
+          purple: '53173217657150',
+          red: '53173211365694', // Second green gem entry assumed to be red
+          silver: '53173219230014',
+          yellow: '53173219983678',
+        },
+        silver: {
+          none: '53168230629694',
+          black: '53168230760766',
+          blue: '53173229748542',
+          gold: '53173235220798',
+          green: '53173238661438',
+          orange: '53173244002622',
+          purple: '53173248819518',
+          pink: '53173261402430',
+          red: '53173268283710',
+          silver: '53173271658814',
+          yellow: '53173274673470',
+        }
+      },
       goldImages: [
         '/assets/Highdef/eye face gold.png',
         '/assets/Highdef/Gold face front.png',
@@ -595,43 +624,51 @@ function ProductDetail() {
                       console.log('Selected metal:', selectedMetal);
                       console.log('Selected size:', selectedSize);
 
-                      // Fetch product if not already loaded
-                      const productData = shopifyProduct || await fetchProductById(product.shopifyProductId);
-                      console.log('Shopify product data:', productData);
+                      // For Third Eye Ring, use direct variant ID mapping
+                      if (product.id === 'eye' && product.shopifyVariants) {
+                        const variantId = product.shopifyVariants[selectedMetal]?.[selectedStone];
 
-                      if (!productData) {
-                        throw new Error('Could not load product from Shopify');
-                      }
+                        if (variantId) {
+                          console.log('Using mapped variant ID:', variantId);
+                          // Build the full variant ID path for Shopify
+                          const fullVariantId = `gid://shopify/ProductVariant/${variantId}`;
+                          await buyNow(fullVariantId, 1);
+                        } else {
+                          throw new Error(`No variant found for ${selectedMetal} with ${selectedStone} stone`);
+                        }
+                      } else {
+                        // For other rings, use the existing variant matching logic
+                        const productData = shopifyProduct || await fetchProductById(product.shopifyProductId);
+                        console.log('Shopify product data:', productData);
 
-                      // Find the variant that matches the selected metal, size, and stone (if applicable)
-                      const matchingVariant = productData.variants.find(variant => {
-                        const variantTitle = variant.title.toLowerCase();
-                        console.log('Checking variant:', variantTitle);
-                        const metalMatch = variantTitle.includes(selectedMetal);
-                        const sizeMatch = variantTitle.includes(`size ${selectedSize}`) ||
-                                        variantTitle.includes(`us ${selectedSize}`) ||
-                                        variantTitle.includes(`${selectedSize} /`);
-
-                        // For third eye ring, also match stone
-                        if (product.id === 'eye') {
-                          const stoneMatch = variantTitle.includes(selectedStone);
-                          return metalMatch && sizeMatch && stoneMatch;
+                        if (!productData) {
+                          throw new Error('Could not load product from Shopify');
                         }
 
-                        return metalMatch && sizeMatch;
-                      });
+                        // Find the variant that matches the selected metal and size
+                        const matchingVariant = productData.variants.find(variant => {
+                          const variantTitle = variant.title.toLowerCase();
+                          console.log('Checking variant:', variantTitle);
+                          const metalMatch = variantTitle.includes(selectedMetal);
+                          const sizeMatch = variantTitle.includes(`size ${selectedSize}`) ||
+                                          variantTitle.includes(`us ${selectedSize}`) ||
+                                          variantTitle.includes(`${selectedSize} /`);
 
-                      console.log('Matching variant:', matchingVariant);
+                          return metalMatch && sizeMatch;
+                        });
 
-                      if (matchingVariant) {
-                        await buyNow(matchingVariant.id, 1);
-                      } else {
-                        // If no matching variant, use first available
-                        console.warn('No matching variant found, using first available');
-                        if (productData.variants.length > 0) {
-                          await buyNow(productData.variants[0].id, 1);
+                        console.log('Matching variant:', matchingVariant);
+
+                        if (matchingVariant) {
+                          await buyNow(matchingVariant.id, 1);
                         } else {
-                          throw new Error('No variants available');
+                          // If no matching variant, use first available
+                          console.warn('No matching variant found, using first available');
+                          if (productData.variants.length > 0) {
+                            await buyNow(productData.variants[0].id, 1);
+                          } else {
+                            throw new Error('No variants available');
+                          }
                         }
                       }
                     } catch (error) {
