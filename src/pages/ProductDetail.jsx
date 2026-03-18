@@ -512,11 +512,7 @@ function ProductDetail() {
                     aria-label={`Select ${stone.name}`}
                     aria-pressed={selectedStone === stone.id}
                   >
-                    {stone.id === 'none' ? (
-                      <span style={{ fontSize: '0.7rem', fontFamily: "'Evil Green Plant', serif", color: '#E8E0D0' }}>No Stone</span>
-                    ) : (
-                      <img src={stone.image} alt={stone.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} loading="lazy" />
-                    )}
+                    <img src={stone.image} alt={stone.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} loading="lazy" />
                   </motion.button>
                 ))}
               </div>
