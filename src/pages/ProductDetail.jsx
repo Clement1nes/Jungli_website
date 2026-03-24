@@ -12,23 +12,23 @@ function ProductDetail() {
   const { buyNow } = useShopify();
   const [selectedMetal, setSelectedMetal] = useState('gold');
   const [selectedSize, setSelectedSize] = useState('7');
-  const [selectedStone, setSelectedStone] = useState('blue');
+  const [selectedStone, setSelectedStone] = useState('none');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showSizeChart, setShowSizeChart] = useState(false);
   const [shopifyProduct, setShopifyProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const stoneOptions = [
+    { id: 'none', name: 'No Stone', image: '/images/stones/none.png' },
     { id: 'blue', name: 'Blue Sapphire', image: '/images/stones/blue.png' },
     { id: 'red', name: 'Red Ruby', image: '/images/stones/red.png' },
     { id: 'green', name: 'Green Emerald', image: '/images/stones/green.png' },
-    { id: 'orange', name: 'Orange Citrine', image: '/images/stones/orange.png' },
+    { id: 'orange', name: 'Orange Cubic Zirconia', image: '/images/stones/orange.png' },
+    { id: 'yellow', name: 'Yellow Citrine', image: '/images/stones/yellow.png' },
     { id: 'purple', name: 'Purple Amethyst', image: '/images/stones/Purple.png' },
     { id: 'pink', name: 'Pink Sapphire', image: '/images/stones/pink.png' },
-    { id: 'yellow', name: 'Yellow Citrine', image: '/images/stones/yellow.png' },
     { id: 'silver', name: 'White Diamond', image: '/images/stones/silver.png' },
     { id: 'black', name: 'Black Diamond', image: '/images/stones/black.png' },
-    { id: 'none', name: 'No Stone', image: '/images/stones/none.png' },
   ];
 
   const sizeChart = [
