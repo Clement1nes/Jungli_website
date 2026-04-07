@@ -260,19 +260,29 @@ function ProductDetail() {
 
   // Check if a specific variant is available
   const isVariantAvailable = (metal, stone, size) => {
-    if (product.id !== 'eye' || !product.shopifyVariants || !shopifyProduct) {
-      return true; // Default to available if we can't check
+    if (!shopifyProduct) return true; // Default to available until data loads
+
+    if (product.id === 'eye' && product.shopifyVariants) {
+      // Third Eye Ring: use hardcoded variant ID map
+      const variantId = product.shopifyVariants[metal]?.[stone]?.[size];
+      if (!variantId) return false;
+
+      const variant = shopifyProduct.variants.find(v =>
+        v.id === `gid://shopify/ProductVariant/${variantId}`
+      );
+      return variant ? variant.available : false;
+    } else {
+      // Other rings: match variant by title (same logic as Buy Now handler)
+      const variant = shopifyProduct.variants.find(v => {
+        const title = v.title.toLowerCase();
+        const metalMatch = title.includes(metal);
+        const sizeMatch = title.includes(`size ${size}`) ||
+                        title.includes(`us ${size}`) ||
+                        title.includes(`${size} /`);
+        return metalMatch && sizeMatch;
+      });
+      return variant ? variant.available : true;
     }
-
-    const variantId = product.shopifyVariants[metal]?.[stone]?.[size];
-    if (!variantId) return false;
-
-    // Find the variant in Shopify product data
-    const variant = shopifyProduct.variants.find(v =>
-      v.id === `gid://shopify/ProductVariant/${variantId}`
-    );
-
-    return variant ? variant.available : false;
   };
 
   // Calculate dynamic price based on product, metal, and stone selection
@@ -651,11 +661,19 @@ function ProductDetail() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
             >
+              {(() => {
+                const currentlyAvailable = product.isSizer
+                  ? (!shopifyProduct || shopifyProduct.variants.length === 0 || shopifyProduct.variants[0].available)
+                  : isVariantAvailable(selectedMetal, selectedStone, selectedSize);
+                return (
               <RockButton
                 variant="cream"
                 size="lg"
                 className="uppercase-button"
+                disabled={!currentlyAvailable}
+                style={!currentlyAvailable ? { opacity: 0.4, cursor: 'not-allowed' } : {}}
                 onClick={async () => {
+                  if (!currentlyAvailable) return;
                   // Try to fetch and checkout via Shopify
                   if (product.shopifyProductId) {
                     setIsLoading(true);
@@ -729,8 +747,10 @@ function ProductDetail() {
                   }
                 }}
               >
-                {isLoading ? 'Processing...' : 'Buy Now'}
+                {isLoading ? 'Processing...' : currentlyAvailable ? 'Buy Now' : 'Out of Stock'}
               </RockButton>
+                );
+              })()}
             </motion.div>
 
             {/* Product Details */}
