@@ -6,7 +6,7 @@ import '../styles/Cart.css';
 
 function Cart() {
   const navigate = useNavigate();
-  const { cart } = useShopify();
+  const { cart, goToCheckout } = useShopify();
 
   const getTotalPrice = () => {
     if (!cart || !cart.lineItems || cart.lineItems.length === 0) return '£0.00';
@@ -93,11 +93,7 @@ function Cart() {
                 <RockButton
                   variant="cream"
                   size="lg"
-                  onClick={() => {
-                    if (cart.checkoutUrl) {
-                      window.location.href = cart.checkoutUrl;
-                    }
-                  }}
+                  onClick={() => goToCheckout()}
                 >
                   Checkout
                 </RockButton>
