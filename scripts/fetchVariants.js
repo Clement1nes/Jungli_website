@@ -65,17 +65,25 @@ async function fetchAllVariants() {
 
       // Parse size - map UK sizes to US sizes
       const ukToUsSize = {
+        'H': '4',
+        'I': '4.5',
         'J': '5',
+        'K': '5.5',
         'L': '6',
+        'M': '6.5',
         'N': '7',
+        'O': '7.5',
         'P': '8',
+        'Q': '8.5',
         'R': '9',
-        'T': '10'
+        'S': '9.5',
+        'T': '10',
+        'U': '10.5'
       };
 
       let size = null;
-      // Look for UK size letter (J, L, N, P, R, T) - format is "/ J" or "/ L" etc
-      const ukSizeMatch = title.match(/\/\s+([JLNPRT])$/i) || title.match(/\/\s+([JLNPRT])\s+\(/i);
+      // Look for UK size letter (H-U) - format is "/ H" or "/ J" etc
+      const ukSizeMatch = title.match(/\/\s+([A-U])$/i) || title.match(/\/\s+([A-U])\s+\(/i);
       if (ukSizeMatch) {
         const ukSize = ukSizeMatch[1].toUpperCase();
         size = ukToUsSize[ukSize];
