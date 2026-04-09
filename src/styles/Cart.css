@@ -65,17 +65,22 @@
 
 .cart-item {
   display: grid;
-  grid-template-columns: 120px 1fr auto;
+  grid-template-columns: 100px 1fr auto;
   gap: 1.5rem;
-  background: rgba(255, 245, 218, 0.03);
-  border: 1px solid rgba(255, 245, 218, 0.1);
-  padding: 1.5rem;
+  background: rgba(255, 245, 218, 0.02);
+  border: 1px solid rgba(255, 245, 218, 0.06);
+  padding: 1.25rem;
   align-items: center;
+  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cart-item:hover {
+  border-color: rgba(255, 245, 218, 0.12);
 }
 
 .cart-item-image {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;

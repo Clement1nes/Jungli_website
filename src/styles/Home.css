@@ -192,17 +192,18 @@
 
 .product-hover-text {
   position: absolute;
-  bottom: 2rem;
+  bottom: 1rem;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(4px);
   font-family: 'Evil Green Plant', serif;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   color: #fff5da;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
   white-space: nowrap;
+  letter-spacing: 0.06em;
 }
 
 /* Different floating animations for each product */
@@ -244,12 +245,13 @@
 }
 
 .product-float:hover .product-float-inner {
-  transform: scale(1.15) !important;
-  filter: drop-shadow(0 20px 50px rgba(212, 175, 55, 0.6));
+  transform: scale(1.1) !important;
+  filter: drop-shadow(0 20px 40px rgba(212, 175, 55, 0.4));
 }
 
 .product-float:hover .product-hover-text {
   opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .product-image {
