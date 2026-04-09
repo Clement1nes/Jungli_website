@@ -156,6 +156,14 @@ function ProductDetail() {
         'A Shooting Star. Immortalised forever.'
       ],
       shopifyProductId: '12277117354302',
+      shopifyVariants: {
+        gold: {
+          '4': '53294536032574', '4.5': '53294536065342', '5': '53294536098110', '5.5': '53294536130878', '6': '53294536163646', '6.5': '53294536196414', '7': '53294536229182', '7.5': '53294536261950', '8': '53294536294718', '8.5': '53294536327486', '9': '53294536360254', '9.5': '53294536393022', '10': '53294536425790', '10.5': '53294536458558'
+        },
+        silver: {
+          '4': '53173820719422', '4.5': '53173820752190', '5': '53173820784958', '5.5': '53173820817726', '6': '53173820850494', '6.5': '53284664705342', '7': '53284664738110', '7.5': '53284664770878', '8': '53284664803646', '8.5': '53284664836414', '9': '53284664869182', '9.5': '53284664901950', '10': '53284664934718', '10.5': '53287347913022'
+        }
+      },
       goldImages: [
         '/assets/Highdef/gold star front.png',
         '/assets/Highdef/gold forward star.png',
@@ -195,6 +203,14 @@ function ProductDetail() {
         'This ring stamps a footprint as a way to leave our mark on the world.'
       ],
       shopifyProductId: '8128703234366',
+      shopifyVariants: {
+        gold: {
+          '4': '53294555595070', '4.5': '53294555627838', '5': '53294555660606', '5.5': '53294555693374', '6': '53294555726142', '6.5': '53294555758910', '7': '53294555791678', '7.5': '53294555824446', '8': '53294555857214', '8.5': '53294555889982', '9': '53294555922750', '9.5': '53294555955518', '10': '53294555988286'
+        },
+        silver: {
+          '4': '53173832909118', '4.5': '53173832941886', '5': '53173832974654', '5.5': '53173833007422', '6': '53173833040190', '6.5': '53173833072958', '7': '53284685349182', '7.5': '53284685381950', '8': '53284685414718', '8.5': '53284685447486', '9': '53284685480254', '9.5': '53284685513022', '10': '53284685545790'
+        }
+      },
       goldImages: [
         '/assets/Highdef/gold foot up.png',
         '/assets/Highdef/gold foot main.png',
@@ -270,27 +286,22 @@ function ProductDetail() {
   const isVariantAvailable = (metal, stone, size) => {
     if (!shopifyProduct) return true; // Default to available until data loads
 
-    if (product.id === 'eye' && product.shopifyVariants) {
-      // Third Eye Ring: use hardcoded variant ID map
-      const variantId = product.shopifyVariants[metal]?.[stone]?.[size];
+    if (product.shopifyVariants) {
+      // Use hardcoded variant ID map
+      let variantId;
+      if (product.id === 'eye') {
+        variantId = product.shopifyVariants[metal]?.[stone]?.[size];
+      } else {
+        variantId = product.shopifyVariants[metal]?.[size];
+      }
       if (!variantId) return false;
 
       const variant = shopifyProduct.variants.find(v =>
         v.id === `gid://shopify/ProductVariant/${variantId}`
       );
       return variant ? variant.available : false;
-    } else {
-      // Other rings: match variant by title (same logic as Buy Now handler)
-      const variant = shopifyProduct.variants.find(v => {
-        const title = v.title.toLowerCase();
-        const metalMatch = title.includes(metal);
-        const sizeMatch = title.includes(`size ${size}`) ||
-                        title.includes(`us ${size}`) ||
-                        title.includes(`${size} /`);
-        return metalMatch && sizeMatch;
-      });
-      return variant ? variant.available : true;
     }
+    return true;
   };
 
   // Calculate dynamic price based on product, metal, and stone selection
@@ -691,51 +702,29 @@ function ProductDetail() {
                       console.log('Selected metal:', selectedMetal);
                       console.log('Selected size:', selectedSize);
 
-                      // For Third Eye Ring, use direct variant ID mapping with size
-                      if (product.id === 'eye' && product.shopifyVariants) {
-                        const variantId = product.shopifyVariants[selectedMetal]?.[selectedStone]?.[selectedSize];
+                      if (product.shopifyVariants) {
+                        // Use hardcoded variant ID map for all rings
+                        let variantId;
+                        if (product.id === 'eye') {
+                          variantId = product.shopifyVariants[selectedMetal]?.[selectedStone]?.[selectedSize];
+                        } else {
+                          variantId = product.shopifyVariants[selectedMetal]?.[selectedSize];
+                        }
 
                         if (variantId) {
-                          console.log('Using mapped variant ID:', variantId, `(${selectedMetal} + ${selectedStone} + size ${selectedSize})`);
-                          // Build the full variant ID path for Shopify
+                          console.log('Using mapped variant ID:', variantId, `(${selectedMetal} + size ${selectedSize})`);
                           const fullVariantId = `gid://shopify/ProductVariant/${variantId}`;
                           await buyNow(fullVariantId, 1);
                         } else {
-                          throw new Error(`No variant found for ${selectedMetal} with ${selectedStone} stone in size ${selectedSize}`);
+                          throw new Error(`No variant found for ${selectedMetal} in size ${selectedSize}`);
                         }
                       } else {
-                        // For other rings, use the existing variant matching logic
+                        // Fallback: use first available variant
                         const productData = shopifyProduct || await fetchProductById(product.shopifyProductId);
-                        console.log('Shopify product data:', productData);
-
-                        if (!productData) {
-                          throw new Error('Could not load product from Shopify');
-                        }
-
-                        // Find the variant that matches the selected metal and size
-                        const matchingVariant = productData.variants.find(variant => {
-                          const variantTitle = variant.title.toLowerCase();
-                          console.log('Checking variant:', variantTitle);
-                          const metalMatch = variantTitle.includes(selectedMetal);
-                          const sizeMatch = variantTitle.includes(`size ${selectedSize}`) ||
-                                          variantTitle.includes(`us ${selectedSize}`) ||
-                                          variantTitle.includes(`${selectedSize} /`);
-
-                          return metalMatch && sizeMatch;
-                        });
-
-                        console.log('Matching variant:', matchingVariant);
-
-                        if (matchingVariant) {
-                          await buyNow(matchingVariant.id, 1);
+                        if (productData && productData.variants.length > 0) {
+                          await buyNow(productData.variants[0].id, 1);
                         } else {
-                          // If no matching variant, use first available
-                          console.warn('No matching variant found, using first available');
-                          if (productData.variants.length > 0) {
-                            await buyNow(productData.variants[0].id, 1);
-                          } else {
-                            throw new Error('No variants available');
-                          }
+                          throw new Error('No variants available');
                         }
                       }
                     } catch (error) {
