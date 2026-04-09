@@ -6,7 +6,7 @@ import '../styles/Cart.css';
 
 function Cart() {
   const navigate = useNavigate();
-  const { cart, goToCheckout } = useShopify();
+  const { cart, goToCheckout, removeItemFromCart, updateItemQuantity, isLoading } = useShopify();
 
   const getTotalPrice = () => {
     if (!cart || !cart.lineItems || cart.lineItems.length === 0) return '£0.00';
@@ -66,10 +66,38 @@ function Cart() {
                   <div className="cart-item-details">
                     <h3>{item.title}</h3>
                     <p className="cart-item-variant">{item.variant.title}</p>
-                    <p className="cart-item-quantity">Quantity: {item.quantity}</p>
+                    <div className="cart-item-quantity">
+                      <button
+                        className="cart-qty-btn"
+                        onClick={() => item.quantity > 1
+                          ? updateItemQuantity(item.id, item.quantity - 1)
+                          : removeItemFromCart(item.id)
+                        }
+                        disabled={isLoading}
+                      >
+                        −
+                      </button>
+                      <span>{item.quantity}</span>
+                      <button
+                        className="cart-qty-btn"
+                        onClick={() => updateItemQuantity(item.id, item.quantity + 1)}
+                        disabled={isLoading}
+                      >
+                        +
+                      </button>
+                    </div>
                   </div>
-                  <div className="cart-item-price">
-                    £{(parseFloat(item.variant.price.amount) * item.quantity).toFixed(2)}
+                  <div className="cart-item-actions">
+                    <div className="cart-item-price">
+                      £{(parseFloat(item.variant.price.amount) * item.quantity).toFixed(2)}
+                    </div>
+                    <button
+                      className="cart-remove-btn"
+                      onClick={() => removeItemFromCart(item.id)}
+                      disabled={isLoading}
+                    >
+                      Remove
+                    </button>
                   </div>
                 </motion.div>
               ))}

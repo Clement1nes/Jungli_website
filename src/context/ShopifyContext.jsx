@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import { createCheckout, addToCart, fetchCheckout, getCheckoutUrl } from '../utils/shopify';
+import { createCheckout, addToCart, fetchCheckout, getCheckoutUrl, removeLineItem, updateLineItem } from '../utils/shopify';
 
 const ShopifyContext = createContext();
 
@@ -87,6 +87,36 @@ export const ShopifyProvider = ({ children }) => {
     }
   };
 
+  const removeItemFromCart = async (lineItemId) => {
+    if (!checkout) return;
+    setIsLoading(true);
+    try {
+      const updatedCheckout = await removeLineItem(checkout.id, [lineItemId]);
+      setCheckout(updatedCheckout);
+      return updatedCheckout;
+    } catch (error) {
+      console.error('Error removing item from cart:', error);
+      throw error;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const updateItemQuantity = async (lineItemId, quantity) => {
+    if (!checkout) return;
+    setIsLoading(true);
+    try {
+      const updatedCheckout = await updateLineItem(checkout.id, [{ id: lineItemId, quantity }]);
+      setCheckout(updatedCheckout);
+      return updatedCheckout;
+    } catch (error) {
+      console.error('Error updating item quantity:', error);
+      throw error;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const goToCheckout = () => {
     if (checkout) {
       const checkoutUrl = getCheckoutUrl(checkout);
@@ -96,8 +126,17 @@ export const ShopifyProvider = ({ children }) => {
 
   const buyNow = async (variantId, quantity = 1) => {
     try {
-      await addItemToCart(variantId, quantity);
-      goToCheckout();
+      // Create a fresh checkout for Buy Now so old items don't carry over
+      const freshCheckout = await createCheckout();
+      setCheckout(freshCheckout);
+      localStorage.setItem('shopify_checkout_id', freshCheckout.id);
+
+      const lineItemsToAdd = [{ variantId, quantity }];
+      const updatedCheckout = await addToCart(freshCheckout.id, lineItemsToAdd);
+      setCheckout(updatedCheckout);
+
+      const checkoutUrl = getCheckoutUrl(updatedCheckout);
+      window.location.href = checkoutUrl;
     } catch (error) {
       console.error('Error in buy now:', error);
       throw error;
@@ -106,9 +145,11 @@ export const ShopifyProvider = ({ children }) => {
 
   const value = {
     checkout,
-    cart: checkout, // Expose as cart for Cart page compatibility
+    cart: checkout,
     isLoading,
     addItemToCart,
+    removeItemFromCart,
+    updateItemQuantity,
     goToCheckout,
     buyNow,
     cartItemCount: checkout?.lineItems?.length || 0
